@@ -1,0 +1,38 @@
+{
+    "schemaVersion": 1,
+    "id": "securitycraft",
+    "version": "1.8.20",
+
+    "name": "SecurityCraft",
+    "description": "Adds a load of things to keep your house safe with.\nIf you like this mod, hit the green arrow\nin the corner of the forum thread!\n\nPlease visit the URL above for help.\n\n\nMessage of the update: Finally! Cameras!",
+    "authors": [
+        "Geforce132",
+        "bl4ckscor3"
+    ],
+    "contact": {
+        "issues": "http://github.com/Geforce132/SecurityCraft/issues",
+        "homepage": "http://minecraft.curseforge.com/projects/security-craft"
+    },
+
+    "custom": {
+        "modmenu:api": false,
+        "modmenu:clientsideOnly": false
+    },
+
+    "license": "GNU GPL v3.0",
+    "icon": "assets/securitycraft/icon.png",
+
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "net.geforcemods.securitycraft.SecurityCraft"
+        ]
+    },
+    "mixins": [],
+
+    "depends": {
+        "fabricloader": ">=0.7.4",
+        "fabric": "*",
+        "minecraft": "1.16.x"
+    }
+}

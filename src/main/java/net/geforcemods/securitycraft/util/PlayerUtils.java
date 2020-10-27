@@ -1,125 +1,127 @@
 package net.geforcemods.securitycraft.util;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Supplier;
-
-import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
-import net.minecraft.command.ICommandSource;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
+//import entity.SecurityCameraEntity;
+//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.network.AbstractClientPlayerEntity;
+//import net.minecraft.entity.LivingEntity;
+//import net.minecraft.entity.player.PlayerEntity;
+//import net.minecraft.item.Item;
+import net.minecraft.server.command.CommandOutput;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.fml.common.thread.EffectiveSide;
-import net.minecraftforge.fml.server.ServerLifecycleHooks;
+//import net.minecraft.util.Util;
+//import net.minecraftforge.common.ForgeHooks;
+//import net.minecraftforge.fml.LogicalSide;
+//import net.minecraftforge.fml.common.thread.EffectiveSide;
+//import net.minecraftforge.fml.server.ServerLifecycleHooks;
+//
+//import java.util.Iterator;
+//import java.util.List;
+//import java.util.function.Supplier;
 
 public class PlayerUtils{
+//
+//	/**
+//	 * Gets the PlayerEntity instance of a player (if they're online) using their name. <p>
+//	 */
+//	public static PlayerEntity getPlayerFromName(String name){
+//		if(EffectiveSide.get() == LogicalSide.CLIENT){
+//			List<AbstractClientPlayerEntity> players = MinecraftClient.getInstance().world.getPlayers();
+//			Iterator<?> iterator = players.iterator();
+//
+//			while(iterator.hasNext()){
+//				PlayerEntity tempPlayer = (PlayerEntity) iterator.next();
+//				if(tempPlayer.getName().getString().equals(name))
+//					return tempPlayer;
+//			}
+//
+//			return null;
+//		}else{
+//			List<?> players = ServerLifecycleHooks.getCurrentServer().getPlayerManager().getPlayerList();
+//			Iterator<?> iterator = players.iterator();
+//
+//			while(iterator.hasNext()){
+//				PlayerEntity tempPlayer = (PlayerEntity) iterator.next();
+//				if(tempPlayer.getName().getString().equals(name))
+//					return tempPlayer;
+//			}
+//
+//			return null;
+//		}
+//	}
+//
+//	/**
+//	 * Returns true if a player with the given name is in the world.
+//	 */
+//	public static boolean isPlayerOnline(String name) {
+//		if(EffectiveSide.get() == LogicalSide.CLIENT){
+//			for(AbstractClientPlayerEntity player : MinecraftClient.getInstance().world.getPlayers()){
+//				if(player != null && player.getName().getString().equals(name))
+//					return true;
+//			}
+//
+//			return false;
+//		}
+//		else
+//			return (ServerLifecycleHooks.getCurrentServer().getPlayerManager().getPlayer(name) != null);
+//	}
+//
+//	public static void sendMessageToPlayer(String playerName, MutableText prefix, MutableText text, Formatting color){
+//		PlayerEntity player = getPlayerFromName(playerName);
+//
+//		if(player != null)
+//		{
+//			player.sendSystemMessage(new LiteralText("[")
+//					.append(prefix.setStyle(Style.EMPTY.withColor(color)))
+//					.append(new LiteralText("] ")).setStyle(Style.EMPTY.withColor(Formatting.field_1068))
+//					.append(text), Util.NIL_UUID); //appendSibling
+//		}
+//	}
+//
+//	public static void sendMessageToPlayer(PlayerEntity player, MutableText prefix, MutableText text, Formatting color){
+//		player.sendSystemMessage(new LiteralText("[")
+//				.append(prefix.setStyle(Style.EMPTY.withColor(color)))
+//				.append(new LiteralText("] ")).setStyle(Style.EMPTY.withColor(Formatting.field_1068))
+//				.append(text), Util.NIL_UUID); //appendSibling
+//	}
 
 	/**
-	 * Gets the PlayerEntity instance of a player (if they're online) using their name. <p>
+	 * Sends the given {@link net.minecraft.command.CommandSource} a chat message, followed by a link prefixed with a colon. <p>
 	 */
-	public static PlayerEntity getPlayerFromName(String name){
-		if(EffectiveSide.get() == LogicalSide.CLIENT){
-			List<AbstractClientPlayerEntity> players = Minecraft.getInstance().world.getPlayers();
-			Iterator<?> iterator = players.iterator();
-
-			while(iterator.hasNext()){
-				PlayerEntity tempPlayer = (PlayerEntity) iterator.next();
-				if(tempPlayer.getName().getString().equals(name))
-					return tempPlayer;
-			}
-
-			return null;
-		}else{
-			List<?> players = ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayers();
-			Iterator<?> iterator = players.iterator();
-
-			while(iterator.hasNext()){
-				PlayerEntity tempPlayer = (PlayerEntity) iterator.next();
-				if(tempPlayer.getName().getString().equals(name))
-					return tempPlayer;
-			}
-
-			return null;
-		}
-	}
-
-	/**
-	 * Returns true if a player with the given name is in the world.
-	 */
-	public static boolean isPlayerOnline(String name) {
-		if(EffectiveSide.get() == LogicalSide.CLIENT){
-			for(AbstractClientPlayerEntity player : Minecraft.getInstance().world.getPlayers()){
-				if(player != null && player.getName().getString().equals(name))
-					return true;
-			}
-
-			return false;
-		}
-		else
-			return (ServerLifecycleHooks.getCurrentServer().getPlayerList().getPlayerByUsername(name) != null);
-	}
-
-	public static void sendMessageToPlayer(String playerName, IFormattableTextComponent prefix, IFormattableTextComponent text, TextFormatting color){
-		PlayerEntity player = getPlayerFromName(playerName);
-
-		if(player != null)
-		{
-			player.sendMessage(new StringTextComponent("[")
-					.append(prefix.setStyle(Style.EMPTY.setFormatting(color)))
-					.append(new StringTextComponent("] ")).setStyle(Style.EMPTY.setFormatting(TextFormatting.WHITE))
-					.append(text), Util.DUMMY_UUID); //appendSibling
-		}
-	}
-
-	public static void sendMessageToPlayer(PlayerEntity player, IFormattableTextComponent prefix, IFormattableTextComponent text, TextFormatting color){
-		player.sendMessage(new StringTextComponent("[")
-				.append(prefix.setStyle(Style.EMPTY.setFormatting(color)))
-				.append(new StringTextComponent("] ")).setStyle(Style.EMPTY.setFormatting(TextFormatting.WHITE))
-				.append(text), Util.DUMMY_UUID); //appendSibling
-	}
-
-	/**
-	 * Sends the given {@link ICommandSender} a chat message, followed by a link prefixed with a colon. <p>
-	 */
-	public static void sendMessageEndingWithLink(ICommandSource sender, IFormattableTextComponent prefix, IFormattableTextComponent text, String link, TextFormatting color){
-		sender.sendMessage(new StringTextComponent("[")
-				.append(prefix.setStyle(Style.EMPTY.setFormatting(color)))
-				.append(new StringTextComponent("] ")).setStyle(Style.EMPTY.setFormatting(TextFormatting.WHITE))
+	public static void sendMessageEndingWithLink(CommandOutput sender, MutableText prefix, MutableText text, String link, Formatting color){
+		sender.sendSystemMessage(new LiteralText("[")
+				.append(prefix.setStyle(Style.EMPTY.withColor(color)))
+				.append(new LiteralText("] ")).setStyle(Style.EMPTY.withColor(Formatting.WHITE))
 				.append(text)
-				.append(new StringTextComponent(": "))
-				.append(ForgeHooks.newChatWithLinks(link)), Util.DUMMY_UUID); //appendSibling
+				.append(new LiteralText(": "))
+				.append(Utils.newChatLink(link)), Util.NIL_UUID); //appendSibling
 	}
-
-	/**
-	 * Returns true if the player is holding the given item.
-	 */
-	public static boolean isHoldingItem(PlayerEntity player, Supplier<Item> item){
-		return isHoldingItem(player, item.get());
-	}
-
-	/**
-	 * Returns true if the player is holding the given item.
-	 */
-	public static boolean isHoldingItem(PlayerEntity player, Item item){
-		if(item == null && player.inventory.getCurrentItem().isEmpty())
-			return true;
-
-		return (!player.inventory.getCurrentItem().isEmpty() && player.inventory.getCurrentItem().getItem() == item);
-	}
-
-	/**
-	 * Is the entity mounted on to a security camera?
-	 */
-	public static boolean isPlayerMountedOnCamera(LivingEntity entity) {
-		return entity.getRidingEntity() instanceof SecurityCameraEntity;
-	}
+//
+//	/**
+//	 * Returns true if the player is holding the given item.
+//	 */
+//	public static boolean isHoldingItem(PlayerEntity player, Supplier<Item> item){
+//		return isHoldingItem(player, item.get());
+//	}
+//
+//	/**
+//	 * Returns true if the player is holding the given item.
+//	 */
+//	public static boolean isHoldingItem(PlayerEntity player, Item item){
+//		if(item == null && player.inventory.getMainHandStack().isEmpty())
+//			return true;
+//
+//		return (!player.inventory.getMainHandStack().isEmpty() && player.inventory.getMainHandStack().getItem() == item);
+//	}
+//
+//	/**
+//	 * Is the entity mounted on to a security camera?
+//	 */
+//	public static boolean isPlayerMountedOnCamera(LivingEntity entity) {
+//		return entity.getVehicle() instanceof SecurityCameraEntity;
+//	}
 }

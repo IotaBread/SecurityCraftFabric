@@ -1,19 +1,9 @@
-buildscript {
-    repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
-    }
+//import groovy.json.JsonOutput
+//import groovy.json.JsonSlurper
+
+plugins {
+    id 'fabric-loom' version '0.5-SNAPSHOT'
 }
-
-import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
-
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
 
 version = '1.0'
 group = 'net.geforcemods.securitycraft'
@@ -21,102 +11,122 @@ archivesBaseName = 'securitycraft'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
-processResources { 
-	exclude ".cache"
-	
+//processResources {
+//	exclude ".cache"
+//
     //minify json resources
-    doLast {
-        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
-            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
-        }
+//    doLast {
+//        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
+//            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
+//        }
+//    }
+//}
+
+//sourceSets {
+//	main {
+//		resources {
+//			srcDirs += "src/generated/resources" //include generated files
+//		}
+//	}
+//}
+
+//minecraft {
+//    mappings channel: 'snapshot', version: '20200916-1.16.2'
+//
+//    runs {
+//        client {
+//            workingDirectory project.file('run/client')
+//            property 'forge.logging.console.level', 'debug'
+//
+//            mods {
+//                securitycraft {
+//                    source sourceSets.main
+//                }
+//            }
+//        }
+//
+//        server {
+//            workingDirectory project.file('run/server')
+//            property 'forge.logging.console.level', 'debug'
+//            args '-nogui'
+//
+//            mods {
+//                securitycraft {
+//                    source sourceSets.main
+//                }
+//            }
+//        }
+//
+//        data {
+//            workingDirectory project.file('run/data')
+//            property 'forge.logging.console.level', 'debug'
+//            args '--mod', 'securitycraft', '--all', '--output', file('src/generated/resources/')
+//
+//            mods {
+//                securitycraft {
+//                    source sourceSets.main
+//                }
+//            }
+//        }
+//	}
+//}
+
+repositories {
+//    maven { // HWYLA
+//		url "http://maven.tehnut.info"
+//	}
+//	maven { // TOP
+//		name 'tterrag maven'
+//		url "http://maven.tterrag.com/"
+//	}
+//    maven { // JEI
+//        name = "Progwml6 maven"
+//        url = "https://dvs1.progwml6.com/files/maven/"
+//    }
+//    maven { // JEI fallback
+//        name = "ModMaven"
+//        url = "https://modmaven.k-4u.nl"
+//    }
+    maven {
+        name = 'CottonMC'
+        url = 'https://server.bbkr.space/artifactory/libs-release'
     }
-}
-
-sourceSets {
-	main {
-		resources {
-			srcDirs += "src/generated/resources" //include generated files
-		}
-	}
-}
-
-minecraft {
-    mappings channel: 'snapshot', version: '20200916-1.16.2'
-	
-    runs {
-        client {
-            workingDirectory project.file('run/client')
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                securitycraft {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run/server')
-            property 'forge.logging.console.level', 'debug'
-            args '-nogui'
-
-            mods {
-                securitycraft {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run/data')
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'securitycraft', '--all', '--output', file('src/generated/resources/')
-
-            mods {
-                securitycraft {
-                    source sourceSets.main
-                }
-            }
-        }
-	}
-}
-
-repositories {  
-    maven { // HWYLA
-		url "http://maven.tehnut.info"
-	}
-	maven { // TOP
-		name 'tterrag maven'
-		url "http://maven.tterrag.com/"
-	}
-    maven { // JEI
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven { // JEI fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
-    }
+    jcenter()
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.3-34.1.7'
-    
-	implementation fg.deobf("mezz.jei:jei-1.16.3:7.5.0.42")
-	implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.3-beta-6")
-    implementation fg.deobf("mcp.mobius.waila:Hwyla:1.10.11-B78_1.16.2")
-}
+//    minecraft 'net.minecraftforge:forge:1.16.3-34.1.7'
+//
+//	implementation fg.deobf("mezz.jei:jei-1.16.3:7.5.0.42")
+//	implementation fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.0.3-beta-6")
+//    implementation fg.deobf("mcp.mobius.waila:Hwyla:1.10.11-B78_1.16.2")
+    minecraft 'com.mojang:minecraft:1.16.3'
+    mappings 'net.fabricmc:yarn:1.16.3+build.47:v2'
+    modImplementation "net.fabricmc:fabric-loader:0.10.0+build.208"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.22.0+build.408-1.16"
 
-jar {
-	exclude('net/geforcemods/securitycraft/datagen/**') //exclude files from the built jar that are only used to generate the assets
+    // ModMenu
+    modImplementation "io.github.prospector:modmenu:1.14.6+build.31"
 
-    manifest {
-        attributes(["Specification-Title": "SecurityCraft",
-                    "Specification-Vendor": "Geforce, bl4ckscor3",
-                    "Specification-Version": "v1.8.20",
-                    "Implementation-Title": "SecurityCraft",
-                    "Implementation-Version": "v1.8.20",
-                    "Implementation-Vendor" :"Geforce, bl4ckscor3",
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
+    // AutoConfig
+    modApi("me.sargunvohra.mcmods:autoconfig1u:3.2.2") {
+        exclude(group: "net.fabricmc.fabric-api")
     }
+
+    // LibGui
+    modImplementation "io.github.cottonmc:LibGui:3.2.1+1.16.3"
 }
+
+//jar {
+//	exclude('net/geforcemods/securitycraft/datagen/**') //exclude files from the built jar that are only used to generate the assets
+//
+//    manifest {
+//        attributes(["Specification-Title": "SecurityCraft",
+//                    "Specification-Vendor": "Geforce, bl4ckscor3",
+//                    "Specification-Version": "v1.8.20",
+//                    "Implementation-Title": "SecurityCraft",
+//                    "Implementation-Version": "v1.8.20",
+//                    "Implementation-Vendor" :"Geforce, bl4ckscor3",
+//                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
+//    }
+//}

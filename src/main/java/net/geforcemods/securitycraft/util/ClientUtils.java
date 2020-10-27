@@ -1,77 +1,77 @@
 package net.geforcemods.securitycraft.util;
 
-import net.geforcemods.securitycraft.SecurityCraft;
-import net.geforcemods.securitycraft.network.server.SyncTENBTTag;
-import net.geforcemods.securitycraft.network.server.UpdateNBTTagOnServer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ScreenShotHelper;
+//import net.fabricmc.api.EnvType;
+//import net.fabricmc.api.Environment;
+//import net.geforcemods.securitycraft.SecurityCraft;
+//import net.minecraft.block.entity.BlockEntity;
+//import net.minecraft.client.MinecraftClient;
+//import net.minecraft.client.util.ScreenshotUtils;
+//import net.minecraft.item.ItemStack;
+//import net.minecraft.nbt.CompoundTag;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+//import net.geforcemods.securitycraft.network.server.SyncTENBTTag;
+//import net.geforcemods.securitycraft.network.server.UpdateNBTTagOnServer;
 
 public class ClientUtils{
 
-	@OnlyIn(Dist.CLIENT)
-	public static void closePlayerScreen(){
-		Minecraft.getInstance().player.closeScreen();
-	}
-
-	/**
-	 * Takes a screenshot, and sends the player a notification. <p>
-	 *
-	 * Only works on the CLIENT side.
-	 */
-	@OnlyIn(Dist.CLIENT)
-	public static void takeScreenshot() {
-		ScreenShotHelper.saveScreenshot(
-				Minecraft.getInstance().gameDir,
-				Minecraft.getInstance().getMainWindow().getWidth(),
-				Minecraft.getInstance().getMainWindow().getHeight(),
-				Minecraft.getInstance().getFramebuffer(),
-				msg -> Minecraft.getInstance().execute(() -> Minecraft.getInstance().ingameGUI.getChatGUI().printChatMessage(msg)));
-	}
-
-	/**
-	 * Returns the current Minecraft in-game time, in a 12-hour AM/PM format.
-	 *
-	 * Only works on the CLIENT side.
-	 */
-	@OnlyIn(Dist.CLIENT)
-	public static String getFormattedMinecraftTime(){
-		Long time = Minecraft.getInstance().world.getDayTime();
-
-		int hours24 = (int) ((float) time.longValue() / 1000L + 6L) % 24;
-		int hours = hours24 % 12;
-		int minutes = (int) (time.longValue() / 16.666666F % 60.0F);
-
-		return String.format("%02d:%02d %s", Integer.valueOf(hours < 1 ? 12 : hours), Integer.valueOf(minutes), hours24 < 12 ? "AM" : "PM");
-	}
-
-	/**
-	 * Sends the client-side CompoundNBT of a block's TileEntity to the server.
-	 *
-	 * Only works on the CLIENT side.
-	 */
-	@OnlyIn(Dist.CLIENT)
-	public static void syncTileEntity(TileEntity tileEntity){
-		CompoundNBT tag = new CompoundNBT();
-		tileEntity.write(tag);
-		SecurityCraft.channel.sendToServer(new SyncTENBTTag(tileEntity.getPos().getX(), tileEntity.getPos().getY(), tileEntity.getPos().getZ(), tag));
-	}
-
-	/**
-	 * Sends the client-side CompoundNBT of a player's held item to the server.
-	 *
-	 * Only works on the CLIENT side.
-	 */
-	@OnlyIn(Dist.CLIENT)
-	public static void syncItemNBT(ItemStack item){
-		SecurityCraft.channel.sendToServer(new UpdateNBTTagOnServer(item));
-	}
+//	@Environment(EnvType.CLIENT)
+//	public static void closePlayerScreen(){
+//		MinecraftClient.getInstance().player.closeHandledScreen();
+//	}
+//
+//	/**
+//	 * Takes a screenshot, and sends the player a notification. <p>
+//	 *
+//	 * Only works on the CLIENT side.
+//	 */
+//	@Environment(EnvType.CLIENT)
+//	public static void takeScreenshot() {
+//		ScreenshotUtils.saveScreenshot(
+//				MinecraftClient.getInstance().runDirectory,
+//				MinecraftClient.getInstance().getWindow().getWidth(),
+//				MinecraftClient.getInstance().getWindow().getHeight(),
+//				MinecraftClient.getInstance().getFramebuffer(),
+//				msg -> MinecraftClient.getInstance().execute(() -> MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(msg)));
+//	}
+//
+//	/**
+//	 * Returns the current Minecraft in-game time, in a 12-hour AM/PM format.
+//	 *
+//	 * Only works on the CLIENT side.
+//	 */
+//	@Environment(EnvType.CLIENT)
+//	public static String getFormattedMinecraftTime(){
+//		Long time = MinecraftClient.getInstance().world.getTimeOfDay();
+//
+//		int hours24 = (int) ((float) time.longValue() / 1000L + 6L) % 24;
+//		int hours = hours24 % 12;
+//		int minutes = (int) (time.longValue() / 16.666666F % 60.0F);
+//
+//		return String.format("%02d:%02d %s", Integer.valueOf(hours < 1 ? 12 : hours), Integer.valueOf(minutes), hours24 < 12 ? "AM" : "PM");
+//	}
+//
+//	/**
+//	 * Sends the client-side CompoundNBT of a block's TileEntity to the server.
+//	 *
+//	 * Only works on the CLIENT side.
+//	 */
+//	@Environment(EnvType.CLIENT)
+//	public static void syncTileEntity(BlockEntity tileEntity){
+//		CompoundTag tag = new CompoundTag();
+//		tileEntity.toTag(tag);
+//		SecurityCraft.channel.sendToServer(new SyncTENBTTag(tileEntity.getPos().getX(), tileEntity.getPos().getY(), tileEntity.getPos().getZ(), tag));
+//	}
+//
+//	/**
+//	 * Sends the client-side CompoundNBT of a player's held item to the server.
+//	 *
+//	 * Only works on the CLIENT side.
+//	 */
+//	@Environment(EnvType.CLIENT)
+//	public static void syncItemNBT(ItemStack item){
+//		SecurityCraft.channel.sendToServer(new UpdateNBTTagOnServer(item));
+//	}
 
 	/**
 	 * Localizes a String with the given format
@@ -79,16 +79,16 @@ public class ClientUtils{
 	 * @param params The parameters to insert into the String ala String.format
 	 * @return The localized String
 	 */
-	public static TranslationTextComponent localize(String key, Object... params)
+	public static TranslatableText localize(String key, Object... params)
 	{
 		for(int i = 0; i < params.length; i++)
 		{
-			if(params[i] instanceof TranslationTextComponent)
-				params[i] = localize(((TranslationTextComponent)params[i]).getKey(), ((TranslationTextComponent)params[i]).getFormatArgs());
+			if(params[i] instanceof TranslatableText)
+				params[i] = localize(((TranslatableText)params[i]).getKey(), ((TranslatableText)params[i]).getArgs());
 			else if(params[i] instanceof BlockPos)
 				params[i] = Utils.getFormattedCoordinates((BlockPos)params[i]);
 		}
 
-		return new TranslationTextComponent(key, params);
+		return new TranslatableText(key, params);
 	}
 }
