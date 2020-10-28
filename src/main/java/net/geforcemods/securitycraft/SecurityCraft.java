@@ -6,6 +6,8 @@ package net.geforcemods.securitycraft;
 //
 import com.mojang.brigadier.CommandDispatcher;
 //import net.fabricmc.api.EnvType;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 //import net.geforcemods.securitycraft.api.IExtractionBlock;
@@ -84,7 +86,10 @@ public class SecurityCraft implements ModInitializer {
 
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> this.registerCommands(dispatcher)); // command registration
 		SCEventHandler.registerEventListeners(); // Registers event listeners
-		// TODO: Config
+
+		AutoConfig.register(ConfigHandler.class, Toml4jConfigSerializer::new);
+
+		ConfigHandler.CONFIG = AutoConfig.getConfigHolder(ConfigHandler.class).getConfig();
 		// TODO: SCContent registration
 		// TODO: Packet registration
 	}
