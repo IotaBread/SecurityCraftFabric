@@ -1,11 +1,11 @@
 package net.geforcemods.securitycraft.util;
 
-//import net.fabricmc.api.EnvType;
-//import net.fabricmc.api.Environment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 //import net.geforcemods.securitycraft.SecurityCraft;
 //import net.minecraft.block.entity.BlockEntity;
-//import net.minecraft.client.MinecraftClient;
-//import net.minecraft.client.util.ScreenshotUtils;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.ScreenshotUtils;
 //import net.minecraft.item.ItemStack;
 //import net.minecraft.nbt.CompoundTag;
 import net.minecraft.text.TranslatableText;
@@ -15,41 +15,41 @@ import net.minecraft.util.math.BlockPos;
 
 public class ClientUtils{
 
-//	@Environment(EnvType.CLIENT)
-//	public static void closePlayerScreen(){
-//		MinecraftClient.getInstance().player.closeHandledScreen();
-//	}
-//
-//	/**
-//	 * Takes a screenshot, and sends the player a notification. <p>
-//	 *
-//	 * Only works on the CLIENT side.
-//	 */
-//	@Environment(EnvType.CLIENT)
-//	public static void takeScreenshot() {
-//		ScreenshotUtils.saveScreenshot(
-//				MinecraftClient.getInstance().runDirectory,
-//				MinecraftClient.getInstance().getWindow().getWidth(),
-//				MinecraftClient.getInstance().getWindow().getHeight(),
-//				MinecraftClient.getInstance().getFramebuffer(),
-//				msg -> MinecraftClient.getInstance().execute(() -> MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(msg)));
-//	}
-//
-//	/**
-//	 * Returns the current Minecraft in-game time, in a 12-hour AM/PM format.
-//	 *
-//	 * Only works on the CLIENT side.
-//	 */
-//	@Environment(EnvType.CLIENT)
-//	public static String getFormattedMinecraftTime(){
-//		Long time = MinecraftClient.getInstance().world.getTimeOfDay();
-//
-//		int hours24 = (int) ((float) time.longValue() / 1000L + 6L) % 24;
-//		int hours = hours24 % 12;
-//		int minutes = (int) (time.longValue() / 16.666666F % 60.0F);
-//
-//		return String.format("%02d:%02d %s", Integer.valueOf(hours < 1 ? 12 : hours), Integer.valueOf(minutes), hours24 < 12 ? "AM" : "PM");
-//	}
+	@Environment(EnvType.CLIENT)
+	public static void closePlayerScreen(){
+		MinecraftClient.getInstance().player.closeHandledScreen();
+	}
+
+	/**
+	 * Takes a screenshot, and sends the player a notification. <p>
+	 *
+	 * Only works on the CLIENT side.
+	 */
+	@Environment(EnvType.CLIENT)
+	public static void takeScreenshot() {
+		ScreenshotUtils.saveScreenshot(
+				MinecraftClient.getInstance().runDirectory,
+				MinecraftClient.getInstance().getWindow().getWidth(),
+				MinecraftClient.getInstance().getWindow().getHeight(),
+				MinecraftClient.getInstance().getFramebuffer(),
+				msg -> MinecraftClient.getInstance().execute(() -> MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(msg)));
+	}
+
+	/**
+	 * Returns the current Minecraft in-game time, in a 12-hour AM/PM format.
+	 *
+	 * Only works on the CLIENT side.
+	 */
+	@Environment(EnvType.CLIENT)
+	public static String getFormattedMinecraftTime(){
+		Long time = MinecraftClient.getInstance().world.getTimeOfDay();
+
+		int hours24 = (int) ((float) time.longValue() / 1000L + 6L) % 24;
+		int hours = hours24 % 12;
+		int minutes = (int) (time.longValue() / 16.666666F % 60.0F);
+
+		return String.format("%02d:%02d %s", Integer.valueOf(hours < 1 ? 12 : hours), Integer.valueOf(minutes), hours24 < 12 ? "AM" : "PM");
+	}
 //
 //	/**
 //	 * Sends the client-side CompoundNBT of a block's TileEntity to the server.

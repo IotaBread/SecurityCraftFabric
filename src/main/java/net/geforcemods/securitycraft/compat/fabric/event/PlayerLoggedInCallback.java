@@ -1,4 +1,4 @@
-package net.geforcemods.securitycraft.event;
+package net.geforcemods.securitycraft.compat.fabric.event;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;

@@ -1,6 +1,6 @@
-package net.geforcemods.securitycraft.mixin;
+package net.geforcemods.securitycraft.compat.fabric.mixin;
 
-import net.geforcemods.securitycraft.event.LivingHurtCallback;
+import net.geforcemods.securitycraft.compat.fabric.event.LivingHurtCallback;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import org.spongepowered.asm.mixin.Mixin;

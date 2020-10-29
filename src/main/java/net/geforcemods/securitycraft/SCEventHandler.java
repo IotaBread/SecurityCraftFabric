@@ -1,44 +1,44 @@
 package net.geforcemods.securitycraft;
 
-import net.geforcemods.securitycraft.event.FillBucketCallback;
-import net.geforcemods.securitycraft.event.LivingHurtCallback;
-import net.geforcemods.securitycraft.event.PlayerLoggedInCallback;
-import net.geforcemods.securitycraft.event.PlayerLoggedOutCallback;
-import net.geforcemods.securitycraft.util.ClientUtils;
-import net.geforcemods.securitycraft.util.Utils;
-//import net.minecraft.block.Block;
-//import net.minecraft.block.BlockState;
+import net.geforcemods.securitycraft.api.CustomizableTileEntity;
+import net.geforcemods.securitycraft.api.IModuleInventory;
+import net.geforcemods.securitycraft.api.LinkedAction;
+import net.geforcemods.securitycraft.items.ModuleItem;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 //import net.minecraft.block.Blocks;
-//import net.minecraft.block.entity.BlockEntity;
-//import net.minecraft.entity.ItemEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.ItemEntity;
 //import net.minecraft.entity.boss.WitherEntity;
 //import net.minecraft.entity.mob.MobEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 //import net.minecraft.item.BlockItem;
 //import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStack;
 //import net.minecraft.item.Items;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
-//import net.minecraft.util.Hand;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 //import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
-//import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Box;
 //import net.minecraft.util.shape.VoxelShapes;
-//import net.minecraft.world.World;
+import net.minecraft.world.World;
 
 import java.util.HashMap;
 //import java.util.List;
 import java.util.Random;
 //
+import net.geforcemods.securitycraft.compat.fabric.event.*;
+import net.geforcemods.securitycraft.compat.fabric.FabricMisc;
 //import net.geforcemods.securitycraft.api.CustomizableTileEntity;
 //import net.geforcemods.securitycraft.api.IModuleInventory;
 //import net.geforcemods.securitycraft.api.INameable;
-//import net.geforcemods.securitycraft.api.IOwnable;
+import net.geforcemods.securitycraft.api.IOwnable;
 //import net.geforcemods.securitycraft.api.IPasswordProtected;
 //import net.geforcemods.securitycraft.api.LinkedAction;
 //import net.geforcemods.securitycraft.blocks.IPasswordConvertible;
@@ -48,16 +48,16 @@ import java.util.Random;
 //import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 //import net.geforcemods.securitycraft.entity.SentryEntity;
 //import net.geforcemods.securitycraft.items.ModuleItem;
-//import net.geforcemods.securitycraft.misc.CustomDamageSources;
+import net.geforcemods.securitycraft.misc.CustomDamageSources;
 //import net.geforcemods.securitycraft.misc.ModuleType;
-//import net.geforcemods.securitycraft.misc.OwnershipEvent;
+import net.geforcemods.securitycraft.misc.OwnershipEvent;
 //import net.geforcemods.securitycraft.misc.SCSounds;
 //import net.geforcemods.securitycraft.SecurityCraft;
 //import net.geforcemods.securitycraft.network.client.PlaySoundAtPos;
 //import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
-//import net.geforcemods.securitycraft.util.ClientUtils;
+import net.geforcemods.securitycraft.util.ClientUtils;
 //import net.geforcemods.securitycraft.util.PlayerUtils;
-//import net.geforcemods.securitycraft.util.WorldUtils;
+import net.geforcemods.securitycraft.util.WorldUtils;
 //import net.minecraftforge.common.ForgeHooks;
 //import net.minecraftforge.event.entity.EntityMountEvent;
 //import net.minecraftforge.event.entity.living.LivingDestroyBlockEvent;
@@ -93,11 +93,22 @@ public class SCEventHandler {
         onDamageTaken();
         onBucketUsed();
         onRightClickBlock();
+        onBreakBlock();
+        onOwnership();
+        onBlockBroken();
+        onLivingSetAttackTarget();
+        onBreakSpeed();
+        onLivingDestroyEvent();
+        onEntityMount();
+        onRightClickItem();
+        onFurnaceFuelBurnTime();
     }
 
     public static void onPlayerLoggedIn() {
         PlayerLoggedInCallback.EVENT.register(player -> {
-            // TODO: Cancel if "sayThanksMessage" config option is false
+            if (!ConfigHandler.CONFIG.sayThanksMessage)
+                return ActionResult.PASS;
+
             String tipKey = getRandomTip();
             MutableText message = new LiteralText("[")
                     .append(new LiteralText("SecurityCraft").formatted(Formatting.GOLD))
@@ -108,7 +119,7 @@ public class SCEventHandler {
                         ClientUtils.localize(tipKey)));
 
             if (tipsWithLink.containsKey(tipKey.split("\\.")[2]))
-                message = message.append(Utils.newChatLink(tipsWithLink.get(tipKey.split("\\.")[2]))); //appendSibling
+                message = message.append(FabricMisc.newChatLink(tipsWithLink.get(tipKey.split("\\.")[2]))); //appendSibling
 
             player.sendSystemMessage(message, Util.NIL_UUID);
 
@@ -135,7 +146,9 @@ public class SCEventHandler {
         LivingHurtCallback.EVENT.register((entity, source, damage) -> {
             // TODO: Cancel if player is mounted on camera
 
-            //TODO: Sound event electrified
+            if (source == CustomDamageSources.ELECTRICITY) {
+                //TODO: Sound event electrified
+            }
 
             return ActionResult.PASS;
         });
@@ -177,7 +190,25 @@ public class SCEventHandler {
 //    }
 
     public static void onRightClickBlock() {
-        //TODO
+        RightClickBlockCallback.EVENT.register((player, hand, pos, face) -> {
+            // TODO: Cancel if player is mounted on camera
+
+            if (hand == Hand.MAIN_HAND) {
+                World world = player.getEntityWorld();
+
+                if (!world.isClient) {
+                    BlockEntity tileEntity = world.getBlockEntity(pos);
+                    BlockState state = world.getBlockState(pos);
+                    Block block = state.getBlock();
+
+                    // TODO
+                }
+
+                //TODO
+            }
+
+            return ActionResult.PASS;
+        });
     }
 
 //    @SubscribeEvent
@@ -246,7 +277,18 @@ public class SCEventHandler {
 //                event.setCanceled(sentries.get(0).interactMob(event.getPlayer(), event.getHand()) == ActionResult.SUCCESS); //cancel if an action was taken
 //        }
 //    }
-//
+
+    public static void onBreakBlock() {
+        BreakBlockCallback.EVENT.register((world, pos, state, player) -> {
+            if (!(world instanceof World))
+                return ActionResult.PASS;
+
+            // TODO
+
+            return ActionResult.PASS;
+        });
+    }
+
 //    @SubscribeEvent
 //    public static void onBlockEventBreak(BlockEvent.BreakEvent event)
 //    {
@@ -281,13 +323,44 @@ public class SCEventHandler {
 //        if(!sentries.isEmpty())
 //            sentries.get(0).remove();
 //    }
-//
-//    @SubscribeEvent
-//    public static void onOwnership(OwnershipEvent event)
-//    {
-//        handleOwnableTEs(event);
-//    }
-//
+
+    public static void onOwnership() {
+        OwnershipEvent.EVENT.register((world, pos, player) -> {
+            handleOwnableTEs(world, pos, player);
+
+            return ActionResult.PASS;
+        });
+    }
+
+    public static void onBlockBroken() {
+        BreakBlockCallback.EVENT.register((world, pos, state, player) -> {
+            if (world instanceof World && !world.isClient()) {
+                if (world.getBlockEntity(pos) instanceof IModuleInventory) {
+                    IModuleInventory te = (IModuleInventory) world.getBlockEntity(pos);
+
+                    for (int i = 0; i < te.getMaxNumberOfModules(); i++) {
+                        if (!te.getInventory().get(i).isEmpty()) {
+                            ItemStack stack = te.getInventory().get(i);
+                            ItemEntity item = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                            WorldUtils.addScheduledTask(world, () -> world.spawnEntity(item));
+
+                            te.onModuleRemoved(stack, ((ModuleItem) stack.getItem()).getModuleType());
+
+                            if (te instanceof CustomizableTileEntity)
+                                ((CustomizableTileEntity) te).createLinkedBlockAction(LinkedAction.MODULE_REMOVED, new Object[]{stack, ((ModuleItem) stack.getItem()).getModuleType() }, ((CustomizableTileEntity) te));
+
+                            // TODO: cam
+                        }
+                    }
+                }
+
+                //TODO
+            }
+
+            return ActionResult.PASS;
+        });
+    }
+
 //    @SubscribeEvent
 //    public static void onBlockBroken(BreakEvent event){
 //        if(event.getWorld() instanceof World && !event.getWorld().isClient()) {
@@ -335,14 +408,22 @@ public class SCEventHandler {
 //            }
 //        }
 //    }
-//
+
+    public static void onLivingSetAttackTarget() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public static void onLivingSetAttackTarget(LivingSetAttackTargetEvent event)
 //    {
 //        if((event.getTarget() instanceof PlayerEntity && PlayerUtils.isPlayerMountedOnCamera(event.getTarget())) || event.getTarget() instanceof SentryEntity)
 //            ((MobEntity)event.getEntity()).setTarget(null);
 //    }
-//
+
+    public static void onBreakSpeed() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public static void onBreakSpeed(BreakSpeed event)
 //    {
@@ -359,13 +440,21 @@ public class SCEventHandler {
 //            }
 //        }
 //    }
-//
+
+    public static void onLivingDestroyEvent() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public static void onLivingDestroyEvent(LivingDestroyBlockEvent event)
 //    {
 //        event.setCanceled(event.getEntity() instanceof WitherEntity && event.getState().getBlock() instanceof IReinforcedBlock);
 //    }
-//
+
+    public static void onEntityMount() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public void onEntityMount(EntityMountEvent event)
 //    {
@@ -381,14 +470,22 @@ public class SCEventHandler {
 //            }
 //        }
 //    }
-//
+
+    public static void onRightClickItem() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event)
 //    {
 //        if(PlayerUtils.isPlayerMountedOnCamera(event.getPlayer()) && event.getItemStack().getItem() != SCContent.CAMERA_MONITOR.get())
 //            event.setCanceled(true);
 //    }
-//
+
+    public static void onFurnaceFuelBurnTime() {
+        //TODO
+    }
+
 //    @SubscribeEvent
 //    public static void onFurnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event)
 //    {
@@ -402,47 +499,47 @@ public class SCEventHandler {
 //        Block block = world.getBlockState(pos).getBlock();
 //
 //        if(block == SCContent.FAKE_WATER_BLOCK.get()){
-//            world.setBlockState(pos, Blocks.field_10124.getDefaultState());
+//            world.setBlockState(pos, Blocks.AIR.getDefaultState());
 //            return new ItemStack(SCContent.FAKE_WATER_BUCKET.get(), 1);
 //        }else if(block == SCContent.FAKE_LAVA_BLOCK.get()){
-//            world.setBlockState(pos, Blocks.field_10124.getDefaultState());
+//            world.setBlockState(pos, Blocks.AIR.getDefaultState());
 //            return new ItemStack(SCContent.FAKE_LAVA_BUCKET.get(), 1);
 //        }
 //        else
 //            return ItemStack.EMPTY;
 //    }
-//
-//    private static void handleOwnableTEs(OwnershipEvent event) {
-//        if(event.getWorld().getBlockEntity(event.getPos()) instanceof IOwnable) {
-//            String name = event.getPlayer().getName().getString();
-//            String uuid = event.getPlayer().getGameProfile().getId().toString();
-//
-//            ((IOwnable) event.getWorld().getBlockEntity(event.getPos())).getOwner().set(uuid, name);
-//        }
-//    }
-//
-//    private static boolean handleCodebreaking(PlayerInteractEvent event) {
-//        if(ConfigHandler.CONFIG.allowCodebreakerItem.get())
+
+    private static void handleOwnableTEs(World world, BlockPos pos, PlayerEntity player) {
+        if (world.getBlockEntity(pos) instanceof IOwnable) {
+            String name = player.getName().getString();
+            String uuid = player.getGameProfile().getId().toString();
+
+            ((IOwnable) world.getBlockEntity(pos)).getOwner().set(uuid, name);
+        }
+    }
+
+//    private static boolean handleCodebreaking(PlayerEntity player, Hand hand, BlockPos pos) {
+//        if(ConfigHandler.CONFIG.allowCodebreakerItem)
 //        {
-//            World world = event.getPlayer().world;
-//            BlockEntity tileEntity = event.getPlayer().world.getBlockEntity(event.getPos());
+//            World world = player.world;
+//            BlockEntity tileEntity = player.world.getBlockEntity(pos);
 //
 //            if(tileEntity instanceof IPasswordProtected)
 //            {
-//                if(event.getPlayer().getStackInHand(event.getHand()).getItem() == SCContent.CODEBREAKER.get())
-//                    event.getPlayer().getStackInHand(event.getHand()).damage(1, event.getPlayer(), p -> p.sendToolBreakStatus(event.getHand()));
+//                if(player.getStackInHand(hand).getItem() == SCContent.CODEBREAKER.get())
+//                    player.getStackInHand(hand).damage(1, player, p -> p.sendToolBreakStatus(hand));
 //
-//                if(event.getPlayer().isCreative() || new Random().nextInt(3) == 1)
-//                    return ((IPasswordProtected) tileEntity).onCodebreakerUsed(world.getBlockState(event.getPos()), event.getPlayer(), !ConfigHandler.CONFIG.allowCodebreakerItem.get());
+//                if(player.isCreative() || new Random().nextInt(3) == 1)
+//                    return ((IPasswordProtected) tileEntity).onCodebreakerUsed(world.getBlockState(pos), player, !ConfigHandler.CONFIG.allowCodebreakerItem);
 //                else return true;
 //            }
 //        }
 //
 //        return false;
 //    }
-//
+
     private static String getRandomTip(){
-        String[] tips = {
+        String[] tips = { // TODO: Change tips
                 "messages.securitycraft:tip.scHelp",
                 "messages.securitycraft:tip.trello",
                 "messages.securitycraft:tip.patreon",

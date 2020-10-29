@@ -162,7 +162,7 @@ public abstract class Option<T> {
 	public static class IntOption extends Option<Integer>  //implements ISlider
 	{
 		private boolean slider;
-//		private CustomizableTileEntity tileEntity;
+		private CustomizableTileEntity tileEntity;
 
 		public IntOption(String optionName, Integer value) {
 			super(optionName, value);
@@ -172,11 +172,11 @@ public abstract class Option<T> {
 			super(optionName, value, min, max, increment);
 		}
 
-//		public IntOption(CustomizableTileEntity te, String optionName, Integer value, Integer min, Integer max, Integer increment, boolean s) {
-//			super(optionName, value, min, max, increment);
-//			slider = s;
-//			tileEntity = te;
-//		}
+		public IntOption(CustomizableTileEntity te, String optionName, Integer value, Integer min, Integer max, Integer increment, boolean s) {
+			super(optionName, value, min, max, increment);
+			slider = s;
+			tileEntity = te;
+		}
 
 		@Override
 		public void toggle() {
@@ -240,7 +240,7 @@ public abstract class Option<T> {
 	public static class DoubleOption extends Option<Double> //implements ISlider
 	{
 		private boolean slider;
-//		private CustomizableTileEntity tileEntity;
+		private CustomizableTileEntity tileEntity;
 
 		public DoubleOption(String optionName, Double value) {
 			super(optionName, value);
@@ -252,11 +252,11 @@ public abstract class Option<T> {
 			slider = false;
 		}
 
-//		public DoubleOption(CustomizableTileEntity te, String optionName, Double value, Double min, Double max, Double increment, boolean s) {
-//			super(optionName, value, min, max, increment);
-//			slider = s;
-//			tileEntity = te;
-//		}
+		public DoubleOption(CustomizableTileEntity te, String optionName, Double value, Double min, Double max, Double increment, boolean s) {
+			super(optionName, value, min, max, increment);
+			slider = s;
+			tileEntity = te;
+		}
 
 		@Override
 		public void toggle() {

@@ -6,6 +6,7 @@ import com.mojang.brigadier.builder.ArgumentBuilder;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.geforcemods.securitycraft.SCEventHandler;
+import net.geforcemods.securitycraft.compat.fabric.FabricMisc;
 import net.geforcemods.securitycraft.util.ClientUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.geforcemods.securitycraft.util.Utils;
@@ -34,7 +35,7 @@ public class SCCommand {
 					.append(new LiteralText("] "))
 					.append(ClientUtils.localize("messages.securitycraft:irc.connected"))
 					.append(new LiteralText(" "))
-					.append(Utils.newChatLink(SCEventHandler.tipsWithLink.get("discord"))), Util.NIL_UUID); //appendSibling
+					.append(FabricMisc.newChatLink(SCEventHandler.tipsWithLink.get("discord"))), Util.NIL_UUID); //appendSibling
 			return 0;
 		});
 	}

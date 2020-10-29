@@ -1,6 +1,7 @@
 package net.geforcemods.securitycraft.util;
 
-//import net.minecraft.client.MinecraftClient;
+import net.geforcemods.securitycraft.compat.fabric.FabricMisc;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -9,22 +10,21 @@ import net.minecraft.world.RaycastContext;
 import net.minecraft.world.RaycastContext.FluidHandling;
 import net.minecraft.world.RaycastContext.ShapeType;
 import net.minecraft.world.World;
-//import net.minecraft.world.WorldAccess;
-//import net.minecraftforge.fml.server.ServerLifecycleHooks;
+import net.minecraft.world.WorldAccess;
 
 public class WorldUtils {
-//
-//	/**
-//	 * Correctly schedules a task for execution on the main thread depending on if the
-//	 * provided world is client- or serverside
-//	 */
-//	public static void addScheduledTask(WorldAccess w, Runnable r)
-//	{
-//		if(w.isClient()) //clientside
-//			MinecraftClient.getInstance().execute(r);
-//		else //serverside
-//			ServerLifecycleHooks.getCurrentServer().execute(r);
-//	}
+
+	/**
+	 * Correctly schedules a task for execution on the main thread depending on if the
+	 * provided world is client- or serverside
+	 */
+	public static void addScheduledTask(WorldAccess w, Runnable r)
+	{
+		if(w.isClient()) //clientside
+			MinecraftClient.getInstance().execute(r);
+		else //serverside
+			FabricMisc.getServer().execute(r);
+	}
 
 	/**
 	 * Performs a ray trace against all blocks (except liquids) from the starting X, Y, and Z

@@ -1,11 +1,15 @@
 {
     "required": true,
-    "package": "net.geforcemods.securitycraft.mixin",
+    "package": "net.geforcemods.securitycraft.compat.fabric.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "BucketItemMixin",
         "LivingEntityMixin",
         "PlayerEntityMixin",
-        "PlayerManagerMixin"
+        "PlayerManagerMixin",
+        "ServerPlayerInteractionManagerMixin"
+    ],
+    "client": [
+        "ClientPlayerInteractionManagerMixin"
     ]
 }

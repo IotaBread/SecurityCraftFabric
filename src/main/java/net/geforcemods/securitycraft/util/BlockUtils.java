@@ -2,13 +2,13 @@ package net.geforcemods.securitycraft.util;
 
 //import java.util.Arrays;
 //import java.util.List;
-//import java.util.function.BiFunction;
+import java.util.function.BiFunction;
 
 //import net.geforcemods.securitycraft.SCContent;
-//import net.geforcemods.securitycraft.api.IModuleInventory;
-//import net.geforcemods.securitycraft.api.IOwnable;
-//import net.geforcemods.securitycraft.api.OwnableTileEntity;
-//import net.geforcemods.securitycraft.api.Owner;
+import net.geforcemods.securitycraft.api.IModuleInventory;
+import net.geforcemods.securitycraft.api.IOwnable;
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
+import net.geforcemods.securitycraft.api.Owner;
 //import net.geforcemods.securitycraft.blocks.KeycardReaderBlock;
 //import net.geforcemods.securitycraft.blocks.KeypadBlock;
 //import net.geforcemods.securitycraft.blocks.LaserBlock;
@@ -24,17 +24,17 @@ package net.geforcemods.securitycraft.util;
 //import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-//import net.minecraft.block.entity.BlockEntity;
-//import net.minecraft.block.enums.WallMountLocation;
-//import net.minecraft.nbt.CompoundTag;
-//import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
-//import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
-//import net.minecraft.util.math.Direction.Axis;
+import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
@@ -88,28 +88,28 @@ public class BlockUtils{
         return world.getBlockState(toPos(x, y, z)).getBlock();
     }
 
-//    public static void setBlockProperty(World world, BlockPos pos, BooleanProperty property, boolean value) {
-//        setBlockProperty(world, pos, property, value, false);
-//    }
-//
-//    public static void setBlockProperty(World world, BlockPos pos, BooleanProperty property, boolean value, boolean retainOldTileEntity) {
-//        BlockState state = world.getBlockState(pos);
-//
-//        if(!state.contains(property))
-//            return;
-//
-//        if(retainOldTileEntity){
-//            CompoundTag modules = null;
-//            String password = "";
-//            Owner owner = null;
-//            int cooldown = -1;
-//
-//            if(world.getBlockEntity(pos) instanceof IModuleInventory)
-//                modules = ((IModuleInventory) world.getBlockEntity(pos)).writeModuleInventory(new CompoundTag());
-//
-//            if(world.getBlockEntity(pos) instanceof OwnableTileEntity && ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner() != null)
-//                owner = ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner();
-//
+    public static void setBlockProperty(World world, BlockPos pos, BooleanProperty property, boolean value) {
+        setBlockProperty(world, pos, property, value, false);
+    }
+
+    public static void setBlockProperty(World world, BlockPos pos, BooleanProperty property, boolean value, boolean retainOldTileEntity) {
+        BlockState state = world.getBlockState(pos);
+
+        if(!state.contains(property))
+            return;
+
+        if(retainOldTileEntity){
+            CompoundTag modules = null;
+            String password = "";
+            Owner owner = null;
+            int cooldown = -1;
+
+            if(world.getBlockEntity(pos) instanceof IModuleInventory)
+                modules = ((IModuleInventory) world.getBlockEntity(pos)).writeModuleInventory(new CompoundTag());
+
+            if(world.getBlockEntity(pos) instanceof OwnableTileEntity && ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner() != null)
+                owner = ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner();
+
 //            if(world.getBlockEntity(pos) instanceof KeypadTileEntity && ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword() != null)
 //                password = ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword();
 //
@@ -121,17 +121,17 @@ public class BlockUtils{
 //
 //            if(world.getBlockEntity(pos) instanceof PortableRadarTileEntity && ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown() != 0)
 //                cooldown = ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown();
-//
-//            BlockEntity tileEntity = world.getBlockEntity(pos);
-//            world.setBlockState(pos, state.with(property, value));
-//            world.setBlockEntity(pos, tileEntity);
-//
-//            if(modules != null)
-//                ((IModuleInventory) world.getBlockEntity(pos)).readModuleInventory(modules);
-//
-//            if(owner != null)
-//                ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
-//
+
+            BlockEntity tileEntity = world.getBlockEntity(pos);
+            world.setBlockState(pos, state.with(property, value));
+            world.setBlockEntity(pos, tileEntity);
+
+            if(modules != null)
+                ((IModuleInventory) world.getBlockEntity(pos)).readModuleInventory(modules);
+
+            if(owner != null)
+                ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
+
 //            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadTileEntity)
 //                ((KeypadTileEntity) world.getBlockEntity(pos)).setPassword(password);
 //
@@ -143,10 +143,10 @@ public class BlockUtils{
 //
 //            if(cooldown != -1 && world.getBlockEntity(pos) instanceof PortableRadarTileEntity)
 //                ((PortableRadarTileEntity) world.getBlockEntity(pos)).setAttackCooldown(cooldown);
-//        }
-//        else
-//            world.setBlockState(pos, state.with(property, value));
-//    }
+        }
+        else
+            world.setBlockState(pos, state.with(property, value));
+    }
 
     public static void setBlockProperty(World world, BlockPos pos, IntProperty property, int value) {
         BlockState state = world.getBlockState(pos);
@@ -195,64 +195,64 @@ public class BlockUtils{
 //                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER.get(), true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED));
 //    }
 //
-//    private static boolean hasActiveSCBlockNextTo(World world, BlockPos pos, BlockEntity te, Block block, boolean checkForBlock, BiFunction<BlockState,BlockEntity,Boolean> extraCondition)
-//    {
-//        for(Direction dir : Direction.values())
-//        {
-//            BlockPos offsetPos = pos.offset(dir);
-//            BlockState offsetState = world.getBlockState(offsetPos);
-//
-//            if(!checkForBlock || offsetState.getBlock() == block)
-//            {
-//                BlockEntity offsetTe = world.getBlockEntity(offsetPos);
-//
-//                if(extraCondition.apply(offsetState, offsetTe))
-//                    return ((IOwnable)offsetTe).getOwner().owns((IOwnable)te);
-//            }
-//
-//            if(world.getEmittedRedstonePower(offsetPos, dir) == 15 && !offsetState.emitsRedstonePower())
-//            {
-//                for(Direction dirOffset : Direction.values())
-//                {
-//                    if(dirOffset.getOpposite() == dir) //skip this, as it would just go back to the original position
-//                        continue;
-//
-//                    BlockPos newOffsetPos = offsetPos.offset(dirOffset);
-//
-//                    offsetState = world.getBlockState(newOffsetPos);
-//
-//                    if(!checkForBlock || offsetState.getBlock() == block)
-//                    {
-//                        //checking that e.g. a lever/button is correctly attached to the block
-//                        if(offsetState.contains(Properties.WALL_MOUNT_LOCATION) && offsetState.contains(Properties.HORIZONTAL_FACING))
-//                        {
-//                            Axis offsetAxis = dirOffset.getAxis();
-//                            Direction offsetFacing = offsetState.get(Properties.HORIZONTAL_FACING);
-//                            WallMountLocation offsetAttachFace = offsetState.get(Properties.WALL_MOUNT_LOCATION);
-//
-//                            switch(offsetAxis)
-//                            {
-//                                case field_11048: case field_11051:
-//                                if(offsetAttachFace != WallMountLocation.field_12471 || dirOffset != offsetFacing)
-//                                    return false;
-//                                break;
-//                                case field_11052:
-//                                    if((dirOffset == Direction.field_11036 && offsetAttachFace != WallMountLocation.field_12475) || (dirOffset == Direction.field_11033 && offsetAttachFace != WallMountLocation.field_12473))
-//                                        return false;
-//                                    break;
-//                            }
-//                        }
-//
-//                        BlockEntity offsetTe = world.getBlockEntity(newOffsetPos);
-//
-//                        if(extraCondition.apply(offsetState, offsetTe))
-//                            return ((IOwnable)offsetTe).getOwner().owns((IOwnable) te);
-//                    }
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
+    private static boolean hasActiveSCBlockNextTo(World world, BlockPos pos, BlockEntity te, Block block, boolean checkForBlock, BiFunction<BlockState,BlockEntity,Boolean> extraCondition)
+    {
+        for(Direction dir : Direction.values())
+        {
+            BlockPos offsetPos = pos.offset(dir);
+            BlockState offsetState = world.getBlockState(offsetPos);
+
+            if(!checkForBlock || offsetState.getBlock() == block)
+            {
+                BlockEntity offsetTe = world.getBlockEntity(offsetPos);
+
+                if(extraCondition.apply(offsetState, offsetTe))
+                    return ((IOwnable)offsetTe).getOwner().owns((IOwnable)te);
+            }
+
+            if(world.getEmittedRedstonePower(offsetPos, dir) == 15 && !offsetState.emitsRedstonePower())
+            {
+                for(Direction dirOffset : Direction.values())
+                {
+                    if(dirOffset.getOpposite() == dir) //skip this, as it would just go back to the original position
+                        continue;
+
+                    BlockPos newOffsetPos = offsetPos.offset(dirOffset);
+
+                    offsetState = world.getBlockState(newOffsetPos);
+
+                    if(!checkForBlock || offsetState.getBlock() == block)
+                    {
+                        //checking that e.g. a lever/button is correctly attached to the block
+                        if(offsetState.contains(Properties.WALL_MOUNT_LOCATION) && offsetState.contains(Properties.HORIZONTAL_FACING))
+                        {
+                            Axis offsetAxis = dirOffset.getAxis();
+                            Direction offsetFacing = offsetState.get(Properties.HORIZONTAL_FACING);
+                            WallMountLocation offsetAttachFace = offsetState.get(Properties.WALL_MOUNT_LOCATION);
+
+                            switch(offsetAxis)
+                            {
+                                case X: case Z:
+                                if(offsetAttachFace != WallMountLocation.WALL || dirOffset != offsetFacing)
+                                    return false;
+                                break;
+                                case Y:
+                                    if((dirOffset == Direction.UP && offsetAttachFace != WallMountLocation.FLOOR) || (dirOffset == Direction.DOWN && offsetAttachFace != WallMountLocation.CEILING))
+                                        return false;
+                                    break;
+                            }
+                        }
+
+                        BlockEntity offsetTe = world.getBlockEntity(newOffsetPos);
+
+                        if(extraCondition.apply(offsetState, offsetTe))
+                            return ((IOwnable)offsetTe).getOwner().owns((IOwnable) te);
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }
 

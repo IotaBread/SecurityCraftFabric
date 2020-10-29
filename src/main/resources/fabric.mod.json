@@ -28,7 +28,9 @@
             "net.geforcemods.securitycraft.SecurityCraft"
         ]
     },
-    "mixins": [],
+    "mixins": [
+        "securitycraft.mixins.json"
+    ],
 
     "depends": {
         "fabricloader": ">=0.7.4",

@@ -1,7 +1,7 @@
-package net.geforcemods.securitycraft.mixin;
+package net.geforcemods.securitycraft.compat.fabric.mixin;
 
-import net.geforcemods.securitycraft.event.PlayerLoggedInCallback;
-import net.geforcemods.securitycraft.event.PlayerLoggedOutCallback;
+import net.geforcemods.securitycraft.compat.fabric.event.PlayerLoggedInCallback;
+import net.geforcemods.securitycraft.compat.fabric.event.PlayerLoggedOutCallback;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
