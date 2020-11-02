@@ -42,10 +42,10 @@ import net.geforcemods.securitycraft.api.IOwnable;
 //import net.geforcemods.securitycraft.api.IPasswordProtected;
 //import net.geforcemods.securitycraft.api.LinkedAction;
 //import net.geforcemods.securitycraft.blocks.IPasswordConvertible;
-//import net.geforcemods.securitycraft.blocks.SecurityCameraBlock;
+import net.geforcemods.securitycraft.blocks.SecurityCameraBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.IReinforcedBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedCarpetBlock;
-//import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
+import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 //import net.geforcemods.securitycraft.entity.SentryEntity;
 //import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.misc.CustomDamageSources;
@@ -54,9 +54,9 @@ import net.geforcemods.securitycraft.misc.OwnershipEvent;
 //import net.geforcemods.securitycraft.misc.SCSounds;
 //import net.geforcemods.securitycraft.SecurityCraft;
 //import net.geforcemods.securitycraft.network.client.PlaySoundAtPos;
-//import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
+import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
 import net.geforcemods.securitycraft.util.ClientUtils;
-//import net.geforcemods.securitycraft.util.PlayerUtils;
+import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.geforcemods.securitycraft.util.WorldUtils;
 //import net.minecraftforge.common.ForgeHooks;
 //import net.minecraftforge.event.entity.EntityMountEvent;
@@ -129,22 +129,19 @@ public class SCEventHandler {
 
     public static void onPlayerLoggedOut() {
         PlayerLoggedOutCallback.EVENT.register(player -> {
-            // TODO: Dismount camera
+            if (PlayerUtils.isPlayerMountedOnCamera(player) && player.getVehicle() instanceof SecurityCameraEntity)
+                player.getVehicle().remove();
 
             return ActionResult.PASS;
         });
     }
-//
-//    @SubscribeEvent
-//    public static void onPlayerLoggedOut(PlayerLoggedOutEvent event)
-//    {
-//        if(PlayerUtils.isPlayerMountedOnCamera(event.getPlayer()) && event.getPlayer().getVehicle() instanceof SecurityCameraEntity)
-//            event.getPlayer().getVehicle().remove();
-//    }
 
     public static void onDamageTaken() {
         LivingHurtCallback.EVENT.register((entity, source, damage) -> {
-            // TODO: Cancel if player is mounted on camera
+            if (entity != null && PlayerUtils.isPlayerMountedOnCamera(entity)) {
+                // TODO: Cancel if player is mounted on camera
+                return ActionResult.PASS;
+            }
 
             if (source == CustomDamageSources.ELECTRICITY) {
                 //TODO: Sound event electrified
@@ -191,7 +188,10 @@ public class SCEventHandler {
 
     public static void onRightClickBlock() {
         RightClickBlockCallback.EVENT.register((player, hand, pos, face) -> {
-            // TODO: Cancel if player is mounted on camera
+            if (PlayerUtils.isPlayerMountedOnCamera(player)) {
+                // TODO: Cancel if player is mounted on camera
+                return ActionResult.PASS;
+            }
 
             if (hand == Hand.MAIN_HAND) {
                 World world = player.getEntityWorld();
@@ -349,7 +349,11 @@ public class SCEventHandler {
                             if (te instanceof CustomizableTileEntity)
                                 ((CustomizableTileEntity) te).createLinkedBlockAction(LinkedAction.MODULE_REMOVED, new Object[]{stack, ((ModuleItem) stack.getItem()).getModuleType() }, ((CustomizableTileEntity) te));
 
-                            // TODO: cam
+                            if (te instanceof SecurityCameraTileEntity) {
+                                SecurityCameraTileEntity cam = (SecurityCameraTileEntity)te;
+
+                                cam.getWorld().updateNeighborsAlways(cam.getPos().offset(cam.getWorld().getBlockState(cam.getPos()).get(SecurityCameraBlock.FACING), -1), cam.getWorld().getBlockState(cam.getPos()).getBlock());
+                            }
                         }
                     }
                 }

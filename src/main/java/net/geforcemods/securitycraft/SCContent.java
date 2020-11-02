@@ -2,9 +2,11 @@ package net.geforcemods.securitycraft;
 
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
+import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
 import net.geforcemods.securitycraft.tileentity.IMSTileEntity;
+import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
 import net.geforcemods.securitycraft.util.HasManualPage;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
@@ -47,11 +49,13 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static ModuleItem WHITELIST_MODULE;
 
     //tile entity types
+    public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
 
     //entity types
     public static EntityType<IMSBombEntity> eTypeImsBomb;
+    public static EntityType<SecurityCameraEntity> eTypeSecurityCamera;
 
     //container types
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;

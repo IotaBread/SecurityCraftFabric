@@ -1,9 +1,9 @@
 package net.geforcemods.securitycraft.util;
 
-//import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
+import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-//import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.LivingEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
@@ -114,11 +114,11 @@ public class PlayerUtils{
 
 		return (!player.inventory.getMainHandStack().isEmpty() && player.inventory.getMainHandStack().getItem() == item);
 	}
-//
-//	/**
-//	 * Is the entity mounted on to a security camera?
-//	 */
-//	public static boolean isPlayerMountedOnCamera(LivingEntity entity) {
-//		return entity.getVehicle() instanceof SecurityCameraEntity;
-//	}
+
+	/**
+	 * Is the entity mounted on to a security camera?
+	 */
+	public static boolean isPlayerMountedOnCamera(LivingEntity entity) {
+		return entity.getVehicle() instanceof SecurityCameraEntity;
+	}
 }
