@@ -14,6 +14,7 @@ import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
+import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.item.Item;
 import net.minecraft.screen.ScreenHandlerType;
 
@@ -21,6 +22,10 @@ public class SCContent { // TODO: Everything
 
 
     //fluids
+    public static FlowableFluid FLOWING_FAKE_WATER;
+    public static FlowableFluid FAKE_WATER;
+    public static FlowableFluid FLOWING_FAKE_LAVA;
+    public static FlowableFluid FAKE_LAVA;
 
     //blocks
     @HasManualPage @RegisterItemBlock public static Block ALARM;
@@ -35,6 +40,8 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
+    public static Block FAKE_WATER_BLOCK;
+    public static Block FAKE_LAVA_BLOCK;
 
     //block mines
 
@@ -48,6 +55,8 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item ADMIN_TOOL;
     @HasManualPage public static Item CAMERA_MONITOR;
     @HasManualPage public static Item CODEBREAKER;
+    @HasManualPage public static Item FAKE_LAVA_BUCKET;
+    @HasManualPage public static Item FAKE_WATER_BUCKET;
     @HasManualPage public static Item KEY_PANEL;
     @HasManualPage public static Item LIMITED_USE_KEYCARD;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
