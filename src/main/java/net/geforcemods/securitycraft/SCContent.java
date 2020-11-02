@@ -3,6 +3,7 @@ package net.geforcemods.securitycraft;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
+import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
@@ -34,6 +35,8 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block CAGE_TRAP;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
+    @HasManualPage @RegisterItemBlock public static Block INVENTORY_SCANNER;
+    public static Block INVENTORY_SCANNER_FIELD;
     @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
     public static Block LASER_FIELD;
@@ -83,6 +86,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<LaserBlockTileEntity> teTypeLaserBlock;
     public static BlockEntityType<CageTrapTileEntity> teTypeCageTrap;
     public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
+    public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
@@ -94,6 +98,7 @@ public class SCContent { // TODO: Everything
     public static EntityType<SecurityCameraEntity> eTypeSecurityCamera;
 
     //container types
+    public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
 }
