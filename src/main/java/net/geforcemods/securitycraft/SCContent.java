@@ -4,6 +4,7 @@ import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
+import net.geforcemods.securitycraft.containers.KeypadFurnaceContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
@@ -41,6 +42,8 @@ public class SCContent { // TODO: Everything
     public static Block INVENTORY_SCANNER_FIELD;
     @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
+    @HasManualPage public static Block KEYPAD_CHEST;
+    @HasManualPage @RegisterItemBlock public static Block KEYPAD_FURNACE;
     public static Block LASER_FIELD;
     @HasManualPage @RegisterItemBlock public static Block LASER_BLOCK;
     public static Block SCANNER_DOOR;
@@ -93,7 +96,9 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
     public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
+    public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
+    public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
     public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
@@ -106,6 +111,9 @@ public class SCContent { // TODO: Everything
 
     //container types
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
+    public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
+    public static ScreenHandlerType<GenericTEContainer> cTypeCheckPassword;
+    public static ScreenHandlerType<GenericTEContainer> cTypeSetPassword;
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
     public static ScreenHandlerType<GenericTEContainer> cTypeBlockPocketManager;
