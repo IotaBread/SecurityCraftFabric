@@ -24,6 +24,7 @@ public class SCContent { // TODO: Everything
     //blocks
     @HasManualPage @RegisterItemBlock public static Block ALARM;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
+    @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
@@ -41,6 +42,7 @@ public class SCContent { // TODO: Everything
     //items
     @HasManualPage public static Item ADMIN_TOOL;
     @HasManualPage public static Item CAMERA_MONITOR;
+    @HasManualPage public static Item KEY_PANEL;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
     @HasManualPage public static Item WIRE_CUTTERS;
