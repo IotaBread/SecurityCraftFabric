@@ -31,6 +31,8 @@ public class SCContent { // TODO: Everything
 
     //blocks
     @HasManualPage @RegisterItemBlock public static Block ALARM;
+    @HasManualPage(designedBy="Henzoid") @RegisterItemBlock public static Block BLOCK_POCKET_MANAGER;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static Block BLOCK_POCKET_WALL;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @RegisterItemBlock public static Block CAGE_TRAP;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
@@ -56,6 +58,9 @@ public class SCContent { // TODO: Everything
     //ordered by vanilla redstone tab order
 
     //misc
+    @Reinforced(tint=0x0E7063) public static Block REINFORCED_CHISELED_CRYSTAL_QUARTZ;
+    @Reinforced(tint=0x0E7063) public static Block REINFORCED_CRYSTAL_QUARTZ;
+    @Reinforced(tint=0x0E7063) public static Block REINFORCED_CRYSTAL_QUARTZ_PILLAR;
     @OwnableTE public static Block HORIZONTAL_REINFORCED_IRON_BARS;
 
     //items
@@ -92,6 +97,8 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<IMSTileEntity> teTypeIms;
     public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
+    public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
+    public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
 
     //entity types
     public static EntityType<IMSBombEntity> eTypeImsBomb;
@@ -101,4 +108,5 @@ public class SCContent { // TODO: Everything
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
+    public static ScreenHandlerType<GenericTEContainer> cTypeBlockPocketManager;
 }
