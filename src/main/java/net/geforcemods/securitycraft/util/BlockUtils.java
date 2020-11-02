@@ -4,23 +4,23 @@ package net.geforcemods.securitycraft.util;
 //import java.util.List;
 import java.util.function.BiFunction;
 
-//import net.geforcemods.securitycraft.SCContent;
+import net.geforcemods.securitycraft.SCContent;
 import net.geforcemods.securitycraft.api.IModuleInventory;
 import net.geforcemods.securitycraft.api.IOwnable;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.api.Owner;
-//import net.geforcemods.securitycraft.blocks.KeycardReaderBlock;
-//import net.geforcemods.securitycraft.blocks.KeypadBlock;
-//import net.geforcemods.securitycraft.blocks.LaserBlock;
-//import net.geforcemods.securitycraft.blocks.RetinalScannerBlock;
+import net.geforcemods.securitycraft.blocks.KeycardReaderBlock;
+import net.geforcemods.securitycraft.blocks.KeypadBlock;
+import net.geforcemods.securitycraft.blocks.LaserBlock;
+import net.geforcemods.securitycraft.blocks.RetinalScannerBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedButtonBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedLeverBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedPressurePlateBlock;
-//import net.geforcemods.securitycraft.misc.ModuleType;
-//import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
-//import net.geforcemods.securitycraft.tileentity.KeypadChestTileEntity;
-//import net.geforcemods.securitycraft.tileentity.KeypadFurnaceTileEntity;
-//import net.geforcemods.securitycraft.tileentity.KeypadTileEntity;
+import net.geforcemods.securitycraft.misc.ModuleType;
+import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
+import net.geforcemods.securitycraft.tileentity.KeypadChestTileEntity;
+import net.geforcemods.securitycraft.tileentity.KeypadFurnaceTileEntity;
+import net.geforcemods.securitycraft.tileentity.KeypadTileEntity;
 //import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -110,15 +110,15 @@ public class BlockUtils{
             if(world.getBlockEntity(pos) instanceof OwnableTileEntity && ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner() != null)
                 owner = ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner();
 
-//            if(world.getBlockEntity(pos) instanceof KeypadTileEntity && ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword() != null)
-//                password = ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword();
-//
-//            if(world.getBlockEntity(pos) instanceof KeypadFurnaceTileEntity && ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).getPassword() != null)
-//                password = ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).getPassword();
-//
-//            if(world.getBlockEntity(pos) instanceof KeypadChestTileEntity && ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword() != null)
-//                password = ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword();
-//
+            if(world.getBlockEntity(pos) instanceof KeypadTileEntity && ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword() != null)
+                password = ((KeypadTileEntity) world.getBlockEntity(pos)).getPassword();
+
+            if(world.getBlockEntity(pos) instanceof KeypadFurnaceTileEntity && ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).getPassword() != null)
+                password = ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).getPassword();
+
+            if(world.getBlockEntity(pos) instanceof KeypadChestTileEntity && ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword() != null)
+                password = ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword();
+
 //            if(world.getBlockEntity(pos) instanceof PortableRadarTileEntity && ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown() != 0)
 //                cooldown = ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown();
 
@@ -132,15 +132,15 @@ public class BlockUtils{
             if(owner != null)
                 ((OwnableTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
 
-//            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadTileEntity)
-//                ((KeypadTileEntity) world.getBlockEntity(pos)).setPassword(password);
-//
-//            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadFurnaceTileEntity)
-//                ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).setPassword(password);
-//
-//            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadChestTileEntity)
-//                ((KeypadChestTileEntity) world.getBlockEntity(pos)).setPassword(password);
-//
+            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadTileEntity)
+                ((KeypadTileEntity) world.getBlockEntity(pos)).setPassword(password);
+
+            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadFurnaceTileEntity)
+                ((KeypadFurnaceTileEntity) world.getBlockEntity(pos)).setPassword(password);
+
+            if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadChestTileEntity)
+                ((KeypadChestTileEntity) world.getBlockEntity(pos)).setPassword(password);
+
 //            if(cooldown != -1 && world.getBlockEntity(pos) instanceof PortableRadarTileEntity)
 //                ((PortableRadarTileEntity) world.getBlockEntity(pos)).setAttackCooldown(cooldown);
         }
@@ -181,20 +181,20 @@ public class BlockUtils{
         return new int[]{pos.getX(), pos.getY(), pos.getZ()};
     }
 
-//    public static boolean hasActiveSCBlockNextTo(World world, BlockPos pos)
-//    {
-//        BlockEntity thisTile = world.getBlockEntity(pos);
-//
-//        return hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.LASER_BLOCK.get(), true, (state, te) -> state.get(LaserBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.RETINAL_SCANNER.get(), true, (state, te) -> state.get(RetinalScannerBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYPAD.get(), true, (state, te) -> state.get(KeypadBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYCARD_READER.get(), true, (state, te) -> state.get(KeycardReaderBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.INVENTORY_SCANNER.get(), true, (state, te) -> ((InventoryScannerTileEntity)te).hasModule(ModuleType.REDSTONE) && ((InventoryScannerTileEntity)te).shouldProvidePower()) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> PRESSURE_PLATES.contains(state.getBlock()) && state.get(ReinforcedPressurePlateBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED)) ||
-//                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER.get(), true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED));
-//    }
-//
+    public static boolean hasActiveSCBlockNextTo(World world, BlockPos pos)
+    {
+        BlockEntity thisTile = world.getBlockEntity(pos);
+
+        return hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.LASER_BLOCK, true, (state, te) -> state.get(LaserBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.RETINAL_SCANNER, true, (state, te) -> state.get(RetinalScannerBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYPAD, true, (state, te) -> state.get(KeypadBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYCARD_READER, true, (state, te) -> state.get(KeycardReaderBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.INVENTORY_SCANNER, true, (state, te) -> ((InventoryScannerTileEntity)te).hasModule(ModuleType.REDSTONE) && ((InventoryScannerTileEntity)te).shouldProvidePower()) /*||
+                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> PRESSURE_PLATES.contains(state.getBlock()) && state.get(ReinforcedPressurePlateBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED)) ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER, true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED))*/;
+    }
+
     private static boolean hasActiveSCBlockNextTo(World world, BlockPos pos, BlockEntity te, Block block, boolean checkForBlock, BiFunction<BlockState,BlockEntity,Boolean> extraCondition)
     {
         for(Direction dir : Direction.values())

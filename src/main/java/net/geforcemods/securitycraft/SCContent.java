@@ -44,8 +44,9 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
     @HasManualPage public static Block KEYPAD_CHEST;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD_FURNACE;
-    public static Block LASER_FIELD;
     @HasManualPage @RegisterItemBlock public static Block LASER_BLOCK;
+    public static Block LASER_FIELD;
+    @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
@@ -98,6 +99,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<UsernameLoggerTileEntity> teTypeUsernameLogger;
+    public static BlockEntityType<RetinalScannerTileEntity> teTypeRetinalScanner;
     public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
