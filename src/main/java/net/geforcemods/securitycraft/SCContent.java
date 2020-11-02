@@ -8,6 +8,7 @@ import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
 import net.geforcemods.securitycraft.tileentity.IMSTileEntity;
 import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
+import net.geforcemods.securitycraft.tileentity.TrophySystemTileEntity;
 import net.geforcemods.securitycraft.util.HasManualPage;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
@@ -57,6 +58,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
+    public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
 
     //entity types
     public static EntityType<IMSBombEntity> eTypeImsBomb;
