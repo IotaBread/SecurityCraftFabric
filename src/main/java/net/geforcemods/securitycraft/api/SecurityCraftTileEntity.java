@@ -1,6 +1,6 @@
 package net.geforcemods.securitycraft.api;
 
-//import net.geforcemods.securitycraft.SCContent;
+import net.geforcemods.securitycraft.SCContent;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
@@ -46,10 +46,10 @@ public class SecurityCraftTileEntity extends OwnableTileEntity implements Tickab
 	private int attackCooldown = 0;
 	private Class<? extends Entity> typeToAttack = Entity.class;
 
-//	public SecurityCraftTileEntity()
-//	{
-//		this(SCContent.teTypeAbstract);
-//	}
+	public SecurityCraftTileEntity()
+	{
+		this(SCContent.teTypeAbstract);
+	}
 
 	public SecurityCraftTileEntity(BlockEntityType<?> type)
 	{

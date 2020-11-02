@@ -29,6 +29,8 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
+    public static Block LASER_FIELD;
+    @HasManualPage @RegisterItemBlock public static Block LASER_BLOCK;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
@@ -65,6 +67,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<OwnableTileEntity> teTypeOwnable;
     public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract;
     public static BlockEntityType<KeypadTileEntity> teTypeKeypad;
+    public static BlockEntityType<LaserBlockTileEntity> teTypeLaserBlock;
     public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
