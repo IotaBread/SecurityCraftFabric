@@ -1,6 +1,7 @@
 package net.geforcemods.securitycraft;
 
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
+import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
@@ -26,6 +27,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
+    @HasManualPage @RegisterItemBlock public static Block KEYPAD;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
@@ -42,6 +44,7 @@ public class SCContent { // TODO: Everything
     //items
     @HasManualPage public static Item ADMIN_TOOL;
     @HasManualPage public static Item CAMERA_MONITOR;
+    @HasManualPage public static Item CODEBREAKER;
     @HasManualPage public static Item KEY_PANEL;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
@@ -58,6 +61,8 @@ public class SCContent { // TODO: Everything
 
     //tile entity types
     public static BlockEntityType<OwnableTileEntity> teTypeOwnable;
+    public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract;
+    public static BlockEntityType<KeypadTileEntity> teTypeKeypad;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;

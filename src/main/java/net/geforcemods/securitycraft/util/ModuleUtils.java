@@ -1,20 +1,20 @@
 package net.geforcemods.securitycraft.util;
 
-//import net.geforcemods.securitycraft.SCContent;
+import net.geforcemods.securitycraft.SCContent;
 import net.geforcemods.securitycraft.api.CustomizableTileEntity;
 import net.geforcemods.securitycraft.api.IModuleInventory;
 import net.geforcemods.securitycraft.api.LinkedAction;
-//import net.geforcemods.securitycraft.blocks.SecurityCameraBlock;
+import net.geforcemods.securitycraft.blocks.SecurityCameraBlock;
 import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.misc.ModuleType;
-//import net.minecraft.block.entity.BlockEntity;
-//import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-//import net.minecraft.util.Formatting;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-//import net.geforcemods.securitycraft.tileentity.*;
-//
+import net.geforcemods.securitycraft.tileentity.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,29 +43,29 @@ public class ModuleUtils {
 		return list;
 	}
 
-//	public static boolean checkForModule(World world, BlockPos pos, PlayerEntity player, ModuleType module){
-//		BlockEntity te = world.getBlockEntity(pos);
-//
-//		if(!(te instanceof IModuleInventory))
-//			return false;
-//
-//		if(te instanceof KeypadTileEntity){
-//			KeypadTileEntity keypad = (KeypadTileEntity)te;
-//
-//			if(module == ModuleType.WHITELIST && keypad.hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
-//				if(keypad.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
-//
-//				return true;
-//			}
-//
-//			if(module == ModuleType.BLACKLIST && keypad.hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
-//				if(keypad.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
-//
-//				return true;
-//			}
-//		}
+	public static boolean checkForModule(World world, BlockPos pos, PlayerEntity player, ModuleType module){
+		BlockEntity te = world.getBlockEntity(pos);
+
+		if(!(te instanceof IModuleInventory))
+			return false;
+
+		if(te instanceof KeypadTileEntity){
+			KeypadTileEntity keypad = (KeypadTileEntity)te;
+
+			if(module == ModuleType.WHITELIST && keypad.hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
+				if(keypad.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
+
+				return true;
+			}
+
+			if(module == ModuleType.BLACKLIST && keypad.hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
+				if(keypad.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
+
+				return true;
+			}
+		}
 //		else if(te instanceof KeypadChestTileEntity)
 //		{
 //			KeypadChestTileEntity chest = (KeypadChestTileEntity)te;
@@ -128,9 +128,9 @@ public class ModuleUtils {
 //			if(module == ModuleType.WHITELIST && ((SecretSignTileEntity) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
 //				return true;
 //		}
-//
-//		return false;
-//	}
+
+		return false;
+	}
 
 	public static void createLinkedAction(LinkedAction action, ItemStack stack, CustomizableTileEntity te)
 	{
@@ -139,7 +139,7 @@ public class ModuleUtils {
 		else if(action == LinkedAction.MODULE_REMOVED)
 			te.createLinkedBlockAction(action, new Object[] {stack, ((ModuleItem)stack.getItem()).getModuleType()}, te);
 
-//		if(te instanceof SecurityCameraTileEntity)
-//			te.getWorld().updateNeighborsAlways(te.getPos().offset(te.getCachedState().get(SecurityCameraBlock.FACING), -1), te.getCachedState().getBlock());
+		if(te instanceof SecurityCameraTileEntity)
+			te.getWorld().updateNeighborsAlways(te.getPos().offset(te.getCachedState().get(SecurityCameraBlock.FACING), -1), te.getCachedState().getBlock());
 	}
 }
