@@ -49,6 +49,22 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block PORTABLE_RADAR;
     @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
+    public static Block SECRET_OAK_SIGN;
+    public static Block SECRET_OAK_WALL_SIGN;
+    public static Block SECRET_SPRUCE_SIGN;
+    public static Block SECRET_SPRUCE_WALL_SIGN;
+    public static Block SECRET_BIRCH_SIGN;
+    public static Block SECRET_BIRCH_WALL_SIGN;
+    public static Block SECRET_JUNGLE_SIGN;
+    public static Block SECRET_JUNGLE_WALL_SIGN;
+    public static Block SECRET_ACACIA_SIGN;
+    public static Block SECRET_ACACIA_WALL_SIGN;
+    public static Block SECRET_DARK_OAK_SIGN;
+    public static Block SECRET_DARK_OAK_WALL_SIGN;
+    public static Block SECRET_CRIMSON_SIGN;
+    public static Block SECRET_CRIMSON_WALL_SIGN;
+    public static Block SECRET_WARPED_SIGN;
+    public static Block SECRET_WARPED_WALL_SIGN;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
     @HasManualPage @RegisterItemBlock public static Block USERNAME_LOGGER;
@@ -79,6 +95,14 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item LIMITED_USE_KEYCARD;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
+    @HasManualPage public static Item SECRET_OAK_SIGN_ITEM;
+    public static Item SECRET_SPRUCE_SIGN_ITEM;
+    public static Item SECRET_BIRCH_SIGN_ITEM;
+    public static Item SECRET_JUNGLE_SIGN_ITEM;
+    public static Item SECRET_ACACIA_SIGN_ITEM;
+    public static Item SECRET_DARK_OAK_SIGN_ITEM;
+    public static Item SECRET_CRIMSON_SIGN_ITEM;
+    public static Item SECRET_WARPED_SIGN_ITEM;
     @HasManualPage public static Item WIRE_CUTTERS;
 
     //modules
@@ -107,6 +131,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
     public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
+    public static BlockEntityType<SecretSignTileEntity> teTypeSecretSign;
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
     public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
     public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;

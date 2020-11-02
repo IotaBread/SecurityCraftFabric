@@ -66,68 +66,68 @@ public class ModuleUtils {
 				return true;
 			}
 		}
-//		else if(te instanceof KeypadChestTileEntity)
-//		{
-//			KeypadChestTileEntity chest = (KeypadChestTileEntity)te;
-//
-//			if(module == ModuleType.WHITELIST && ((IModuleInventory) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
-//				if(chest.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_CHEST.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
-//
-//				return true;
-//			}
-//
-//			if(module == ModuleType.BLACKLIST && ((IModuleInventory) te).hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
-//				if(chest.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_CHEST.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
-//
-//				return true;
-//			}
-//		}
-//		else if(te instanceof KeypadFurnaceTileEntity)
-//		{
-//			KeypadFurnaceTileEntity furnace = (KeypadFurnaceTileEntity)te;
-//
-//			if(module == ModuleType.WHITELIST && ((IModuleInventory) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
-//				if(furnace.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_FURNACE.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
-//
-//				return true;
-//			}
-//
-//			if(module == ModuleType.BLACKLIST && ((IModuleInventory) te).hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
-//				if(furnace.sendsMessages())
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_FURNACE.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
-//
-//				return true;
-//			}
-//		}else if(te instanceof KeycardReaderTileEntity){
-//			KeycardReaderTileEntity reader = (KeycardReaderTileEntity)te;
-//
-//			if(module == ModuleType.WHITELIST && reader.hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
-//				if(reader.sendsMessages() && world.isClient)
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYCARD_READER.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
-//
-//				world.updateNeighborsAlways(pos, world.getBlockState(pos).getBlock());
-//				return true;
-//			}
-//
-//			if(module == ModuleType.BLACKLIST && reader.hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
-//				if(reader.sendsMessages() && world.isClient)
-//					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYCARD_READER.get().getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
-//
-//				return true;
-//			}
-//		}else if(te instanceof RetinalScannerTileEntity){
-//			if(module == ModuleType.WHITELIST && ((CustomizableTileEntity) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
-//				return true;
-//		}else if(te instanceof InventoryScannerTileEntity){
-//			if(module == ModuleType.WHITELIST && ((CustomizableTileEntity)te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
-//				return true;
-//		}else if(te instanceof SecretSignTileEntity) {
-//			if(module == ModuleType.WHITELIST && ((SecretSignTileEntity) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
-//				return true;
-//		}
+		else if(te instanceof KeypadChestTileEntity)
+		{
+			KeypadChestTileEntity chest = (KeypadChestTileEntity)te;
+
+			if(module == ModuleType.WHITELIST && ((IModuleInventory) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
+				if(chest.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_CHEST.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
+
+				return true;
+			}
+
+			if(module == ModuleType.BLACKLIST && ((IModuleInventory) te).hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
+				if(chest.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_CHEST.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
+
+				return true;
+			}
+		}
+		else if(te instanceof KeypadFurnaceTileEntity)
+		{
+			KeypadFurnaceTileEntity furnace = (KeypadFurnaceTileEntity)te;
+
+			if(module == ModuleType.WHITELIST && ((IModuleInventory) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
+				if(furnace.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_FURNACE.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
+
+				return true;
+			}
+
+			if(module == ModuleType.BLACKLIST && ((IModuleInventory) te).hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
+				if(furnace.sendsMessages())
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYPAD_FURNACE.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
+
+				return true;
+			}
+		}else if(te instanceof KeycardReaderTileEntity){
+			KeycardReaderTileEntity reader = (KeycardReaderTileEntity)te;
+
+			if(module == ModuleType.WHITELIST && reader.hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase())){
+				if(reader.sendsMessages() && world.isClient)
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYCARD_READER.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.whitelisted"), Formatting.GREEN);
+
+				world.updateNeighborsAlways(pos, world.getBlockState(pos).getBlock());
+				return true;
+			}
+
+			if(module == ModuleType.BLACKLIST && reader.hasModule(ModuleType.BLACKLIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.BLACKLIST).contains(player.getName().getString().toLowerCase())){
+				if(reader.sendsMessages() && world.isClient)
+					PlayerUtils.sendMessageToPlayer(player, ClientUtils.localize(SCContent.KEYCARD_READER.getTranslationKey()), ClientUtils.localize("messages.securitycraft:module.blacklisted"), Formatting.RED);
+
+				return true;
+			}
+		}else if(te instanceof RetinalScannerTileEntity){
+			if(module == ModuleType.WHITELIST && ((CustomizableTileEntity) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
+				return true;
+		}else if(te instanceof InventoryScannerTileEntity){
+			if(module == ModuleType.WHITELIST && ((CustomizableTileEntity)te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
+				return true;
+		}else if(te instanceof SecretSignTileEntity) {
+			if(module == ModuleType.WHITELIST && ((SecretSignTileEntity) te).hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(player.getName().getString().toLowerCase()))
+				return true;
+		}
 
 		return false;
 	}
