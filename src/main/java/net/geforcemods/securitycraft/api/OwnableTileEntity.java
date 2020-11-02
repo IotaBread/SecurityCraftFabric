@@ -1,6 +1,6 @@
 package net.geforcemods.securitycraft.api;
 
-//import net.geforcemods.securitycraft.SCContent;
+import net.geforcemods.securitycraft.SCContent;
 //import net.geforcemods.securitycraft.SecurityCraft;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -17,10 +17,10 @@ public class OwnableTileEntity extends BlockEntity implements IOwnable {
 
 	private Owner owner = new Owner();
 
-//	public OwnableTileEntity()
-//	{
-//		this(SCContent.teTypeOwnable);
-//	}
+	public OwnableTileEntity()
+	{
+		this(SCContent.teTypeOwnable);
+	}
 
 	public OwnableTileEntity(BlockEntityType<?> type)
 	{

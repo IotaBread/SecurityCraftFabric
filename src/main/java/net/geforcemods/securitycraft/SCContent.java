@@ -1,5 +1,6 @@
 package net.geforcemods.securitycraft;
 
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
@@ -26,6 +27,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
 
     //block mines
 
@@ -38,6 +40,8 @@ public class SCContent { // TODO: Everything
     //items
     @HasManualPage public static Item ADMIN_TOOL;
     @HasManualPage public static Item CAMERA_MONITOR;
+    @HasManualPage public static Item REMOTE_ACCESS_MINE;
+    @HasManualPage public static Item WIRE_CUTTERS;
 
     //modules
     @HasManualPage public static ModuleItem BLACKLIST_MODULE;
@@ -49,6 +53,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static ModuleItem WHITELIST_MODULE;
 
     //tile entity types
+    public static BlockEntityType<OwnableTileEntity> teTypeOwnable;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
