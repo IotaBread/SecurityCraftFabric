@@ -7,6 +7,7 @@ import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.tileentity.*;
 import net.geforcemods.securitycraft.util.HasManualPage;
+import net.geforcemods.securitycraft.util.OwnableTE;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
 import net.minecraft.block.Block;
@@ -26,7 +27,8 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
-    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
+    @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
+    @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
 
     //block mines
 
