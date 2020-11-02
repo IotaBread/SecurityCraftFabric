@@ -5,10 +5,7 @@ import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
-import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
-import net.geforcemods.securitycraft.tileentity.IMSTileEntity;
-import net.geforcemods.securitycraft.tileentity.SecurityCameraTileEntity;
-import net.geforcemods.securitycraft.tileentity.TrophySystemTileEntity;
+import net.geforcemods.securitycraft.tileentity.*;
 import net.geforcemods.securitycraft.util.HasManualPage;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
@@ -27,6 +24,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block ALARM;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
+    public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
 
@@ -42,6 +40,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item ADMIN_TOOL;
     @HasManualPage public static Item CAMERA_MONITOR;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
+    @HasManualPage public static Item SCANNER_DOOR_ITEM;
     @HasManualPage public static Item WIRE_CUTTERS;
 
     //modules
@@ -58,6 +57,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
+    public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
 
     //entity types
