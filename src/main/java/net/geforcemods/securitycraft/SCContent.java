@@ -2,9 +2,12 @@ package net.geforcemods.securitycraft;
 
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
+import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
 import net.geforcemods.securitycraft.util.HasManualPage;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
+import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 
@@ -14,7 +17,8 @@ public class SCContent { // TODO: Everything
     //fluids
 
     //blocks
-    @HasManualPage @RegisterItemBlock(RegisterItemBlock.SCItemGroup.EXPLOSIVES) public static Block IMS;
+    @HasManualPage @RegisterItemBlock public static Block ALARM;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
 
     //block mines
@@ -39,6 +43,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static ModuleItem WHITELIST_MODULE;
 
     //tile entity types
+    public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
 
     //entity types
     public static EntityType<IMSBombEntity> eTypeImsBomb;

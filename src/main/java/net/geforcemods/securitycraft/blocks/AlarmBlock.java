@@ -1,15 +1,15 @@
 package net.geforcemods.securitycraft.blocks;
 
-//import net.geforcemods.securitycraft.SCContent;
-//import net.geforcemods.securitycraft.api.Owner;
+import net.geforcemods.securitycraft.SCContent;
+import net.geforcemods.securitycraft.api.Owner;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.server.world.ServerWorld;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -24,10 +24,10 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-//import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
+import net.geforcemods.securitycraft.tileentity.AlarmTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 
-//import java.util.Random;
+import java.util.Random;
 
 public class AlarmBlock extends OwnableBlock {
 
@@ -85,33 +85,33 @@ public class AlarmBlock extends OwnableBlock {
 			world.getBlockTickScheduler().schedule(pos, state.getBlock(), 5);
 	}
 
-//	/**
-//	 * Ticks the block if it's been scheduled
-//	 */
-//	@Override
-//	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
-//	{
-//		if(!world.isClient){
-//			playSoundAndUpdate(world, pos);
-//
-//			world.getBlockTickScheduler().schedule(pos, state.getBlock(), 5);
-//		}
-//	}
-//
-//	@Override
-//	public void onNeighborChange(BlockState state, WorldView w, BlockPos pos, BlockPos neighbor){
-//		if(w.isClient() || !(w instanceof World))
-//			return;
-//
-//		World world = (World)w;
-//
-//		playSoundAndUpdate((world), pos);
-//
-//		Direction facing = world.getBlockState(pos).get(FACING);
-//
-//		if (!BlockUtils.isSideSolid(world, pos.offset(facing.getOpposite()), facing))
-//			world.breakBlock(pos, true);
-//	}
+	/**
+	 * Ticks the block if it's been scheduled
+	 */
+	@Override
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
+	{
+		if(!world.isClient){
+			playSoundAndUpdate(world, pos);
+
+			world.getBlockTickScheduler().schedule(pos, state.getBlock(), 5);
+		}
+	}
+
+//	@Override // Forge method, TODO
+	public void onNeighborChange(BlockState state, WorldView w, BlockPos pos, BlockPos neighbor){
+		if(w.isClient() || !(w instanceof World))
+			return;
+
+		World world = (World)w;
+
+		playSoundAndUpdate((world), pos);
+
+		Direction facing = world.getBlockState(pos).get(FACING);
+
+		if (!BlockUtils.isSideSolid(world, pos.offset(facing.getOpposite()), facing))
+			world.breakBlock(pos, true);
+	}
 
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView source, BlockPos pos, ShapeContext ctx)
@@ -136,36 +136,36 @@ public class AlarmBlock extends OwnableBlock {
 		return VoxelShapes.fullCube();
 	}
 
-//	private void playSoundAndUpdate(World world, BlockPos pos){
-//		if(world.getBlockState(pos).getBlock() != SCContent.ALARM.get() || !(world.getBlockEntity(pos) instanceof AlarmTileEntity)) return;
-//
-//		if(world.getReceivedRedstonePower(pos) > 0){
-//			boolean isPowered = ((AlarmTileEntity) world.getBlockEntity(pos)).isPowered();
-//
-//			if(!isPowered){
-//				Owner owner = ((AlarmTileEntity) world.getBlockEntity(pos)).getOwner();
-//				BlockUtils.setBlockProperty(world, pos, LIT, true);
-//				((AlarmTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
-//				((AlarmTileEntity) world.getBlockEntity(pos)).setPowered(true);
-//			}
-//
-//		}else{
-//			boolean isPowered = ((AlarmTileEntity) world.getBlockEntity(pos)).isPowered();
-//
-//			if(isPowered){
-//				Owner owner = ((AlarmTileEntity) world.getBlockEntity(pos)).getOwner();
-//				BlockUtils.setBlockProperty(world, pos, LIT, false);
-//				((AlarmTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
-//				((AlarmTileEntity) world.getBlockEntity(pos)).setPowered(false);
-//			}
-//		}
-//	}
-//
-//	@Override
-//	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
-//	{
-//		return new ItemStack(SCContent.ALARM.get().asItem());
-//	}
+	private void playSoundAndUpdate(World world, BlockPos pos){
+		if(world.getBlockState(pos).getBlock() != SCContent.ALARM || !(world.getBlockEntity(pos) instanceof AlarmTileEntity)) return;
+
+		if(world.getReceivedRedstonePower(pos) > 0){
+			boolean isPowered = ((AlarmTileEntity) world.getBlockEntity(pos)).isPowered();
+
+			if(!isPowered){
+				Owner owner = ((AlarmTileEntity) world.getBlockEntity(pos)).getOwner();
+				BlockUtils.setBlockProperty(world, pos, LIT, true);
+				((AlarmTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
+				((AlarmTileEntity) world.getBlockEntity(pos)).setPowered(true);
+			}
+
+		}else{
+			boolean isPowered = ((AlarmTileEntity) world.getBlockEntity(pos)).isPowered();
+
+			if(isPowered){
+				Owner owner = ((AlarmTileEntity) world.getBlockEntity(pos)).getOwner();
+				BlockUtils.setBlockProperty(world, pos, LIT, false);
+				((AlarmTileEntity) world.getBlockEntity(pos)).getOwner().set(owner);
+				((AlarmTileEntity) world.getBlockEntity(pos)).setPowered(false);
+			}
+		}
+	}
+
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return new ItemStack(SCContent.ALARM.asItem());
+	}
 
 	@Override
 	protected void appendProperties(Builder<Block, BlockState> builder){
