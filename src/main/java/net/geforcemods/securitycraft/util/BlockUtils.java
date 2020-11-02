@@ -21,7 +21,7 @@ import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
 import net.geforcemods.securitycraft.tileentity.KeypadChestTileEntity;
 import net.geforcemods.securitycraft.tileentity.KeypadFurnaceTileEntity;
 import net.geforcemods.securitycraft.tileentity.KeypadTileEntity;
-//import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
+import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -119,8 +119,8 @@ public class BlockUtils{
             if(world.getBlockEntity(pos) instanceof KeypadChestTileEntity && ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword() != null)
                 password = ((KeypadChestTileEntity) world.getBlockEntity(pos)).getPassword();
 
-//            if(world.getBlockEntity(pos) instanceof PortableRadarTileEntity && ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown() != 0)
-//                cooldown = ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown();
+            if(world.getBlockEntity(pos) instanceof PortableRadarTileEntity && ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown() != 0)
+                cooldown = ((PortableRadarTileEntity) world.getBlockEntity(pos)).getAttackCooldown();
 
             BlockEntity tileEntity = world.getBlockEntity(pos);
             world.setBlockState(pos, state.with(property, value));
@@ -141,8 +141,8 @@ public class BlockUtils{
             if(!password.isEmpty() && world.getBlockEntity(pos) instanceof KeypadChestTileEntity)
                 ((KeypadChestTileEntity) world.getBlockEntity(pos)).setPassword(password);
 
-//            if(cooldown != -1 && world.getBlockEntity(pos) instanceof PortableRadarTileEntity)
-//                ((PortableRadarTileEntity) world.getBlockEntity(pos)).setAttackCooldown(cooldown);
+            if(cooldown != -1 && world.getBlockEntity(pos) instanceof PortableRadarTileEntity)
+                ((PortableRadarTileEntity) world.getBlockEntity(pos)).setAttackCooldown(cooldown);
         }
         else
             world.setBlockState(pos, state.with(property, value));
