@@ -4,6 +4,7 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "BucketItemMixin",
+        "EntityShapeContextMixin",
         "LivingEntityMixin",
         "PlayerEntityMixin",
         "PlayerManagerMixin",

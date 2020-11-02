@@ -11,6 +11,7 @@ import net.geforcemods.securitycraft.util.HasManualPage;
 import net.geforcemods.securitycraft.util.OwnableTE;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
+import net.geforcemods.securitycraft.util.Reinforced;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
@@ -30,6 +31,7 @@ public class SCContent { // TODO: Everything
     //blocks
     @HasManualPage @RegisterItemBlock public static Block ALARM;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
+    @HasManualPage @RegisterItemBlock public static Block CAGE_TRAP;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
@@ -47,9 +49,11 @@ public class SCContent { // TODO: Everything
 
     //reinforced blocks (ordered by vanilla building blocks creative tab order)
     //ordered by vanilla decoration blocks creative tab order
+    @OwnableTE @Reinforced(hasTint = false) public static Block REINFORCED_IRON_BARS;
     //ordered by vanilla redstone tab order
 
     //misc
+    @OwnableTE public static Block HORIZONTAL_REINFORCED_IRON_BARS;
 
     //items
     @HasManualPage public static Item ADMIN_TOOL;
@@ -77,6 +81,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract;
     public static BlockEntityType<KeypadTileEntity> teTypeKeypad;
     public static BlockEntityType<LaserBlockTileEntity> teTypeLaserBlock;
+    public static BlockEntityType<CageTrapTileEntity> teTypeCageTrap;
     public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
