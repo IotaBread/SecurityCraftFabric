@@ -27,6 +27,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
+    @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
@@ -46,6 +47,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item CAMERA_MONITOR;
     @HasManualPage public static Item CODEBREAKER;
     @HasManualPage public static Item KEY_PANEL;
+    @HasManualPage public static Item LIMITED_USE_KEYCARD;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
     @HasManualPage public static Item WIRE_CUTTERS;
@@ -63,6 +65,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<OwnableTileEntity> teTypeOwnable;
     public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract;
     public static BlockEntityType<KeypadTileEntity> teTypeKeypad;
+    public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
@@ -75,4 +78,5 @@ public class SCContent { // TODO: Everything
 
     //container types
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
+    public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
 }
