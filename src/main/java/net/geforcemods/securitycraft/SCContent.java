@@ -49,6 +49,7 @@ public class SCContent { // TODO: Everything
     public static Block SCANNER_DOOR;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
+    @HasManualPage @RegisterItemBlock public static Block USERNAME_LOGGER;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
     public static Block FAKE_WATER_BLOCK;
     public static Block FAKE_LAVA_BLOCK;
@@ -96,6 +97,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
     public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner;
     public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
+    public static BlockEntityType<UsernameLoggerTileEntity> teTypeUsernameLogger;
     public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
@@ -114,6 +116,7 @@ public class SCContent { // TODO: Everything
     public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
     public static ScreenHandlerType<GenericTEContainer> cTypeCheckPassword;
     public static ScreenHandlerType<GenericTEContainer> cTypeSetPassword;
+    public static ScreenHandlerType<GenericTEContainer> cTypeUsernameLogger;
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
     public static ScreenHandlerType<GenericTEContainer> cTypeBlockPocketManager;
