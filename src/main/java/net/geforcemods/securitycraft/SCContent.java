@@ -37,6 +37,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static Block BLOCK_POCKET_WALL;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
     @HasManualPage @RegisterItemBlock public static Block CAGE_TRAP;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block CLAYMORE;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block FRAME;
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block INVENTORY_SCANNER;
@@ -134,6 +135,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<RetinalScannerTileEntity> teTypeRetinalScanner;
     public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest;
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
+    public static BlockEntityType<ClaymoreTileEntity> teTypeClaymore;
     public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
     public static BlockEntityType<ProtectoTileEntity> teTypeProtecto;
