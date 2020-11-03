@@ -6,9 +6,7 @@ import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
 import net.geforcemods.securitycraft.containers.KeypadFurnaceContainer;
 import net.geforcemods.securitycraft.containers.ProjectorContainer;
-import net.geforcemods.securitycraft.entity.BouncingBettyEntity;
-import net.geforcemods.securitycraft.entity.IMSBombEntity;
-import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
+import net.geforcemods.securitycraft.entity.*;
 import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.tileentity.*;
 import net.geforcemods.securitycraft.util.HasManualPage;
@@ -142,6 +140,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item KEY_PANEL;
     @HasManualPage public static Item LIMITED_USE_KEYCARD;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
+    @HasManualPage public static Item REMOTE_ACCESS_SENTRY;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
     @HasManualPage public static Item SECRET_OAK_SIGN_ITEM;
     public static Item SECRET_SPRUCE_SIGN_ITEM;
@@ -151,6 +150,10 @@ public class SCContent { // TODO: Everything
     public static Item SECRET_DARK_OAK_SIGN_ITEM;
     public static Item SECRET_CRIMSON_SIGN_ITEM;
     public static Item SECRET_WARPED_SIGN_ITEM;
+    @HasManualPage(designedBy="Henzoid") public static Item SENTRY;
+    @HasManualPage public static Item UNIVERSAL_BLOCK_MODIFIER;
+    @HasManualPage public static Item UNIVERSAL_BLOCK_REMOVER;
+    @HasManualPage public static Item UNIVERSAL_OWNER_CHANGER;
     @HasManualPage public static Item WIRE_CUTTERS;
 
     //modules
@@ -195,6 +198,8 @@ public class SCContent { // TODO: Everything
     public static EntityType<BouncingBettyEntity> eTypeBouncingBetty;
     public static EntityType<IMSBombEntity> eTypeImsBomb;
     public static EntityType<SecurityCameraEntity> eTypeSecurityCamera;
+    public static EntityType<SentryEntity> eTypeSentry;
+    public static EntityType<BulletEntity> eTypeBullet;
 
     //container types
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;

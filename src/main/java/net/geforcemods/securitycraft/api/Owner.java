@@ -3,6 +3,7 @@ package net.geforcemods.securitycraft.api;
 //import net.geforcemods.securitycraft.SecurityCraft;
 
 //import net.minecraft.entity.data.TrackedDataHandler;
+import net.minecraft.entity.data.TrackedDataHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 
@@ -15,6 +16,7 @@ import net.minecraft.text.Text;
 public class Owner {
 //    @ObjectHolder(SecurityCraft.MODID + ":owner")
 //    public static final DataSerializerEntry SERIALIZER = null;
+    public static final TrackedDataHandler<Owner> SERIALIZER = null; // This probably won't work
     private String playerName = "owner";
     private String playerUUID = "ownerUUID";
 
@@ -128,8 +130,8 @@ public class Owner {
         return obj instanceof Owner && getName().equals(((Owner)obj).getName()) && getUUID().equals(((Owner)obj).getUUID());
     }
 
-//    public static TrackedDataHandler<Owner> getSerializer()
-//    {
-//        return (TrackedDataHandler<Owner>)SERIALIZER.getSerializer();
-//    }
+    public static TrackedDataHandler<Owner> getSerializer()
+    {
+        return (TrackedDataHandler<Owner>)SERIALIZER;
+    }
 }

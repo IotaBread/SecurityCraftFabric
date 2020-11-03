@@ -25,14 +25,14 @@ import net.minecraft.util.Util;
 //import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-//import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Box;
 //import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 
 import java.util.HashMap;
-//import java.util.List;
+import java.util.List;
 import java.util.Random;
-//
+
 import net.geforcemods.securitycraft.compat.fabric.event.*;
 import net.geforcemods.securitycraft.compat.fabric.FabricMisc;
 //import net.geforcemods.securitycraft.api.CustomizableTileEntity;
@@ -46,7 +46,7 @@ import net.geforcemods.securitycraft.blocks.SecurityCameraBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.IReinforcedBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedCarpetBlock;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
-//import net.geforcemods.securitycraft.entity.SentryEntity;
+import net.geforcemods.securitycraft.entity.SentryEntity;
 //import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.misc.CustomDamageSources;
 //import net.geforcemods.securitycraft.misc.ModuleType;
@@ -205,6 +205,9 @@ public class SCEventHandler {
                 }
 
                 //TODO
+                //outside !world.isRemote for properly checking the interaction
+                //all the sentry functionality for when the sentry is diguised
+                List<SentryEntity> sentries = world.getNonSpectatingEntities(SentryEntity.class, new Box(pos));
             }
 
             return ActionResult.PASS;
@@ -284,6 +287,7 @@ public class SCEventHandler {
                 return ActionResult.PASS;
 
             // TODO
+            List<SentryEntity> sentries = ((World)world).getNonSpectatingEntities(SentryEntity.class, new Box(pos));
 
             return ActionResult.PASS;
         });
@@ -359,6 +363,7 @@ public class SCEventHandler {
                 }
 
                 //TODO
+                List<SentryEntity> sentries = ((World)world).getNonSpectatingEntities(SentryEntity.class, new Box(pos));
             }
 
             return ActionResult.PASS;
