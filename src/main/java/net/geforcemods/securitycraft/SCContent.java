@@ -162,7 +162,11 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item TASER;
     public static Item TASER_POWERED;
     @HasManualPage public static Item UNIVERSAL_BLOCK_MODIFIER;
+    @HasManualPage public static Item UNIVERSAL_BLOCK_REINFORCER_LVL_1;
+    @HasManualPage public static Item UNIVERSAL_BLOCK_REINFORCER_LVL_2;
+    @HasManualPage public static Item UNIVERSAL_BLOCK_REINFORCER_LVL_3;
     @HasManualPage public static Item UNIVERSAL_BLOCK_REMOVER;
+    @HasManualPage public static Item UNIVERSAL_KEY_CHANGER;
     @HasManualPage public static Item UNIVERSAL_OWNER_CHANGER;
     @HasManualPage public static Item WIRE_CUTTERS;
 
@@ -212,9 +216,11 @@ public class SCContent { // TODO: Everything
     public static EntityType<BulletEntity> eTypeBullet;
 
     //container types
+    public static ScreenHandlerType<BlockReinforcerContainer> cTypeBlockReinforcer;
     public static ScreenHandlerType<GenericContainer> cTypeBriefcase;
     public static ScreenHandlerType<BriefcaseContainer> cTypeBriefcaseInventory;
     public static ScreenHandlerType<GenericContainer> cTypeBriefcaseSetup;
+    public static ScreenHandlerType<CustomizeBlockContainer> cTypeCustomizeBlock;
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
     public static ScreenHandlerType<ProjectorContainer> cTypeProjector;
@@ -223,5 +229,6 @@ public class SCContent { // TODO: Everything
     public static ScreenHandlerType<GenericTEContainer> cTypeUsernameLogger;
     public static ScreenHandlerType<GenericTEContainer> cTypeIMS;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
+    public static ScreenHandlerType<GenericTEContainer> cTypeKeyChanger;
     public static ScreenHandlerType<GenericTEContainer> cTypeBlockPocketManager;
 }
