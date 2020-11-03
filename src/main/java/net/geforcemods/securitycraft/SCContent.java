@@ -85,6 +85,27 @@ public class SCContent { // TODO: Everything
     //ordered by vanilla decoration blocks creative tab order
     @OwnableTE @Reinforced(hasTint = false) public static Block REINFORCED_IRON_BARS;
     //ordered by vanilla redstone tab order
+    @HasManualPage @Reinforced public static Block REINFORCED_LEVER;
+    @HasManualPage @Reinforced public static Block REINFORCED_STONE_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_OAK_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_SPRUCE_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_BIRCH_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_JUNGLE_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_ACACIA_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_DARK_OAK_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_CRIMSON_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_WARPED_PRESSURE_PLATE;
+    @Reinforced public static Block REINFORCED_POLISHED_BLACKSTONE_PRESSURE_PLATE;
+    @HasManualPage @Reinforced public static Block REINFORCED_STONE_BUTTON;
+    @Reinforced public static Block REINFORCED_OAK_BUTTON;
+    @Reinforced public static Block REINFORCED_SPRUCE_BUTTON;
+    @Reinforced public static Block REINFORCED_BIRCH_BUTTON;
+    @Reinforced public static Block REINFORCED_JUNGLE_BUTTON;
+    @Reinforced public static Block REINFORCED_ACACIA_BUTTON;
+    @Reinforced public static Block REINFORCED_DARK_OAK_BUTTON;
+    @Reinforced public static Block REINFORCED_CRIMSON_BUTTON;
+    @Reinforced public static Block REINFORCED_WARPED_BUTTON;
+    @Reinforced public static Block REINFORCED_POLISHED_BLACKSTONE_BUTTON;
 
     //misc
     @Reinforced(tint=0x0E7063) public static Block REINFORCED_CHISELED_CRYSTAL_QUARTZ;
@@ -145,6 +166,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
     public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
     public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
+    public static BlockEntityType<WhitelistOnlyTileEntity> teTypeWhitelistOnly;
     public static BlockEntityType<ProjectorTileEntity> teTypeProjector;
 
     //entity types

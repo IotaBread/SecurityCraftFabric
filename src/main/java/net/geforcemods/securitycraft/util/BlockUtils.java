@@ -14,7 +14,7 @@ import net.geforcemods.securitycraft.blocks.KeypadBlock;
 import net.geforcemods.securitycraft.blocks.LaserBlock;
 import net.geforcemods.securitycraft.blocks.RetinalScannerBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedButtonBlock;
-//import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedLeverBlock;
+import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedLeverBlock;
 //import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedPressurePlateBlock;
 import net.geforcemods.securitycraft.misc.ModuleType;
 import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
@@ -191,8 +191,8 @@ public class BlockUtils{
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYCARD_READER, true, (state, te) -> state.get(KeycardReaderBlock.POWERED)) ||
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.INVENTORY_SCANNER, true, (state, te) -> ((InventoryScannerTileEntity)te).hasModule(ModuleType.REDSTONE) && ((InventoryScannerTileEntity)te).shouldProvidePower()) /*||
                 hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> PRESSURE_PLATES.contains(state.getBlock()) && state.get(ReinforcedPressurePlateBlock.POWERED)) ||
-                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED)) ||
-                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER, true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED))*/;
+                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED))*/ ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER, true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED));
     }
 
     private static boolean hasActiveSCBlockNextTo(World world, BlockPos pos, BlockEntity te, Block block, boolean checkForBlock, BiFunction<BlockState,BlockEntity,Boolean> extraCondition)
