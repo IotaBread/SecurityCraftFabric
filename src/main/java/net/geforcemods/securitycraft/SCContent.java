@@ -50,6 +50,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block PORTABLE_RADAR;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block PROJECTOR;
     @HasManualPage @RegisterItemBlock public static Block PROTECTO;
+    @OwnableTE public static Block REINFORCED_DOOR;
     @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
     public static Block SECRET_OAK_SIGN;
@@ -144,6 +145,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item KEY_PANEL;
     public static Item KEYPAD_CHEST_ITEM;
     @HasManualPage public static Item LIMITED_USE_KEYCARD;
+    @HasManualPage public static Item REINFORCED_DOOR_ITEM;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item REMOTE_ACCESS_SENTRY;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
