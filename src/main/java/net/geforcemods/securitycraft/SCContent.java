@@ -41,6 +41,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IMS;
     @HasManualPage @RegisterItemBlock public static Block INVENTORY_SCANNER;
     public static Block INVENTORY_SCANNER_FIELD;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static Block IRON_FENCE;
     @HasManualPage @RegisterItemBlock public static Block KEYCARD_READER;
     @HasManualPage @RegisterItemBlock public static Block KEYPAD;
     @HasManualPage public static Block KEYPAD_CHEST;
@@ -51,6 +52,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block PANIC_BUTTON;
     @HasManualPage @RegisterItemBlock public static Block PORTABLE_RADAR;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block PROJECTOR;
+    @HasManualPage @RegisterItemBlock public static Block PROTECTO;
     @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
     public static Block SECRET_OAK_SIGN;
@@ -134,6 +136,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
     public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
     public static BlockEntityType<IMSTileEntity> teTypeIms;
+    public static BlockEntityType<ProtectoTileEntity> teTypeProtecto;
     public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
     public static BlockEntityType<SecretSignTileEntity> teTypeSecretSign;
     public static BlockEntityType<MotionActivatedLightTileEntity> teTypeMotionLight;
