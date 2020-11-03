@@ -97,6 +97,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block FURNACE_MINE;
 
     //reinforced blocks (ordered by vanilla building blocks creative tab order)
+    @OwnableTE @Reinforced public static Block REINFORCED_OAK_STAIRS;
     //ordered by vanilla decoration blocks creative tab order
     @OwnableTE @Reinforced(hasTint = false) public static Block REINFORCED_IRON_BARS;
     //ordered by vanilla redstone tab order
