@@ -6,6 +6,7 @@ import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
 import net.geforcemods.securitycraft.containers.KeypadFurnaceContainer;
 import net.geforcemods.securitycraft.containers.ProjectorContainer;
+import net.geforcemods.securitycraft.entity.BouncingBettyEntity;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
@@ -191,6 +192,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<ProjectorTileEntity> teTypeProjector;
 
     //entity types
+    public static EntityType<BouncingBettyEntity> eTypeBouncingBetty;
     public static EntityType<IMSBombEntity> eTypeImsBomb;
     public static EntityType<SecurityCameraEntity> eTypeSecurityCamera;
 
