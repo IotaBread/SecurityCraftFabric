@@ -107,6 +107,7 @@ public class SCContent { // TODO: Everything
     @Reinforced public static Block REINFORCED_CRIMSON_BUTTON;
     @Reinforced public static Block REINFORCED_WARPED_BUTTON;
     @Reinforced public static Block REINFORCED_POLISHED_BLACKSTONE_BUTTON;
+    @HasManualPage @Reinforced public static Block REINFORCED_HOPPER;
 
     //misc
     @Reinforced(tint=0x0E7063) public static Block REINFORCED_CHISELED_CRYSTAL_QUARTZ;
@@ -169,6 +170,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
     public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
     public static BlockEntityType<WhitelistOnlyTileEntity> teTypeWhitelistOnly;
+    public static BlockEntityType<ReinforcedHopperTileEntity> teTypeReinforcedHopper;
     public static BlockEntityType<ProjectorTileEntity> teTypeProjector;
 
     //entity types
