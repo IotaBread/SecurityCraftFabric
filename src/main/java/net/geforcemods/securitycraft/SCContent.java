@@ -5,6 +5,7 @@ import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.containers.GenericTEContainer;
 import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
 import net.geforcemods.securitycraft.containers.KeypadFurnaceContainer;
+import net.geforcemods.securitycraft.containers.ProjectorContainer;
 import net.geforcemods.securitycraft.entity.IMSBombEntity;
 import net.geforcemods.securitycraft.entity.SecurityCameraEntity;
 import net.geforcemods.securitycraft.items.ModuleItem;
@@ -49,6 +50,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block MOTION_ACTIVATED_LIGHT;
     @HasManualPage @OwnableTE @RegisterItemBlock public static Block PANIC_BUTTON;
     @HasManualPage @RegisterItemBlock public static Block PORTABLE_RADAR;
+    @HasManualPage @OwnableTE @RegisterItemBlock public static Block PROJECTOR;
     @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
     public static Block SECRET_OAK_SIGN;
@@ -138,6 +140,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
     public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
     public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
+    public static BlockEntityType<ProjectorTileEntity> teTypeProjector;
 
     //entity types
     public static EntityType<IMSBombEntity> eTypeImsBomb;
@@ -146,6 +149,7 @@ public class SCContent { // TODO: Everything
     //container types
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
+    public static ScreenHandlerType<ProjectorContainer> cTypeProjector;
     public static ScreenHandlerType<GenericTEContainer> cTypeCheckPassword;
     public static ScreenHandlerType<GenericTEContainer> cTypeSetPassword;
     public static ScreenHandlerType<GenericTEContainer> cTypeUsernameLogger;
