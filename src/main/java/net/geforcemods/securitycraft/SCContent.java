@@ -81,6 +81,23 @@ public class SCContent { // TODO: Everything
     public static Block FAKE_LAVA_BLOCK;
 
     //block mines
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block STONE_MINE;
+    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block DIRT_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block COBBLESTONE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block SAND_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block GRAVEL_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block GOLD_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block IRON_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block COAL_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block NETHER_GOLD_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block LAPIS_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block DIAMOND_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block REDSTONE_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block EMERALD_ORE_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block QUARTZ_ORE_MINE;
+    public static Block ACIENT_DEBRIS_MINE;
+    @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block GILDED_BLACKSTONE_MINE;
+    @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block FURNACE_MINE;
 
     //reinforced blocks (ordered by vanilla building blocks creative tab order)
     //ordered by vanilla decoration blocks creative tab order

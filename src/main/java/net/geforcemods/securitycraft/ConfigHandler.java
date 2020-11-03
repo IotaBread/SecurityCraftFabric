@@ -18,7 +18,7 @@ public class ConfigHandler implements ConfigData {
     public boolean ableToCraftKeycard5 = true;
     public boolean ableToCraftLUKeycard = true;
     public boolean smallerMineExplosion = false;
-    public boolean mineExplodesWhenOnCreative = true;
+    public boolean mineExplodesWhenInCreative = true;
     public double portableRadarSearchRadius = 25.0D;
     public int usernameLoggerSearchRadius = 3;
     public int laserBlockRange = 5;
