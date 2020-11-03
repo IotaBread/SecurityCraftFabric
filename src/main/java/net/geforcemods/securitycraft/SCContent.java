@@ -136,7 +136,13 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item CODEBREAKER;
     @HasManualPage public static Item FAKE_LAVA_BUCKET;
     @HasManualPage public static Item FAKE_WATER_BUCKET;
+    @HasManualPage public static Item KEYCARD_LVL_1;
+    @HasManualPage public static Item KEYCARD_LVL_2;
+    @HasManualPage public static Item KEYCARD_LVL_3;
+    @HasManualPage public static Item KEYCARD_LVL_4;
+    @HasManualPage public static Item KEYCARD_LVL_5;
     @HasManualPage public static Item KEY_PANEL;
+    public static Item KEYPAD_CHEST_ITEM;
     @HasManualPage public static Item LIMITED_USE_KEYCARD;
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item REMOTE_ACCESS_SENTRY;
