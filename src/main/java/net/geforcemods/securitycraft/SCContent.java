@@ -159,6 +159,8 @@ public class SCContent { // TODO: Everything
     public static Item SECRET_CRIMSON_SIGN_ITEM;
     public static Item SECRET_WARPED_SIGN_ITEM;
     @HasManualPage(designedBy="Henzoid") public static Item SENTRY;
+    @HasManualPage public static Item TASER;
+    public static Item TASER_POWERED;
     @HasManualPage public static Item UNIVERSAL_BLOCK_MODIFIER;
     @HasManualPage public static Item UNIVERSAL_BLOCK_REMOVER;
     @HasManualPage public static Item UNIVERSAL_OWNER_CHANGER;
