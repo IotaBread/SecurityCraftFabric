@@ -149,6 +149,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static Item REMOTE_ACCESS_MINE;
     @HasManualPage public static Item REMOTE_ACCESS_SENTRY;
     @HasManualPage public static Item SCANNER_DOOR_ITEM;
+    @HasManualPage public static Item SC_MANUAL;
     @HasManualPage public static Item SECRET_OAK_SIGN_ITEM;
     public static Item SECRET_SPRUCE_SIGN_ITEM;
     public static Item SECRET_BIRCH_SIGN_ITEM;
