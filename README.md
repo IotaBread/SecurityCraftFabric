@@ -1,7 +1,6 @@
-[![](http://cf.way2muchnoise.eu/full_security-craft_downloads.svg)](https://minecraft.curseforge.com/projects/security-craft) [![](http://cf.way2muchnoise.eu/versions/For%20MC_security-craft_all.svg)](https://minecraft.curseforge.com/projects/security-craft/files)
-
 SecurityCraft
 =============
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraft/Java%20CI%20with%20Gradle?style=flat-square)
 
 Source code for the [Fabric](https://fabricmc.net) version of the Minecraft mod "SecurityCraft". If you are looking for the original version (the forge one), please enter this [link](https://github.com/Geforce132/SecurityCraft).
 
