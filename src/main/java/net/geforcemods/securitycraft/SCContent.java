@@ -47,6 +47,7 @@ public class SCContent { // TODO: Everything
     @HasManualPage @RegisterItemBlock public static Block LASER_BLOCK;
     public static Block LASER_FIELD;
     @HasManualPage @RegisterItemBlock public static Block MOTION_ACTIVATED_LIGHT;
+    @HasManualPage @OwnableTE @RegisterItemBlock public static Block PANIC_BUTTON;
     @HasManualPage @RegisterItemBlock public static Block PORTABLE_RADAR;
     @HasManualPage @RegisterItemBlock public static Block RETINAL_SCANNER;
     public static Block SCANNER_DOOR;
