@@ -2,10 +2,7 @@ package net.geforcemods.securitycraft;
 
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
-import net.geforcemods.securitycraft.containers.GenericTEContainer;
-import net.geforcemods.securitycraft.containers.InventoryScannerContainer;
-import net.geforcemods.securitycraft.containers.KeypadFurnaceContainer;
-import net.geforcemods.securitycraft.containers.ProjectorContainer;
+import net.geforcemods.securitycraft.containers.*;
 import net.geforcemods.securitycraft.entity.*;
 import net.geforcemods.securitycraft.items.ModuleItem;
 import net.geforcemods.securitycraft.tileentity.*;
@@ -133,6 +130,8 @@ public class SCContent { // TODO: Everything
 
     //items
     @HasManualPage public static Item ADMIN_TOOL;
+    public static Item ACIENT_DEBRIS_MINE_ITEM;
+    @HasManualPage public static Item BRIEFCASE;
     @HasManualPage public static Item CAMERA_MONITOR;
     @HasManualPage public static Item CODEBREAKER;
     @HasManualPage public static Item FAKE_LAVA_BUCKET;
@@ -202,6 +201,9 @@ public class SCContent { // TODO: Everything
     public static EntityType<BulletEntity> eTypeBullet;
 
     //container types
+    public static ScreenHandlerType<GenericContainer> cTypeBriefcase;
+    public static ScreenHandlerType<BriefcaseContainer> cTypeBriefcaseInventory;
+    public static ScreenHandlerType<GenericContainer> cTypeBriefcaseSetup;
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
     public static ScreenHandlerType<ProjectorContainer> cTypeProjector;
