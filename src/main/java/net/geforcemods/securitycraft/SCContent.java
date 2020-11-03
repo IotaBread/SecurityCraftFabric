@@ -73,6 +73,7 @@ public class SCContent { // TODO: Everything
     public static Block SECRET_WARPED_SIGN;
     public static Block SECRET_WARPED_WALL_SIGN;
     @HasManualPage @RegisterItemBlock public static Block SECURITY_CAMERA;
+    @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block TRACK_MINE;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.TECHNICAL) public static Block TROPHY_SYSTEM;
     @HasManualPage @RegisterItemBlock public static Block USERNAME_LOGGER;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block MINE;
@@ -163,6 +164,7 @@ public class SCContent { // TODO: Everything
     public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
     public static BlockEntityType<SecretSignTileEntity> teTypeSecretSign;
     public static BlockEntityType<MotionActivatedLightTileEntity> teTypeMotionLight;
+    public static BlockEntityType<TrackMineTileEntity> teTypeTrackMine;
     public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
     public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
     public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
