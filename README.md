@@ -4,6 +4,9 @@ SecurityCraft
 
 Source code for the [Fabric](https://fabricmc.net) version of the Minecraft mod "SecurityCraft". If you are looking for the original version (the forge one), please enter this [link](https://github.com/Geforce132/SecurityCraft).
 
+## Contributing
+If you want to contribute to the mod please read [CONTRIBUTING.md](https://github.com/ByMartrixx/SecurityCraft/blob/fabric/1.16.2/CONTRIBUTING.md)
+
 ### Disclaimer
 - This mod **was not** created by me, I am just the one who ported its code from [Forge](https://minecraftforge.net) to [Fabric](https://fabricmc.net)
 - This mod is currently a work in progress. Currently, the only feature that has been fully ported is the command. Other features are still being worked on (see [commits](https://github.com/ByMartrixx/SecurityCraft/commits/fabric/1.16.2) for more details of which features are being ported).
