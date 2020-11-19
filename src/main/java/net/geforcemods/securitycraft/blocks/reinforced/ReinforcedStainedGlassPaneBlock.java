@@ -17,11 +17,11 @@ public class ReinforcedStainedGlassPaneBlock extends ReinforcedPaneBlock impleme
 		this.color = color;
 	}
 
-	@Override
-	public float[] getBeaconColorMultiplier(BlockState state, WorldView world, BlockPos pos, BlockPos beaconPos)
-	{
-		return color.getColorComponents();
-	}
+//	@Override // Forge method
+//	public float[] getBeaconColorMultiplier(BlockState state, WorldView world, BlockPos pos, BlockPos beaconPos)
+//	{
+//		return color.getColorComponents();
+//	}
 
 	@Override
 	public DyeColor getColor()
