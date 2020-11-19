@@ -548,7 +548,7 @@ public class SCContent { // TODO: Everything
     public static ScreenHandlerType<BriefcaseContainer> cTypeBriefcaseInventory;
     public static ScreenHandlerType<GenericContainer> cTypeBriefcaseSetup;
     public static ScreenHandlerType<CustomizeBlockContainer> cTypeCustomizeBlock;
-    //public static ScreenHandlerType<DisguiseModuleContainer> cTypeDisguiseModule;
+    public static ScreenHandlerType<DisguiseModuleContainer> cTypeDisguiseModule;
     public static ScreenHandlerType<InventoryScannerContainer> cTypeInventoryScanner;
     public static ScreenHandlerType<KeypadFurnaceContainer> cTypeKeypadFurnace;
     public static ScreenHandlerType<ProjectorContainer> cTypeProjector;
