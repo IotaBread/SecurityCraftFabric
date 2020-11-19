@@ -3,6 +3,7 @@ package net.geforcemods.securitycraft.blocks;
 import net.geforcemods.securitycraft.tileentity.TrophySystemTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -17,7 +18,7 @@ import net.minecraft.world.WorldView;
 
 import java.util.stream.Stream;
 
-public class TrophySystemBlock extends OwnableBlock {
+public class TrophySystemBlock extends OwnableBlock implements BlockEntityProvider {
 
 	private static final VoxelShape SHAPE = Stream.of(
 			Block.createCuboidShape(6.5, 0, 12, 9.5, 1.5, 15),
@@ -57,9 +58,9 @@ public class TrophySystemBlock extends OwnableBlock {
 		return SHAPE;
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new TrophySystemTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new TrophySystemTileEntity();
+	}
 
 }

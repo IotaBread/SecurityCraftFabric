@@ -12,10 +12,7 @@ import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.EntityUtils;
 import net.geforcemods.securitycraft.util.ModuleUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.ShulkerBoxBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -28,7 +25,7 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.hit.HitResult;
+//import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -40,7 +37,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.function.BiFunction;
 
-public class InventoryScannerFieldBlock extends OwnableBlock implements IIntersectable {
+public class InventoryScannerFieldBlock extends OwnableBlock implements IIntersectable, BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty HORIZONTAL = BooleanProperty.of("horizontal");
@@ -296,16 +293,16 @@ public class InventoryScannerFieldBlock extends OwnableBlock implements IInterse
 		builder.add(FACING, HORIZONTAL);
 	}
 
-//	@Override // Forge method
-//	public ItemStack getPickBlock(BlockState state, HitResult target, BlockView world, BlockPos pos, PlayerEntity player)
-//	{
-//		return ItemStack.EMPTY;
-//	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new SecurityCraftTileEntity().intersectsEntities();
-//	}
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new SecurityCraftTileEntity().intersectsEntities();
+	}
 
 	@Override
 	@Environment(EnvType.CLIENT)

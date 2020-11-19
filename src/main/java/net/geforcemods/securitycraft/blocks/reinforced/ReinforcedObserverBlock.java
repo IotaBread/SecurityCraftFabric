@@ -1,12 +1,9 @@
 package net.geforcemods.securitycraft.blocks.reinforced;
 
-//import net.geforcemods.securitycraft.api.OwnableTileEntity;
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ObserverBlock;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -14,7 +11,7 @@ import net.minecraft.loot.context.LootContext.Builder;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 //import net.minecraft.util.math.Direction;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.common.MinecraftForge;
 
@@ -22,7 +19,7 @@ import net.minecraft.world.World;
 //import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
-public class ReinforcedObserverBlock extends ObserverBlock implements IReinforcedBlock
+public class ReinforcedObserverBlock extends ObserverBlock implements IReinforcedBlock, BlockEntityProvider
 {
 	public ReinforcedObserverBlock(Settings settings)
 	{
@@ -65,10 +62,10 @@ public class ReinforcedObserverBlock extends ObserverBlock implements IReinforce
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new OwnableTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new OwnableTileEntity();
+	}
 }

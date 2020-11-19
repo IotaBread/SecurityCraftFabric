@@ -8,10 +8,7 @@ import net.geforcemods.securitycraft.compat.fabric.FabricEntityShapeContext;
 import net.geforcemods.securitycraft.misc.ModuleType;
 import net.geforcemods.securitycraft.tileentity.BlockPocketTileEntity;
 import net.geforcemods.securitycraft.util.ModuleUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,7 +23,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class BlockPocketWallBlock extends OwnableBlock implements IOverlayDisplay
+public class BlockPocketWallBlock extends OwnableBlock implements IOverlayDisplay, BlockEntityProvider
 {
 	public static final BooleanProperty SEE_THROUGH = BooleanProperty.of("see_through");
 	public static final BooleanProperty SOLID = BooleanProperty.of("solid");
@@ -98,11 +95,11 @@ public class BlockPocketWallBlock extends OwnableBlock implements IOverlayDispla
 		builder.add(SEE_THROUGH, SOLID);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new BlockPocketTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new BlockPocketTileEntity();
+	}
 
 	@Override
 	public ItemStack getDisplayStack(World world, BlockState state, BlockPos pos)

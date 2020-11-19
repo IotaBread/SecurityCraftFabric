@@ -1,12 +1,9 @@
 package net.geforcemods.securitycraft.blocks.reinforced;
 
-//import net.geforcemods.securitycraft.api.OwnableTileEntity;
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.geforcemods.securitycraft.util.BlockUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.TrapdoorBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,11 +12,11 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.common.MinecraftForge;
 
-public class ReinforcedIronTrapDoorBlock extends TrapdoorBlock implements IReinforcedBlock {
+public class ReinforcedIronTrapDoorBlock extends TrapdoorBlock implements IReinforcedBlock, BlockEntityProvider {
 
 	public ReinforcedIronTrapDoorBlock(Settings settings) {
 		super(settings);
@@ -72,11 +69,11 @@ public class ReinforcedIronTrapDoorBlock extends TrapdoorBlock implements IReinf
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new OwnableTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new OwnableTileEntity();
+	}
 
 	@Override
 	public Block getVanillaBlock()

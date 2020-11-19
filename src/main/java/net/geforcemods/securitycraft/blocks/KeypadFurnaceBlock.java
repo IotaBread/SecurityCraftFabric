@@ -7,10 +7,7 @@ import net.geforcemods.securitycraft.tileentity.KeypadFurnaceTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.ModuleUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,7 +37,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class KeypadFurnaceBlock extends OwnableBlock implements IPasswordConvertible {
+public class KeypadFurnaceBlock extends OwnableBlock implements IPasswordConvertible, BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty OPEN = Properties.OPEN;
@@ -178,10 +175,10 @@ public class KeypadFurnaceBlock extends OwnableBlock implements IPasswordConvert
 		builder.add(FACING, OPEN, LIT);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new KeypadFurnaceTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new KeypadFurnaceTileEntity();
+	}
 
 	@Override
 	public Block getOriginalBlock()

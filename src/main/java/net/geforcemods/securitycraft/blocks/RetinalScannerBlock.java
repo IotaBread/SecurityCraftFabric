@@ -4,6 +4,7 @@ import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.geforcemods.securitycraft.tileentity.RetinalScannerTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -26,7 +27,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class RetinalScannerBlock extends DisguisableBlock {
+public class RetinalScannerBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty POWERED = Properties.POWERED;
@@ -110,10 +111,10 @@ public class RetinalScannerBlock extends DisguisableBlock {
 		builder.add(POWERED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new RetinalScannerTileEntity().activatedByView();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new RetinalScannerTileEntity().activatedByView();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

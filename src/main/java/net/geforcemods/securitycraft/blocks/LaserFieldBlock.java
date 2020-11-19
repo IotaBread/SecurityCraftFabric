@@ -12,6 +12,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.EntityUtils;
 import net.geforcemods.securitycraft.util.ModuleUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -32,7 +33,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
-public class LaserFieldBlock extends OwnableBlock implements IIntersectable{
+public class LaserFieldBlock extends OwnableBlock implements IIntersectable, BlockEntityProvider {
 
 	public static final IntProperty BOUNDTYPE = IntProperty.of("boundtype", 1, 3);
 	private static final VoxelShape SHAPE_X = Block.createCuboidShape(0, 6.75, 6.75, 16, 9.25, 9.25);
@@ -146,16 +147,16 @@ public class LaserFieldBlock extends OwnableBlock implements IIntersectable{
 		builder.add(BOUNDTYPE);
 	}
 
-//	@Override // Forge method
-//	public ItemStack getPickBlock(BlockState state, HitResult target, BlockView world, BlockPos pos, PlayerEntity player)
-//	{
-//		return ItemStack.EMPTY;
-//	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new SecurityCraftTileEntity().intersectsEntities();
-//	}
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new SecurityCraftTileEntity().intersectsEntities();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

@@ -7,6 +7,7 @@ import net.geforcemods.securitycraft.api.Owner;
 import net.geforcemods.securitycraft.tileentity.MotionActivatedLightTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,7 +30,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class MotionActivatedLightBlock extends OwnableBlock {
+public class MotionActivatedLightBlock extends OwnableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty LIT = Properties.LIT;
@@ -110,10 +111,10 @@ public class MotionActivatedLightBlock extends OwnableBlock {
 		builder.add(LIT);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new MotionActivatedLightTileEntity().attacks(LivingEntity.class, ConfigHandler.CONFIG.motionActivatedLightSearchRadius.get(), 1);
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new MotionActivatedLightTileEntity().attacks(LivingEntity.class, ConfigHandler.CONFIG.motionActivatedLightSearchRadius, 1);
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

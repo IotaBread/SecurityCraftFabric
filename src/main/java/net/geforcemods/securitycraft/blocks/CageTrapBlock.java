@@ -14,10 +14,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.ClientUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.geforcemods.securitycraft.util.Utils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.EntityShapeContext;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -38,7 +35,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.util.TriConsumer;
 
-public class CageTrapBlock extends DisguisableBlock implements IIntersectable {
+public class CageTrapBlock extends DisguisableBlock implements IIntersectable, BlockEntityProvider {
 
 	public static final BooleanProperty DEACTIVATED = BooleanProperty.of("deactivated");
 
@@ -140,10 +137,10 @@ public class CageTrapBlock extends DisguisableBlock implements IIntersectable {
 		builder.add(DEACTIVATED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new CageTrapTileEntity().intersectsEntities();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new CageTrapTileEntity().intersectsEntities();
+	}
 
 	public static class BlockModifier
 	{

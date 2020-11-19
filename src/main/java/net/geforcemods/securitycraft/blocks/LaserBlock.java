@@ -8,6 +8,7 @@ import net.geforcemods.securitycraft.api.CustomizableTileEntity;
 import net.geforcemods.securitycraft.tileentity.LaserBlockTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -26,7 +27,7 @@ import net.minecraft.world.WorldView;
 
 import java.util.Random;
 
-public class LaserBlock extends DisguisableBlock {
+public class LaserBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final BooleanProperty POWERED = Properties.POWERED;
 
@@ -194,8 +195,8 @@ public class LaserBlock extends DisguisableBlock {
 		builder.add(POWERED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new LaserBlockTileEntity().linkable();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new LaserBlockTileEntity().linkable();
+	}
 }

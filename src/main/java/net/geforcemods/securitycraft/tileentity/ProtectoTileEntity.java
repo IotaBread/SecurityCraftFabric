@@ -4,7 +4,7 @@ import net.geforcemods.securitycraft.SCContent;
 import net.geforcemods.securitycraft.api.CustomizableTileEntity;
 import net.geforcemods.securitycraft.api.Option;
 import net.geforcemods.securitycraft.blocks.ProtectoBlock;
-//import net.geforcemods.securitycraft.entity.SentryEntity;
+import net.geforcemods.securitycraft.entity.SentryEntity;
 import net.geforcemods.securitycraft.misc.ModuleType;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.EntityUtils;
@@ -23,7 +23,7 @@ public class ProtectoTileEntity extends CustomizableTileEntity {
 
 	@Override
 	public boolean attackEntity(Entity entity){
-		if (entity instanceof LivingEntity && /*!(entity instanceof SentryEntity) &&*/ !EntityUtils.isInvisible(((LivingEntity)entity))) {
+		if (entity instanceof LivingEntity && !(entity instanceof SentryEntity) && !EntityUtils.isInvisible(((LivingEntity)entity))) {
 			if ((entity instanceof PlayerEntity && (getOwner().isOwner((PlayerEntity) entity) || (hasModule(ModuleType.WHITELIST) && ModuleUtils.getPlayersFromModule(world, pos, ModuleType.WHITELIST).contains(((LivingEntity) entity).getName().getString().toLowerCase())))))
 				return false;
 

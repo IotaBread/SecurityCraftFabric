@@ -6,8 +6,9 @@ import net.geforcemods.securitycraft.tileentity.WhitelistOnlyTileEntity;
 import net.geforcemods.securitycraft.util.ModuleUtils;
 import net.minecraft.block.AbstractButtonBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -19,13 +20,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.common.MinecraftForge;
 
 import java.util.List;
 
-public class ReinforcedButtonBlock extends AbstractButtonBlock implements IReinforcedBlock
+public class ReinforcedButtonBlock extends AbstractButtonBlock implements IReinforcedBlock, BlockEntityProvider
 {
 	private final Block vanillaBlock;
 	public boolean isWoodenButton;
@@ -86,10 +87,10 @@ public class ReinforcedButtonBlock extends AbstractButtonBlock implements IReinf
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new WhitelistOnlyTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new WhitelistOnlyTileEntity();
+	}
 }

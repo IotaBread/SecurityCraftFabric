@@ -153,9 +153,9 @@ public abstract class DisguisableBlock extends OwnableBlock implements IOverlayD
 		return getDisguisedStack(world, pos).getItem() == asItem();
 	}
 
-//	@Override // Forge method
-//	public ItemStack getPickBlock(BlockState state, HitResult target, BlockView world, BlockPos pos, PlayerEntity player)
-//	{
-//		return getDisguisedStack(world, pos);
-//	}
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return getDisguisedStack(world, pos);
+	}
 }

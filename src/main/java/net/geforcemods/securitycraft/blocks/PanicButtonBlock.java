@@ -3,10 +3,7 @@ package net.geforcemods.securitycraft.blocks;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.geforcemods.securitycraft.util.BlockUtils;
-import net.minecraft.block.AbstractButtonBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.LivingEntity;
@@ -25,7 +22,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.common.MinecraftForge;
 
-public class PanicButtonBlock extends AbstractButtonBlock {
+public class PanicButtonBlock extends AbstractButtonBlock implements BlockEntityProvider {
 	private static final VoxelShape FLOOR_NS_POWERED = Block.createCuboidShape(3, 0, 5, 13, 1, 11);
 	private static final VoxelShape FLOOR_NS_UNPOWERED = Block.createCuboidShape(3, 0, 5, 13, 2, 11);
 	private static final VoxelShape FLOOR_EW_POWERED = Block.createCuboidShape(5, 0, 3, 11, 1, 13);
@@ -170,11 +167,11 @@ public class PanicButtonBlock extends AbstractButtonBlock {
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new OwnableTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new OwnableTileEntity();
+	}
 
 	@Override
 	protected SoundEvent getClickSound(boolean turningOn)

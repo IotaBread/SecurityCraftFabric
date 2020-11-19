@@ -4,6 +4,7 @@ import net.geforcemods.securitycraft.api.IOwnable;
 import net.geforcemods.securitycraft.tileentity.ProjectorTileEntity;
 import net.geforcemods.securitycraft.util.WorldUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -33,7 +34,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class ProjectorBlock extends DisguisableBlock {
+public class ProjectorBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	private static final VoxelShape NORTH = Stream.of(Block.createCuboidShape(3, 5, 0.9, 6, 8, 1.9), Block.createCuboidShape(0, 3, 1, 16, 10, 16), Block.createCuboidShape(2, 8, 0.5, 7, 9, 1), Block.createCuboidShape(2, 4, 0.5, 7, 5, 1), Block.createCuboidShape(6, 5, 0.5, 7, 8, 1), Block.createCuboidShape(2, 5, 0.5, 3, 8, 1), Block.createCuboidShape(0, 0, 1, 2, 3, 3), Block.createCuboidShape(14, 0, 1, 16, 3, 3), Block.createCuboidShape(14, 0, 14, 16, 3, 16), Block.createCuboidShape(0, 0, 14, 2, 3, 16)).reduce((v1, v2) -> VoxelShapes.combineAndSimplify(v1, v2, BooleanBiFunction.OR)).orElse(VoxelShapes.fullCube());
@@ -140,10 +141,10 @@ public class ProjectorBlock extends DisguisableBlock {
 		builder.add(FACING);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new ProjectorTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new ProjectorTileEntity();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

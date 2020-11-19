@@ -9,6 +9,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.ClientUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +31,7 @@ import net.minecraft.world.World;
 //import net.minecraft.world.WorldView;
 //import net.minecraftforge.fml.network.NetworkHooks;
 
-public class InventoryScannerBlock extends DisguisableBlock {
+public class InventoryScannerBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty HORIZONTAL = BooleanProperty.of("horizontal");
@@ -244,10 +245,10 @@ public class InventoryScannerBlock extends DisguisableBlock {
 		builder.add(FACING, HORIZONTAL);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new InventoryScannerTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new InventoryScannerTileEntity();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

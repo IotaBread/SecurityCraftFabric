@@ -3,6 +3,7 @@ package net.geforcemods.securitycraft.blocks;
 import net.geforcemods.securitycraft.SCContent;
 import net.geforcemods.securitycraft.api.Owner;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,7 +30,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 
 import java.util.Random;
 
-public class AlarmBlock extends OwnableBlock {
+public class AlarmBlock extends OwnableBlock implements BlockEntityProvider {
 
 	public static final BooleanProperty LIT = Properties.LIT;
 	public static final DirectionProperty FACING = Properties.FACING;
@@ -173,10 +174,10 @@ public class AlarmBlock extends OwnableBlock {
 		builder.add(LIT);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView reader){
-//		return new AlarmTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView reader){
+		return new AlarmTileEntity();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

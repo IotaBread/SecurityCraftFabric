@@ -1,8 +1,9 @@
 package net.geforcemods.securitycraft.blocks;
 
-//import net.geforcemods.securitycraft.ConfigHandler;
+import net.geforcemods.securitycraft.ConfigHandler;
 import net.geforcemods.securitycraft.tileentity.UsernameLoggerTileEntity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,11 +20,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.fml.network.NetworkHooks;
 
-public class LoggerBlock extends DisguisableBlock {
+public class LoggerBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -75,10 +76,10 @@ public class LoggerBlock extends DisguisableBlock {
 		builder.add(FACING);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new UsernameLoggerTileEntity().attacks(PlayerEntity.class, ConfigHandler.CONFIG.usernameLoggerSearchRadius, 80);
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new UsernameLoggerTileEntity().attacks(PlayerEntity.class, ConfigHandler.CONFIG.usernameLoggerSearchRadius, 80);
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

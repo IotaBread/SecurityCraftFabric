@@ -2,13 +2,10 @@ package net.geforcemods.securitycraft.blocks;
 
 import net.geforcemods.securitycraft.api.IModuleInventory;
 import net.geforcemods.securitycraft.misc.ModuleType;
-//import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
+import net.geforcemods.securitycraft.tileentity.PortableRadarTileEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
-import net.minecraft.block.ShapeContext;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
@@ -19,7 +16,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class PortableRadarBlock extends OwnableBlock {
+public class PortableRadarBlock extends OwnableBlock implements BlockEntityProvider {
 
 	public static final BooleanProperty POWERED = Properties.POWERED;
 	private static final VoxelShape SHAPE = Block.createCuboidShape(5, 0, 5, 11, 7, 11);
@@ -78,9 +75,9 @@ public class PortableRadarBlock extends OwnableBlock {
 		builder.add(POWERED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new PortableRadarTileEntity().nameable();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new PortableRadarTileEntity().nameable();
+	}
 
 }

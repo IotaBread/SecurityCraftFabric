@@ -2,7 +2,7 @@ package net.geforcemods.securitycraft.blocks;
 
 import net.geforcemods.securitycraft.api.IIntersectable;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
-//import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
+import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.misc.CustomDamageSources;
 import net.geforcemods.securitycraft.util.WorldUtils;
 import net.minecraft.block.*;
@@ -31,7 +31,7 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Map;
 
-public class IronFenceBlock extends OwnableBlock implements IIntersectable {
+public class IronFenceBlock extends OwnableBlock implements IIntersectable, BlockEntityProvider {
 	public static final BooleanProperty NORTH = ConnectingBlock.NORTH;
 	public static final BooleanProperty EAST = ConnectingBlock.EAST;
 	public static final BooleanProperty SOUTH = ConnectingBlock.SOUTH;
@@ -228,9 +228,9 @@ public class IronFenceBlock extends OwnableBlock implements IIntersectable {
 		return tileentity == null ? false : tileentity.onSyncedBlockEvent(eventID, eventParam);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new SecurityCraftTileEntity().intersectsEntities();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new SecurityCraftTileEntity().intersectsEntities();
+	}
 }

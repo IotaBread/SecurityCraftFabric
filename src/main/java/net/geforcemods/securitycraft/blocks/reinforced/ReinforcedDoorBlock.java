@@ -36,7 +36,7 @@ import net.minecraft.world.WorldView;
 
 import org.jetbrains.annotations.Nullable;
 
-public class ReinforcedDoorBlock extends OwnableBlock {
+public class ReinforcedDoorBlock extends OwnableBlock implements BlockEntityProvider {
 	public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 	public static final BooleanProperty OPEN = Properties.OPEN;
 	public static final EnumProperty<DoorHinge> HINGE = Properties.DOOR_HINGE;
@@ -366,10 +366,10 @@ public class ReinforcedDoorBlock extends OwnableBlock {
 		return new ItemStack(SCContent.REINFORCED_DOOR_ITEM);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new OwnableTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new OwnableTileEntity();
+	}
 
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder)

@@ -10,10 +10,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.ClientUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.geforcemods.securitycraft.util.WorldUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.options.GameOptions;
@@ -43,7 +40,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SecurityCameraBlock extends OwnableBlock{
+public class SecurityCameraBlock extends OwnableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = DirectionProperty.of("facing", facing -> facing != Direction.UP);
 	public static final BooleanProperty POWERED = Properties.POWERED;
@@ -205,10 +202,10 @@ public class SecurityCameraBlock extends OwnableBlock{
 		builder.add(POWERED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new SecurityCameraTileEntity().nameable();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new SecurityCameraTileEntity().nameable();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

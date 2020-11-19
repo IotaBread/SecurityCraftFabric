@@ -8,6 +8,7 @@ import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.WorldUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.entity.BlockEntity;
@@ -24,11 +25,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.common.MinecraftForge;
 
-public class ReinforcedFenceGateBlock extends FenceGateBlock implements IIntersectable {
+public class ReinforcedFenceGateBlock extends FenceGateBlock implements IIntersectable, BlockEntityProvider {
 
 	public ReinforcedFenceGateBlock(Settings settings){
 		super(settings);
@@ -107,10 +108,10 @@ public class ReinforcedFenceGateBlock extends FenceGateBlock implements IInterse
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new SecurityCraftTileEntity().intersectsEntities();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new SecurityCraftTileEntity().intersectsEntities();
+	}
 
 }

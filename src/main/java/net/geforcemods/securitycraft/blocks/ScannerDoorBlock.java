@@ -2,8 +2,9 @@ package net.geforcemods.securitycraft.blocks;
 
 import net.geforcemods.securitycraft.SCContent;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
-//import net.geforcemods.securitycraft.tileentity.ScannerDoorTileEntity;
+import net.geforcemods.securitycraft.tileentity.ScannerDoorTileEntity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.entity.BlockEntity;
@@ -15,10 +16,10 @@ import net.minecraft.item.ItemStack;
 //import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class ScannerDoorBlock extends DoorBlock
+public class ScannerDoorBlock extends DoorBlock implements BlockEntityProvider
 {
 	public ScannerDoorBlock(Settings settings)
 	{
@@ -112,11 +113,11 @@ public class ScannerDoorBlock extends DoorBlock
 		return tileentity == null ? false : tileentity.onSyncedBlockEvent(id, param);
 	}
 
-//	@Override // Forge method
-//	public ItemStack getPickBlock(BlockState state, HitResult target, BlockView world, BlockPos pos, PlayerEntity player)
-//	{
-//		return new ItemStack(SCContent.SCANNER_DOOR_ITEM);
-//	}
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return new ItemStack(SCContent.SCANNER_DOOR_ITEM);
+	}
 
 	@Override
 	public PistonBehavior getPistonBehavior(BlockState state)
@@ -130,9 +131,9 @@ public class ScannerDoorBlock extends DoorBlock
 //		return true;
 //	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new ScannerDoorTileEntity().linkable().activatedByView();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new ScannerDoorTileEntity().linkable().activatedByView();
+	}
 }

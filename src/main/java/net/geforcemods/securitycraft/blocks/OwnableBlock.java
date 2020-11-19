@@ -1,16 +1,20 @@
 package net.geforcemods.securitycraft.blocks;
 
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class OwnableBlock extends Block {
+public class OwnableBlock extends Block implements BlockEntityProvider {
     public OwnableBlock(Settings settings) {
         super(settings);
     }
@@ -22,5 +26,8 @@ public class OwnableBlock extends Block {
         }
     }
 
-    // Two methods (#hasTileEntity and #createTileEntity) are from forge and don't have any usage on vanilla
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockView world) {
+        return new OwnableTileEntity();
+    }
 }

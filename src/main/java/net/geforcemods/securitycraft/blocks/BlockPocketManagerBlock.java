@@ -1,7 +1,8 @@
 package net.geforcemods.securitycraft.blocks;
 
-//import net.geforcemods.securitycraft.tileentity.BlockPocketManagerTileEntity;
+import net.geforcemods.securitycraft.tileentity.BlockPocketManagerTileEntity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,11 +18,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-//import net.minecraft.world.BlockView;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 //import net.minecraftforge.fml.network.NetworkHooks;
 
-public class BlockPocketManagerBlock extends OwnableBlock
+public class BlockPocketManagerBlock extends OwnableBlock implements BlockEntityProvider
 {
 	public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
 
@@ -56,11 +57,11 @@ public class BlockPocketManagerBlock extends OwnableBlock
 		builder.add(FACING);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new BlockPocketManagerTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new BlockPocketManagerTileEntity();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)

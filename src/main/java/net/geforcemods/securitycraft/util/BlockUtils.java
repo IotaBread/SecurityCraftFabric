@@ -1,7 +1,7 @@
 package net.geforcemods.securitycraft.util;
 
-//import java.util.Arrays;
-//import java.util.List;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiFunction;
 
 import net.geforcemods.securitycraft.SCContent;
@@ -13,9 +13,9 @@ import net.geforcemods.securitycraft.blocks.KeycardReaderBlock;
 import net.geforcemods.securitycraft.blocks.KeypadBlock;
 import net.geforcemods.securitycraft.blocks.LaserBlock;
 import net.geforcemods.securitycraft.blocks.RetinalScannerBlock;
-//import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedButtonBlock;
+import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedButtonBlock;
 import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedLeverBlock;
-//import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedPressurePlateBlock;
+import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedPressurePlateBlock;
 import net.geforcemods.securitycraft.misc.ModuleType;
 import net.geforcemods.securitycraft.tileentity.InventoryScannerTileEntity;
 import net.geforcemods.securitycraft.tileentity.KeypadChestTileEntity;
@@ -40,30 +40,30 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
 public class BlockUtils{
-//    private static final List<Block> PRESSURE_PLATES = Arrays.asList(new Block[] {
-//            SCContent.REINFORCED_STONE_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_OAK_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_SPRUCE_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_BIRCH_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_JUNGLE_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_ACACIA_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_DARK_OAK_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_CRIMSON_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_WARPED_PRESSURE_PLATE.get(),
-//            SCContent.REINFORCED_POLISHED_BLACKSTONE_PRESSURE_PLATE.get()
-//    });
-//    private static final List<Block> BUTTONS = Arrays.asList(new Block[]{
-//            SCContent.REINFORCED_STONE_BUTTON.get(),
-//            SCContent.REINFORCED_OAK_BUTTON.get(),
-//            SCContent.REINFORCED_SPRUCE_BUTTON.get(),
-//            SCContent.REINFORCED_BIRCH_BUTTON.get(),
-//            SCContent.REINFORCED_JUNGLE_BUTTON.get(),
-//            SCContent.REINFORCED_ACACIA_BUTTON.get(),
-//            SCContent.REINFORCED_DARK_OAK_BUTTON.get(),
-//            SCContent.REINFORCED_CRIMSON_BUTTON.get(),
-//            SCContent.REINFORCED_WARPED_BUTTON.get(),
-//            SCContent.REINFORCED_POLISHED_BLACKSTONE_BUTTON.get()
-//    });
+    private static final List<Block> PRESSURE_PLATES = Arrays.asList(new Block[] {
+            SCContent.REINFORCED_STONE_PRESSURE_PLATE,
+            SCContent.REINFORCED_OAK_PRESSURE_PLATE,
+            SCContent.REINFORCED_SPRUCE_PRESSURE_PLATE,
+            SCContent.REINFORCED_BIRCH_PRESSURE_PLATE,
+            SCContent.REINFORCED_JUNGLE_PRESSURE_PLATE,
+            SCContent.REINFORCED_ACACIA_PRESSURE_PLATE,
+            SCContent.REINFORCED_DARK_OAK_PRESSURE_PLATE,
+            SCContent.REINFORCED_CRIMSON_PRESSURE_PLATE,
+            SCContent.REINFORCED_WARPED_PRESSURE_PLATE,
+            SCContent.REINFORCED_POLISHED_BLACKSTONE_PRESSURE_PLATE
+    });
+    private static final List<Block> BUTTONS = Arrays.asList(new Block[]{
+            SCContent.REINFORCED_STONE_BUTTON,
+            SCContent.REINFORCED_OAK_BUTTON,
+            SCContent.REINFORCED_SPRUCE_BUTTON,
+            SCContent.REINFORCED_BIRCH_BUTTON,
+            SCContent.REINFORCED_JUNGLE_BUTTON,
+            SCContent.REINFORCED_ACACIA_BUTTON,
+            SCContent.REINFORCED_DARK_OAK_BUTTON,
+            SCContent.REINFORCED_CRIMSON_BUTTON,
+            SCContent.REINFORCED_WARPED_BUTTON,
+            SCContent.REINFORCED_POLISHED_BLACKSTONE_BUTTON
+    });
 
     public static boolean isSideSolid(WorldView world, BlockPos pos, Direction side)
     {
@@ -189,9 +189,9 @@ public class BlockUtils{
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.RETINAL_SCANNER, true, (state, te) -> state.get(RetinalScannerBlock.POWERED)) ||
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYPAD, true, (state, te) -> state.get(KeypadBlock.POWERED)) ||
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.KEYCARD_READER, true, (state, te) -> state.get(KeycardReaderBlock.POWERED)) ||
-                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.INVENTORY_SCANNER, true, (state, te) -> ((InventoryScannerTileEntity)te).hasModule(ModuleType.REDSTONE) && ((InventoryScannerTileEntity)te).shouldProvidePower()) /*||
+                hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.INVENTORY_SCANNER, true, (state, te) -> ((InventoryScannerTileEntity)te).hasModule(ModuleType.REDSTONE) && ((InventoryScannerTileEntity)te).shouldProvidePower()) ||
                 hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> PRESSURE_PLATES.contains(state.getBlock()) && state.get(ReinforcedPressurePlateBlock.POWERED)) ||
-                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED))*/ ||
+                hasActiveSCBlockNextTo(world, pos, thisTile, null, false, (state, te) -> BUTTONS.contains(state.getBlock()) && state.get(ReinforcedButtonBlock.POWERED)) ||
                 hasActiveSCBlockNextTo(world, pos, thisTile, SCContent.REINFORCED_LEVER, true, (state, te) -> state.get(ReinforcedLeverBlock.POWERED));
     }
 

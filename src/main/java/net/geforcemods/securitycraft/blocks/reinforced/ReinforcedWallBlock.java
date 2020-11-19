@@ -3,6 +3,7 @@ package net.geforcemods.securitycraft.blocks.reinforced;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallBlock;
 import net.minecraft.block.entity.BlockEntity;
@@ -19,7 +20,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ReinforcedWallBlock extends WallBlock implements IReinforcedBlock
+public class ReinforcedWallBlock extends WallBlock implements IReinforcedBlock, BlockEntityProvider
 {
 	private final Supplier<Block> vanillaBlockSupplier;
 
@@ -66,10 +67,10 @@ public class ReinforcedWallBlock extends WallBlock implements IReinforcedBlock
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new OwnableTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new OwnableTileEntity();
+	}
 }

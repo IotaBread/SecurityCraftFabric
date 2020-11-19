@@ -9,6 +9,7 @@ import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.ModuleUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,7 +33,7 @@ import net.minecraft.world.WorldView;
 
 import java.util.Random;
 
-public class KeypadBlock extends DisguisableBlock implements IPasswordConvertible {
+public class KeypadBlock extends DisguisableBlock implements IPasswordConvertible, BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty POWERED = Properties.POWERED;
@@ -133,13 +134,13 @@ public class KeypadBlock extends DisguisableBlock implements IPasswordConvertibl
 		builder.add(POWERED);
 	}
 
-//	/**
-//	 * Returns a new instance of a block's tile entity class. Called on placing the block.
-//	 */
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new KeypadTileEntity();
-//	}
+	/**
+	 * Returns a new instance of a block's tile entity class. Called on placing the block.
+	 */
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new KeypadTileEntity();
+	}
 
 	@Override
 	public Block getOriginalBlock()

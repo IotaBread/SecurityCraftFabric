@@ -127,9 +127,9 @@ public class HorizontalReinforcedIronBars extends BaseReinforcedBlock implements
 		return DefaultedList.copyOf(ItemStack.EMPTY);
 	}
 
-//	@Override // Forge method
-//	public ItemStack getPickBlock(BlockState state, HitResult target, BlockView world, BlockPos pos, PlayerEntity player)
-//	{
-//		return new ItemStack(SCContent.REINFORCED_IRON_BARS);
-//	}
+	@Override
+	public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state)
+	{
+		return new ItemStack(SCContent.REINFORCED_IRON_BARS);
+	}
 }

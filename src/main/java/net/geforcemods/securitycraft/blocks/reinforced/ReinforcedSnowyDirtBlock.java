@@ -2,10 +2,10 @@ package net.geforcemods.securitycraft.blocks.reinforced;
 
 import net.geforcemods.securitycraft.SCContent;
 //import net.geforcemods.securitycraft.SCTags;
-//import net.geforcemods.securitycraft.api.OwnableTileEntity;
+import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.misc.OwnershipEvent;
 import net.minecraft.block.*;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -28,7 +28,7 @@ import net.minecraft.world.gen.feature.FlowerFeature;
 import java.util.List;
 import java.util.Random;
 
-public class ReinforcedSnowyDirtBlock extends SnowyBlock implements IReinforcedBlock, Fertilizable
+public class ReinforcedSnowyDirtBlock extends SnowyBlock implements IReinforcedBlock, Fertilizable, BlockEntityProvider
 {
 	private Block vanillaBlock;
 
@@ -188,11 +188,11 @@ public class ReinforcedSnowyDirtBlock extends SnowyBlock implements IReinforcedB
 //	{
 //		return true;
 //	}
-//
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world)
-//	{
-//		return new OwnableTileEntity();
-//	}
+
+	@Override
+	public BlockEntity createBlockEntity(BlockView world)
+	{
+		return new OwnableTileEntity();
+	}
 }
 

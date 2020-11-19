@@ -11,6 +11,7 @@ import net.geforcemods.securitycraft.util.ClientUtils;
 import net.geforcemods.securitycraft.util.ModuleUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,7 +32,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class KeycardReaderBlock extends DisguisableBlock  {
+public class KeycardReaderBlock extends DisguisableBlock implements BlockEntityProvider {
 
 	public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 	public static final BooleanProperty POWERED = Properties.POWERED;
@@ -165,10 +166,10 @@ public class KeycardReaderBlock extends DisguisableBlock  {
 		builder.add(POWERED);
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new KeycardReaderTileEntity();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new KeycardReaderTileEntity();
+	}
 
 	@Override
 	public BlockState rotate(BlockState state, BlockRotation rot)
