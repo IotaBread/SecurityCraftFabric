@@ -98,7 +98,7 @@ public class SCContent { // TODO: Everything
     @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block REDSTONE_ORE_MINE;
     @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block EMERALD_ORE_MINE;
     @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block QUARTZ_ORE_MINE;
-    public static Block ACIENT_DEBRIS_MINE;
+    public static Block ANCIENT_DEBRIS_MINE;
     @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block GILDED_BLACKSTONE_MINE;
     @HasManualPage @OwnableTE @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block FURNACE_MINE;
 

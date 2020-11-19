@@ -90,6 +90,15 @@ public class SecurityCraft implements ModInitializer {
 		AutoConfig.register(ConfigHandler.class, Toml4jConfigSerializer::new);
 
 		ConfigHandler.CONFIG = AutoConfig.getConfigHolder(ConfigHandler.class).getConfig();
+
+		RegistrationHandler.registerItems();
+		RegistrationHandler.registerTileEntities();
+		RegistrationHandler.registerEntities();
+		RegistrationHandler.registerContainers();
+		RegistrationHandler.registerPackets();
+		RegistrationHandler.registerSounds();
+		RegistrationHandler.registerRecipeSerializers();
+		RegistrationHandler.registerDataSerializerEntries();
 		// TODO: SCContent registration
 		// TODO: Packet registration
 	}
