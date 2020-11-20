@@ -178,7 +178,7 @@ public class IMSTileEntity extends CustomizableTileEntity implements NamedScreen
 		{
 			BlockState state = getWorld().getBlockState(getPos().up(height));
 
-			if(state == null || state.isAir(/*getWorld(), getPos()*/)) // Forge method, TODO
+			if(state == null || state.isAir())
 				continue;
 			else
 				break;

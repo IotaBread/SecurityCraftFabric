@@ -93,7 +93,7 @@ public class ReinforcedSnowyDirtBlock extends SnowyBlock implements IReinforcedB
 	@Override
 	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient)
 	{
-		return this == SCContent.REINFORCED_GRASS_BLOCK && world.getBlockState(pos.up()).isAir(/*world, pos.up()*/); // TODO
+		return this == SCContent.REINFORCED_GRASS_BLOCK && world.getBlockState(pos.up()).isAir();
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class ReinforcedSnowyDirtBlock extends SnowyBlock implements IReinforcedB
 					if(tempState.getBlock() == grass.getBlock() && rand.nextInt(10) == 0)
 						((Fertilizable)grass.getBlock()).grow(world, rand, tempPos, tempState);
 
-					if(!tempState.isAir(/*world, tempPos*/)) // TODO
+					if(!tempState.isAir())
 						break;
 
 					BlockState placeState;

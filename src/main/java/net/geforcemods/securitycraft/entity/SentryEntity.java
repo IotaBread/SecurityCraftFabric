@@ -412,7 +412,7 @@ public class SentryEntity extends PathAwareEntity implements RangedAttackMob //n
 			ItemStack disguiseStack = blocks.get(0);
 			BlockState state = Block.getBlockFromItem(disguiseStack.getItem()).getDefaultState();
 
-			if (world.getBlockState(getBlockPos()).isAir(/*world, getBlockPos()*/)) // Forge method, TODO
+			if (world.getBlockState(getBlockPos()).isAir())
 				world.setBlockState(getBlockPos(), state.getOutlineShape(world, getBlockPos()) == VoxelShapes.fullCube() ? state : Blocks.AIR.getDefaultState());
 		}
 

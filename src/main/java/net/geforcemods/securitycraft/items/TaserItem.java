@@ -152,7 +152,7 @@ public class TaserItem extends Item {
 
 				if(sqDist < distance || distance == 0.0D)
 				{
-					if(entity.getRootVehicle() == shooter.getRootVehicle() /*&& !entity.canRiderInteract()*/) // TODO
+					if(entity.getRootVehicle() == shooter.getRootVehicle() /*&& !entity.canRiderInteract()*/) // Seems like canRiderInteract always returns false
 					{
 						if(distance == 0.0D)
 						{

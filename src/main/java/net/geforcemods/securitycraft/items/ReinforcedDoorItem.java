@@ -77,7 +77,7 @@ public class ReinforcedDoorItem extends Item
 	{
 		BlockPos posAbove = pos.up();
 
-		if(!world.getBlockState(posAbove).isAir(/*world, posAbove*/)) // Forge method, TODO
+		if(!world.getBlockState(posAbove).isAir())
 			return false;
 
 		BlockPos left = pos.offset(facing.rotateYClockwise());

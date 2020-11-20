@@ -310,7 +310,7 @@ public class InventoryScannerTileEntity extends DisguisableTileEntity implements
 
 				if(block == SCContent.INVENTORY_SCANNER_FIELD)
 					world.setBlockState(offsetPos, state.with(InventoryScannerFieldBlock.HORIZONTAL, bo.get()));
-				else if(!state.isAir(/*world, offsetPos*/) && block != SCContent.INVENTORY_SCANNER_FIELD && block != SCContent.INVENTORY_SCANNER) // TODO
+				else if(!state.isAir() && block != SCContent.INVENTORY_SCANNER_FIELD && block != SCContent.INVENTORY_SCANNER)
 					break;
 				else if(block == SCContent.INVENTORY_SCANNER && state.get(InventoryScannerBlock.FACING) == facing.getOpposite())
 					break;

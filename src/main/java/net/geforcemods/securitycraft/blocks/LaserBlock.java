@@ -59,7 +59,7 @@ public class LaserBlock extends DisguisableBlock implements BlockEntityProvider 
 				BlockState offsetState = world.getBlockState(offsetPos);
 				Block offsetBlock = offsetState.getBlock();
 
-				if(!offsetState.isAir(/*world, offsetPos*/) && offsetBlock != SCContent.LASER_BLOCK) // Block#isAir(World, BlockPos) is a forge method, TODO
+				if(!offsetState.isAir() && offsetBlock != SCContent.LASER_BLOCK)
 					break inner;
 				else if(offsetBlock == SCContent.LASER_BLOCK)
 				{
@@ -76,7 +76,7 @@ public class LaserBlock extends DisguisableBlock implements BlockEntityProvider 
 							{
 								offsetPos = pos.offset(facing, j);
 
-								if(world.getBlockState(offsetPos).isAir(/*world, offsetPos*/)) // Forge method, TODO
+								if(world.getBlockState(offsetPos).isAir())
 									world.setBlockState(offsetPos, SCContent.LASER_FIELD.getDefaultState().with(LaserFieldBlock.BOUNDTYPE, boundType));
 							}
 						}
