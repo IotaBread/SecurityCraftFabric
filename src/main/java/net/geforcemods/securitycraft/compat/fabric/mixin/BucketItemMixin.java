@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 // This mixin just triggers FillBucketCallback
 @Mixin(BucketItem.class)
 public class BucketItemMixin {
-    @Inject(at = @At(value = "INVOKE"), method = "use", locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/util/hit/HitResult;getType()Lnet/minecraft/util/hit/HitResult$Type;"), method = "use", locals = LocalCapture.CAPTURE_FAILSOFT)
     private void onBucketUsed(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> info, ItemStack itemStack, HitResult hitResult) {
         FillBucketCallback.EVENT.invoker().fill(user, itemStack, world, hitResult);
     }
