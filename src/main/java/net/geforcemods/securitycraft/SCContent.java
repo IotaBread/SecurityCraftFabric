@@ -1,7 +1,12 @@
 package net.geforcemods.securitycraft;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.geforcemods.securitycraft.api.OwnableTileEntity;
 import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
+import net.geforcemods.securitycraft.blocks.*;
+import net.geforcemods.securitycraft.blocks.mines.BouncingBettyBlock;
+import net.geforcemods.securitycraft.compat.fabric.DeferredRegister;
 import net.geforcemods.securitycraft.containers.*;
 import net.geforcemods.securitycraft.entity.*;
 import net.geforcemods.securitycraft.items.ModuleItem;
@@ -11,15 +16,21 @@ import net.geforcemods.securitycraft.util.OwnableTE;
 import net.geforcemods.securitycraft.util.RegisterItemBlock;
 import net.geforcemods.securitycraft.util.RegisterItemBlock.SCItemGroup;
 import net.geforcemods.securitycraft.util.Reinforced;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.MaterialColor;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.registry.Registry;
 
 public class SCContent { // TODO: Everything
-
+    public static DeferredRegister<Block> BLOCKS = new DeferredRegister<>(Registry.BLOCK, SecurityCraft.MODID);
 
     //fluids
     public static FlowableFluid FLOWING_FAKE_WATER;
@@ -28,11 +39,11 @@ public class SCContent { // TODO: Everything
     public static FlowableFluid FAKE_LAVA;
 
     //blocks
-    @HasManualPage @RegisterItemBlock public static Block ALARM;
-    @HasManualPage(designedBy="Henzoid") @RegisterItemBlock public static Block BLOCK_POCKET_MANAGER;
-    @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static Block BLOCK_POCKET_WALL;
-    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static Block BOUNCING_BETTY;
-    @HasManualPage @RegisterItemBlock public static Block CAGE_TRAP;
+    @HasManualPage @RegisterItemBlock public static final Block ALARM = BLOCKS.register("alarm", () -> new AlarmBlock(prop(Material.METAL).ticksRandomly().luminance(state -> state.get(AlarmBlock.LIT) ? 15 : 0)));
+    @HasManualPage(designedBy="Henzoid") @RegisterItemBlock public static final Block BLOCK_POCKET_MANAGER = BLOCKS.register("block_pocket_manager", () -> new BlockPocketManagerBlock(prop()));
+    @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static final Block BLOCK_POCKET_WALL = BLOCKS.register("block_pocket_wall", () -> new BlockPocketWallBlock(prop().noCollision().solidBlock(BlockPocketWallBlock::isNormalCube).suffocates(BlockPocketWallBlock::causesSuffocation).blockVision(BlockPocketWallBlock::causesSuffocation)));
+    @HasManualPage @RegisterItemBlock(SCItemGroup.EXPLOSIVES) public static final Block BOUNCING_BETTY = BLOCKS.register("bouncing_betty", () -> new BouncingBettyBlock(prop(Material.SUPPORTED, 1.0F)));
+    @HasManualPage @RegisterItemBlock public static final Block CAGE_TRAP = BLOCKS.register("cage_trap", () -> new CageTrapBlock(propDisguisable(Material.METAL).sounds(BlockSoundGroup.METAL).noCollision()));
     @RegisterItemBlock(SCItemGroup.DECORATION) public static Block CHISELED_CRYSTAL_QUARTZ;
     @HasManualPage @RegisterItemBlock(SCItemGroup.DECORATION) public static Block CRYSTAL_QUARTZ;
     @RegisterItemBlock(SCItemGroup.DECORATION) public static Block CRYSTAL_QUARTZ_PILLAR;
@@ -559,4 +570,32 @@ public class SCContent { // TODO: Everything
     public static ScreenHandlerType<GenericTEContainer> cTypeKeycardSetup;
     public static ScreenHandlerType<GenericTEContainer> cTypeKeyChanger;
     public static ScreenHandlerType<GenericTEContainer> cTypeBlockPocketManager;
+
+    private static final AbstractBlock.Settings prop() {
+        return prop(Material.STONE);
+    }
+
+    private static final AbstractBlock.Settings prop(Material mat) {
+        return FabricBlockSettings.of(mat).strength(-1.0F, 6000000.0F);
+    }
+
+    private static final AbstractBlock.Settings prop(Material mat, float hardness) {
+        return FabricBlockSettings.of(mat).strength(hardness, 6000000.0F);
+    }
+
+    private static final AbstractBlock.Settings prop(Material mat, MaterialColor color) {
+        return FabricBlockSettings.of(mat, color).strength(-1.0F, 6000000.0F);
+    }
+
+    private static final AbstractBlock.Settings propDisguisable() {
+        return propDisguisable(Material.STONE);
+    }
+
+    private static final AbstractBlock.Settings propDisguisable(Material mat) {
+        return prop(mat).nonOpaque().solidBlock(DisguisableBlock::isNormalCube).suffocates(DisguisableBlock::isSuffocating);
+    }
+
+    private static final Item.Settings itemProp(ItemGroup itemGroup) {
+        return new FabricItemSettings().group(itemGroup);
+    }
 }
