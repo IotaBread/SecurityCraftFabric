@@ -1,17 +1,14 @@
 package net.geforcemods.securitycraft.blocks.mines;
 
 import net.geforcemods.securitycraft.api.IIntersectable;
-//import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
+import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 import net.geforcemods.securitycraft.entity.BouncingBettyEntity;
 import net.geforcemods.securitycraft.util.BlockUtils;
 import net.geforcemods.securitycraft.util.EntityUtils;
 import net.geforcemods.securitycraft.util.PlayerUtils;
 import net.geforcemods.securitycraft.util.WorldUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
-import net.minecraft.block.ShapeContext;
-//import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,7 +25,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 //import net.minecraftforge.registries.ForgeRegistries;
 
-public class BouncingBettyBlock extends ExplosiveBlock implements IIntersectable {
+public class BouncingBettyBlock extends ExplosiveBlock implements IIntersectable, BlockEntityProvider {
 
 	public static final BooleanProperty DEACTIVATED = BooleanProperty.of("deactivated");
 	private static final VoxelShape SHAPE = Block.createCuboidShape(3, 0, 3, 13, 3, 13);
@@ -123,9 +120,9 @@ public class BouncingBettyBlock extends ExplosiveBlock implements IIntersectable
 		return true;
 	}
 
-//	@Override // Forge method
-//	public BlockEntity createTileEntity(BlockState state, BlockView world) {
-//		return new SecurityCraftTileEntity().intersectsEntities();
-//	}
+	@Override
+	public BlockEntity createBlockEntity(BlockView world) {
+		return new SecurityCraftTileEntity().intersectsEntities();
+	}
 
 }
