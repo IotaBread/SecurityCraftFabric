@@ -60,14 +60,16 @@ public class RegistrationHandler
 				{
 					Block block = (Block) field.get(null);
 
-					Registry.register(Registry.ITEM, new Identifier(SecurityCraft.MODID, String.format("item_%d", fieldIndex)), new BlockItem(block, new Item.Settings().group(SecurityCraft.groupSCDecoration).fireproof()));
+//					Registry.register(Registry.ITEM, new Identifier(SecurityCraft.MODID, String.format("item_%d", fieldIndex)), new BlockItem(block, new Item.Settings().group(SecurityCraft.groupSCDecoration).fireproof())); // Right now there isn't any @Reinforced field defined
+					++fieldIndex;
 				}
 				else if(field.isAnnotationPresent(RegisterItemBlock.class))
 				{
 					int tab = field.getAnnotation(RegisterItemBlock.class).value().ordinal();
 					Block block = (Block)field.get(null);
 
-					Registry.register(Registry.ITEM, new Identifier(SecurityCraft.MODID, String.format("item_%d", fieldIndex)), new BlockItem(block, new Item.Settings().group(tab == 0 ? SecurityCraft.groupSCTechnical : (tab == 1 ? SecurityCraft.groupSCMine : SecurityCraft.groupSCDecoration))));
+//					Registry.register(Registry.ITEM, new Identifier(SecurityCraft.MODID, String.format("item_%d", fieldIndex)), new BlockItem(block, new Item.Settings().group(tab == 0 ? SecurityCraft.groupSCTechnical : (tab == 1 ? SecurityCraft.groupSCMine : SecurityCraft.groupSCDecoration)))); // Most of the @Reinforced fields aren't defined right now
+					++fieldIndex;
 				}
 			}
 			catch(IllegalArgumentException | IllegalAccessException e)
@@ -87,7 +89,9 @@ public class RegistrationHandler
 		{
 			try
 			{
-				if(field.isAnnotationPresent(OwnableTE.class))
+				if(field.isAnnotationPresent(OwnableTE.class) &&
+						field.get(null) != null // Just to avoid exceptions because of undefined fields
+				)
 					teOwnableBlocks.add((Block)field.get(null));
 
 			}
@@ -120,9 +124,10 @@ public class RegistrationHandler
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "track_mine"), BlockEntityType.Builder.create(TrackMineTileEntity::new, SCContent.TRACK_MINE).build(null));
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "trophy_system"), BlockEntityType.Builder.create(TrophySystemTileEntity::new, SCContent.TROPHY_SYSTEM).build(null));
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "block_pocket_manager"), BlockEntityType.Builder.create(BlockPocketManagerTileEntity::new, SCContent.BLOCK_POCKET_MANAGER).build(null));
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "block_pocket"), BlockEntityType.Builder.create(BlockPocketTileEntity::new, SCContent.BLOCK_POCKET_WALL, SCContent.REINFORCED_CRYSTAL_QUARTZ, SCContent.REINFORCED_CHISELED_CRYSTAL_QUARTZ, SCContent.REINFORCED_CRYSTAL_QUARTZ_PILLAR).build(null));
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "reinforced_pressure_plate"), BlockEntityType.Builder.create(WhitelistOnlyTileEntity::new, SCContent.REINFORCED_STONE_PRESSURE_PLATE, SCContent.REINFORCED_ACACIA_PRESSURE_PLATE, SCContent.REINFORCED_BIRCH_PRESSURE_PLATE, SCContent.REINFORCED_CRIMSON_PRESSURE_PLATE, SCContent.REINFORCED_DARK_OAK_PRESSURE_PLATE, SCContent.REINFORCED_JUNGLE_PRESSURE_PLATE, SCContent.REINFORCED_OAK_PRESSURE_PLATE, SCContent.REINFORCED_SPRUCE_PRESSURE_PLATE, SCContent.REINFORCED_WARPED_PRESSURE_PLATE, SCContent.REINFORCED_POLISHED_BLACKSTONE_PRESSURE_PLATE, SCContent.REINFORCED_STONE_BUTTON, SCContent.REINFORCED_ACACIA_BUTTON, SCContent.REINFORCED_BIRCH_BUTTON, SCContent.REINFORCED_CRIMSON_BUTTON, SCContent.REINFORCED_DARK_OAK_BUTTON, SCContent.REINFORCED_JUNGLE_BUTTON, SCContent.REINFORCED_OAK_BUTTON, SCContent.REINFORCED_SPRUCE_BUTTON, SCContent.REINFORCED_WARPED_BUTTON, SCContent.REINFORCED_POLISHED_BLACKSTONE_BUTTON, SCContent.REINFORCED_LEVER).build(null));
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "reinforced_hopper"), BlockEntityType.Builder.create(ReinforcedHopperTileEntity::new, SCContent.REINFORCED_HOPPER).build(null));
+		// The following fields are undefined right now
+//		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "block_pocket"), BlockEntityType.Builder.create(BlockPocketTileEntity::new, SCContent.BLOCK_POCKET_WALL, SCContent.REINFORCED_CRYSTAL_QUARTZ, SCContent.REINFORCED_CHISELED_CRYSTAL_QUARTZ, SCContent.REINFORCED_CRYSTAL_QUARTZ_PILLAR).build(null));
+//		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "reinforced_pressure_plate"), BlockEntityType.Builder.create(WhitelistOnlyTileEntity::new, SCContent.REINFORCED_STONE_PRESSURE_PLATE, SCContent.REINFORCED_ACACIA_PRESSURE_PLATE, SCContent.REINFORCED_BIRCH_PRESSURE_PLATE, SCContent.REINFORCED_CRIMSON_PRESSURE_PLATE, SCContent.REINFORCED_DARK_OAK_PRESSURE_PLATE, SCContent.REINFORCED_JUNGLE_PRESSURE_PLATE, SCContent.REINFORCED_OAK_PRESSURE_PLATE, SCContent.REINFORCED_SPRUCE_PRESSURE_PLATE, SCContent.REINFORCED_WARPED_PRESSURE_PLATE, SCContent.REINFORCED_POLISHED_BLACKSTONE_PRESSURE_PLATE, SCContent.REINFORCED_STONE_BUTTON, SCContent.REINFORCED_ACACIA_BUTTON, SCContent.REINFORCED_BIRCH_BUTTON, SCContent.REINFORCED_CRIMSON_BUTTON, SCContent.REINFORCED_DARK_OAK_BUTTON, SCContent.REINFORCED_JUNGLE_BUTTON, SCContent.REINFORCED_OAK_BUTTON, SCContent.REINFORCED_SPRUCE_BUTTON, SCContent.REINFORCED_WARPED_BUTTON, SCContent.REINFORCED_POLISHED_BLACKSTONE_BUTTON, SCContent.REINFORCED_LEVER).build(null));
+//		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "reinforced_hopper"), BlockEntityType.Builder.create(ReinforcedHopperTileEntity::new, SCContent.REINFORCED_HOPPER).build(null));
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(SecurityCraft.MODID, "projector"), BlockEntityType.Builder.create(ProjectorTileEntity::new, SCContent.PROJECTOR).build(null));
 	}
 
