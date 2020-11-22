@@ -101,6 +101,8 @@ public class SecurityCraft implements ModInitializer {
 		RegistrationHandler.registerDataSerializerEntries();
 
 		SCContent.BLOCKS.register();
+		SCContent.FLUIDS.register();
+		SCContent.BLOCK_ENTITY_TYPES.register();
 		// TODO: SCContent registration
 		// TODO: Packet registration
 	}
