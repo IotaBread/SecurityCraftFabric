@@ -99,10 +99,14 @@ public class SecurityCraft implements ModInitializer {
 		RegistrationHandler.registerSounds();
 		RegistrationHandler.registerRecipeSerializers();
 		RegistrationHandler.registerDataSerializerEntries();
+		try {
+			RegistrationHandler.registerObjectHolders();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
 
 		SCContent.BLOCKS.register();
 		SCContent.FLUIDS.register();
-		SCContent.BLOCK_ENTITY_TYPES.register();
 		// TODO: SCContent registration
 		// TODO: Packet registration
 	}

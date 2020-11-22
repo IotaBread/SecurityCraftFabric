@@ -9,6 +9,7 @@ import net.geforcemods.securitycraft.blocks.mines.*;
 import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedDoorBlock;
 import net.geforcemods.securitycraft.blocks.reinforced.ReinforcedFenceGateBlock;
 import net.geforcemods.securitycraft.compat.fabric.DeferredRegister;
+import net.geforcemods.securitycraft.compat.fabric.ObjectHolder;
 import net.geforcemods.securitycraft.containers.*;
 import net.geforcemods.securitycraft.entity.*;
 import net.geforcemods.securitycraft.fluids.FakeLavaFluid;
@@ -524,34 +525,61 @@ public class SCContent { // TODO: Everything
     @HasManualPage public static ModuleItem STORAGE_MODULE;
     @HasManualPage public static ModuleItem WHITELIST_MODULE;
 
-    //tile entity types // I don't think there's a better way to do this
-    public static BlockEntityType<OwnableTileEntity> teTypeOwnable = (BlockEntityType<OwnableTileEntity>) BLOCK_ENTITY_TYPES.register("ownable", () -> BlockEntityType.Builder.create(OwnableTileEntity::new).build(null));
-    public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract = (BlockEntityType<SecurityCraftTileEntity>) BLOCK_ENTITY_TYPES.register("abstract", () -> BlockEntityType.Builder.create(SecurityCraftTileEntity::new).build(null));
-    public static BlockEntityType<KeypadTileEntity> teTypeKeypad = (BlockEntityType<KeypadTileEntity>) BLOCK_ENTITY_TYPES.register("keypad", () -> BlockEntityType.Builder.create(KeypadTileEntity::new).build(null));
-    public static BlockEntityType<LaserBlockTileEntity> teTypeLaserBlock = (BlockEntityType<LaserBlockTileEntity>) BLOCK_ENTITY_TYPES.register("laser_block", () -> BlockEntityType.Builder.create(LaserBlockTileEntity::new).build(null));
-    public static BlockEntityType<CageTrapTileEntity> teTypeCageTrap = (BlockEntityType<CageTrapTileEntity>) BLOCK_ENTITY_TYPES.register("cage_trap", () -> BlockEntityType.Builder.create(CageTrapTileEntity::new).build(null));
-    public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader = (BlockEntityType<KeycardReaderTileEntity>) BLOCK_ENTITY_TYPES.register("keycard_reader", () -> BlockEntityType.Builder.create(KeycardReaderTileEntity::new).build(null));
-    public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner = (BlockEntityType<InventoryScannerTileEntity>) BLOCK_ENTITY_TYPES.register("inventory_scanner", () -> BlockEntityType.Builder.create(InventoryScannerTileEntity::new).build(null));
-    public static BlockEntityType<PortableRadarTileEntity> teTypePortableRadar = (BlockEntityType<PortableRadarTileEntity>) BLOCK_ENTITY_TYPES.register("portable_radar", () -> BlockEntityType.Builder.create(PortableRadarTileEntity::new).build(null));
-    public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera = (BlockEntityType<SecurityCameraTileEntity>) BLOCK_ENTITY_TYPES.register("security_camera", () -> BlockEntityType.Builder.create(SecurityCameraTileEntity::new).build(null));
-    public static BlockEntityType<UsernameLoggerTileEntity> teTypeUsernameLogger = (BlockEntityType<UsernameLoggerTileEntity>) BLOCK_ENTITY_TYPES.register("username_logger", () -> BlockEntityType.Builder.create(UsernameLoggerTileEntity::new).build(null));
-    public static BlockEntityType<RetinalScannerTileEntity> teTypeRetinalScanner = (BlockEntityType<RetinalScannerTileEntity>) BLOCK_ENTITY_TYPES.register("retinal_scanner", () -> BlockEntityType.Builder.create(RetinalScannerTileEntity::new).build(null));
-    public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest = (BlockEntityType<KeypadChestTileEntity>) BLOCK_ENTITY_TYPES.register("keypad_chest", () -> BlockEntityType.Builder.create(KeypadChestTileEntity::new).build(null));
-    public static BlockEntityType<AlarmTileEntity> teTypeAlarm = (BlockEntityType<AlarmTileEntity>) BLOCK_ENTITY_TYPES.register("alarm", () -> BlockEntityType.Builder.create(AlarmTileEntity::new).build(null));
-    public static BlockEntityType<ClaymoreTileEntity> teTypeClaymore = (BlockEntityType<ClaymoreTileEntity>) BLOCK_ENTITY_TYPES.register("claymore", () -> BlockEntityType.Builder.create(ClaymoreTileEntity::new).build(null));
-    public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace = (BlockEntityType<KeypadFurnaceTileEntity>) BLOCK_ENTITY_TYPES.register("keypad_furnace", () -> BlockEntityType.Builder.create(KeypadFurnaceTileEntity::new).build(null));
-    public static BlockEntityType<IMSTileEntity> teTypeIms = (BlockEntityType<IMSTileEntity>) BLOCK_ENTITY_TYPES.register("ims", () -> BlockEntityType.Builder.create(IMSTileEntity::new).build(null));
-    public static BlockEntityType<ProtectoTileEntity> teTypeProtecto = (BlockEntityType<ProtectoTileEntity>) BLOCK_ENTITY_TYPES.register("protecto", () -> BlockEntityType.Builder.create(ProtectoTileEntity::new).build(null));
-    public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor = (BlockEntityType<ScannerDoorTileEntity>) BLOCK_ENTITY_TYPES.register("scanner_door", () -> BlockEntityType.Builder.create(ScannerDoorTileEntity::new).build(null));
-    public static BlockEntityType<SecretSignTileEntity> teTypeSecretSign = (BlockEntityType<SecretSignTileEntity>) BLOCK_ENTITY_TYPES.register("secret_sign", () -> BlockEntityType.Builder.create(SecretSignTileEntity::new).build(null));
-    public static BlockEntityType<MotionActivatedLightTileEntity> teTypeMotionLight = (BlockEntityType<MotionActivatedLightTileEntity>) BLOCK_ENTITY_TYPES.register("motion_light", () -> BlockEntityType.Builder.create(MotionActivatedLightTileEntity::new).build(null));
-    public static BlockEntityType<TrackMineTileEntity> teTypeTrackMine = (BlockEntityType<TrackMineTileEntity>) BLOCK_ENTITY_TYPES.register("track_mine", () -> BlockEntityType.Builder.create(TrackMineTileEntity::new).build(null));
-    public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem = (BlockEntityType<TrophySystemTileEntity>) BLOCK_ENTITY_TYPES.register("trophy_system", () -> BlockEntityType.Builder.create(TrophySystemTileEntity::new).build(null));
-    public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager = (BlockEntityType<BlockPocketManagerTileEntity>) BLOCK_ENTITY_TYPES.register("block_pocket_manager", () -> BlockEntityType.Builder.create(BlockPocketManagerTileEntity::new).build(null));
-    public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket = (BlockEntityType<BlockPocketTileEntity>) BLOCK_ENTITY_TYPES.register("block_pocket", () -> BlockEntityType.Builder.create(BlockPocketTileEntity::new).build(null));
-    public static BlockEntityType<WhitelistOnlyTileEntity> teTypeWhitelistOnly = (BlockEntityType<WhitelistOnlyTileEntity>) BLOCK_ENTITY_TYPES.register("whitelist_only", () -> BlockEntityType.Builder.create(WhitelistOnlyTileEntity::new).build(null));
-    public static BlockEntityType<ReinforcedHopperTileEntity> teTypeReinforcedHopper = (BlockEntityType<ReinforcedHopperTileEntity>) BLOCK_ENTITY_TYPES.register("reinforced_hopper", () -> BlockEntityType.Builder.create(ReinforcedHopperTileEntity::new).build(null));
-    public static BlockEntityType<ProjectorTileEntity> teTypeProjector = (BlockEntityType<ProjectorTileEntity>) BLOCK_ENTITY_TYPES.register("projector", () -> BlockEntityType.Builder.create(ProjectorTileEntity::new).build(null));
+    //tile entity types
+    @ObjectHolder(SecurityCraft.MODID + ":ownable")
+    public static BlockEntityType<OwnableTileEntity> teTypeOwnable;
+    @ObjectHolder(SecurityCraft.MODID + ":abstract")
+    public static BlockEntityType<SecurityCraftTileEntity> teTypeAbstract;
+    @ObjectHolder(SecurityCraft.MODID + ":keypad")
+    public static BlockEntityType<KeypadTileEntity> teTypeKeypad;
+    @ObjectHolder(SecurityCraft.MODID + ":laser_block")
+    public static BlockEntityType<LaserBlockTileEntity> teTypeLaserBlock;
+    @ObjectHolder(SecurityCraft.MODID + ":cage_trap")
+    public static BlockEntityType<CageTrapTileEntity> teTypeCageTrap;
+    @ObjectHolder(SecurityCraft.MODID + ":keycard_reader")
+    public static BlockEntityType<KeycardReaderTileEntity> teTypeKeycardReader;
+    @ObjectHolder(SecurityCraft.MODID + ":inventory_scanner")
+    public static BlockEntityType<InventoryScannerTileEntity> teTypeInventoryScanner;
+    @ObjectHolder(SecurityCraft.MODID + ":portable_radar")
+    public static BlockEntityType<PortableRadarTileEntity> teTypePortableRadar;
+    @ObjectHolder(SecurityCraft.MODID + ":security_camera")
+    public static BlockEntityType<SecurityCameraTileEntity> teTypeSecurityCamera;
+    @ObjectHolder(SecurityCraft.MODID + ":username_logger")
+    public static BlockEntityType<UsernameLoggerTileEntity> teTypeUsernameLogger;
+    @ObjectHolder(SecurityCraft.MODID + ":retinal_scanner")
+    public static BlockEntityType<RetinalScannerTileEntity> teTypeRetinalScanner;
+    @ObjectHolder(SecurityCraft.MODID + ":keypad_chest")
+    public static BlockEntityType<KeypadChestTileEntity> teTypeKeypadChest;
+    @ObjectHolder(SecurityCraft.MODID + ":alarm")
+    public static BlockEntityType<AlarmTileEntity> teTypeAlarm;
+    @ObjectHolder(SecurityCraft.MODID + ":claymore")
+    public static BlockEntityType<ClaymoreTileEntity> teTypeClaymore;
+    @ObjectHolder(SecurityCraft.MODID + ":keypad_furnace")
+    public static BlockEntityType<KeypadFurnaceTileEntity> teTypeKeypadFurnace;
+    @ObjectHolder(SecurityCraft.MODID + ":ims")
+    public static BlockEntityType<IMSTileEntity> teTypeIms;
+    @ObjectHolder(SecurityCraft.MODID + ":protecto")
+    public static BlockEntityType<ProtectoTileEntity> teTypeProtecto;
+    @ObjectHolder(SecurityCraft.MODID + ":scanner_door")
+    public static BlockEntityType<ScannerDoorTileEntity> teTypeScannerDoor;
+    @ObjectHolder(SecurityCraft.MODID + ":secret_sign")
+    public static BlockEntityType<SecretSignTileEntity> teTypeSecretSign;
+    @ObjectHolder(SecurityCraft.MODID + ":motion_light")
+    public static BlockEntityType<MotionActivatedLightTileEntity> teTypeMotionLight;
+    @ObjectHolder(SecurityCraft.MODID + ":track_mine")
+    public static BlockEntityType<TrackMineTileEntity> teTypeTrackMine;
+    @ObjectHolder(SecurityCraft.MODID + ":trophy_system")
+    public static BlockEntityType<TrophySystemTileEntity> teTypeTrophySystem;
+    @ObjectHolder(SecurityCraft.MODID + ":block_pocket_manager")
+    public static BlockEntityType<BlockPocketManagerTileEntity> teTypeBlockPocketManager;
+    @ObjectHolder(SecurityCraft.MODID + ":block_pocket")
+    public static BlockEntityType<BlockPocketTileEntity> teTypeBlockPocket;
+    @ObjectHolder(SecurityCraft.MODID + ":reinforced_pressure_plate")
+    public static BlockEntityType<WhitelistOnlyTileEntity> teTypeWhitelistOnly;
+    @ObjectHolder(SecurityCraft.MODID + ":reinforced_hopper")
+    public static BlockEntityType<ReinforcedHopperTileEntity> teTypeReinforcedHopper;
+    @ObjectHolder(SecurityCraft.MODID + ":projector")
+    public static BlockEntityType<ProjectorTileEntity> teTypeProjector;
 
     //entity types
     public static EntityType<BouncingBettyEntity> eTypeBouncingBetty;

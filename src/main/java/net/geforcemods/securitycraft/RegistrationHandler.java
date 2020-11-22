@@ -8,6 +8,7 @@ import net.geforcemods.securitycraft.api.SecurityCraftTileEntity;
 //import net.geforcemods.securitycraft.entity.*;
 //import net.geforcemods.securitycraft.inventory.BriefcaseInventory;
 //import net.geforcemods.securitycraft.inventory.ModuleItemInventory;
+import net.geforcemods.securitycraft.compat.fabric.ObjectHolder;
 import net.geforcemods.securitycraft.misc.SCSounds;
 //import net.geforcemods.securitycraft.misc.conditions.*;
 //import net.geforcemods.securitycraft.network.client.*;
@@ -23,12 +24,14 @@ import net.minecraft.block.entity.BlockEntityType;
 //import net.minecraft.entity.data.TrackedData;
 //import net.minecraft.entity.data.TrackedDataHandler;
 //import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 //import net.minecraft.network.PacketByteBuf;
 //import net.minecraft.recipe.RecipeSerializer;
 //import net.minecraft.screen.ScreenHandlerType;
 //import net.minecraft.sound.SoundEvent;
+import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 //import net.minecraftforge.common.crafting.CraftingHelper;
@@ -285,5 +288,29 @@ public class RegistrationHandler
 //				return new Owner(value.getName(), value.getUUID());
 //			}
 //		}));
+	}
+
+	// Cursed code
+	public static void registerObjectHolders() throws IllegalAccessException {
+		for (Field field : SCContent.class.getFields()) {
+			if (field.isAnnotationPresent(ObjectHolder.class)) {
+				String value = field.getAnnotation(ObjectHolder.class).value();
+				Registry<?> registry;
+				if (field.getType() == BlockEntityType.class) {
+					registry = Registry.BLOCK_ENTITY_TYPE;
+				} else if (field.getType() == EntityType.class) {
+					registry = Registry.ENTITY_TYPE;
+				} else if (field.getType() == ScreenHandlerType.class) {
+					registry = Registry.SCREEN_HANDLER;
+				} else {
+					continue;
+				}
+
+				if (registry.containsId(new Identifier(value))) {
+					field.setAccessible(true);
+					field.set(null, registry.get(new Identifier(value)));
+				}
+			}
+		}
 	}
 }
