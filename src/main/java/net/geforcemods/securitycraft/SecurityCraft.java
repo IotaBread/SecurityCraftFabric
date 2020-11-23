@@ -107,7 +107,7 @@ public class SecurityCraft implements ModInitializer {
 
 		SCContent.BLOCKS.register();
 		SCContent.FLUIDS.register();
-		// TODO: SCContent registration
+		SCContent.ITEMS.register();
 		// TODO: Packet registration
 	}
 //
