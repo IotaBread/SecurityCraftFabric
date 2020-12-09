@@ -1,5 +1,3 @@
-# The repository has been moved to [ByMartrixx/SecurityCraftFabric](https://github.com/ByMartrixx/SecurityCraftFabric)
-
 SecurityCraft
 =============
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraft/Java%20CI%20with%20Gradle?style=flat-square)
@@ -7,7 +5,7 @@ SecurityCraft
 Source code for the [Fabric](https://fabricmc.net) version of the Minecraft mod "SecurityCraft". If you are looking for the original version (the forge one), please enter this [link](https://github.com/Geforce132/SecurityCraft).
 
 ## Contributing
-If you want to contribute to the mod please read [CONTRIBUTING.md](https://github.com/ByMartrixx/SecurityCraft/blob/fabric/1.16.2/CONTRIBUTING.md)
+If you want to contribute to the mod, please read [CONTRIBUTING.md](https://github.com/ByMartrixx/SecurityCraft/blob/fabric/1.16.2/CONTRIBUTING.md)
 
 ### Disclaimer
 - This mod **was not** created by me, I am just the one who ported its code from [Forge](https://minecraftforge.net) to [Fabric](https://fabricmc.net)
