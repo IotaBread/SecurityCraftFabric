@@ -1,6 +1,6 @@
 SecurityCraft
 =============
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraft/Java%20CI%20with%20Gradle?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraftFabric/Java%20CI%20with%20Gradle?style=flat-square)
 
 Source code for the [Fabric](https://fabricmc.net) version of the Minecraft mod "SecurityCraft". If you are looking for the original version (the forge one), please enter this [link](https://github.com/Geforce132/SecurityCraft).
 
