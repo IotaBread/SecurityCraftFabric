@@ -1,3 +1,5 @@
+# The repository has been moved to [ByMartrixx/SecurityCraftFabric](https://github.com/ByMartrixx/SecurityCraftFabric)
+
 SecurityCraft
 =============
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraft/Java%20CI%20with%20Gradle?style=flat-square)
