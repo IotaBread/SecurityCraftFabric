@@ -1,3 +1,9 @@
+# REPOSITORY ARCHIVED
+This repository has been archived and will not receive any updates from me in the future.
+
+<details>
+<summary>Old readme</summary>
+
 SecurityCraft
 =============
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ByMartrixX/SecurityCraftFabric/Java%20CI%20with%20Gradle?style=flat-square)
@@ -13,3 +19,5 @@ If you want to contribute to the mod, please read [CONTRIBUTING.md](https://gith
 - Please, **do not** install this mod if you don't know what you are doing. Using the mod as it is right now could cause irreversible damage on your Minecraft world.
 - If you have any issue with the fabric version of the mod, please open an issue describing the problem on the issue tracker **of this version of the mod**, [here](https://github.com/ByMartrixx/SecurityCraftFabric/issues).
 - If you have any suggestions, please open an issue on the issue tracker for the forge version, [here](https://github.com/Geforce132/SecurityCraftFabric/issues), as I'm only porting the mod and won't add any feature that is not in the original version.
+
+</details>
